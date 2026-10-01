@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Demonstratives Master App</title>
+  <style>
+    :root {
+      --bg-color: #121214;
+      --card-bg: #1e1e24;
+      --accent-red: #ef233c;
+      --accent-blue: #4ea8de;
+      --accent-green: #06d6a0;
+      --accent-purple: #9d4edd;
+      --text-main: #edf2f4;
+      --text-muted: #8d99ae;
+      --border-color: #2b2d42;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      margin: 0 0 5px 0;
+      font-size: 1.8rem;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      margin: 0 0 15px 0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    /* Control Groups */
+    .controls-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .control-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .btn {
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      font-size: 0.82rem;
+    }
+
+    /* Series Colors */
+    .btn-series.active {
+      background: var(--accent-purple);
+      color: #fff;
+      border-color: var(--accent-purple);
+    }
+
+    /* Context Colors */
+    .btn-context.active {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    /* Stage Area */
+    .stage {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      height: 440px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 2px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 15px;
+      box-sizing: border-box;
+      gap: 10px;
+    }
+
+    /* Interactive Zones */
+    .zone {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 2px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+
+    .zone:hover {
+      background: rgba(239, 35, 60, 0.15);
+      border-color: var(--accent-red);
+      transform: scale(1.01);
+    }
+
+    .zone-anchor {
+      font-size: 0.78rem;
+      font-weight: bold;
+      color: var(--accent-green);
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .zone-title {
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: var(--text-main);
+    }
+
+    .zone-example {
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+      font-weight: 500;
+    }
+
+    .zone-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Output Box */
+    .output-box {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--accent-red);
+      background: var(--card-bg);
+      border: 2px solid var(--border-color);
+      padding: 15px 20px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 460px;
+      text-align: center;
+      box-sizing: border-box;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Japanese Pointer Practice</h1>
+  <p class="subtitle">Select series & context, then click a spatial zone:</p>
+
+  <div class="controls-wrapper">
+    <!-- 1. Series Selector -->
+    <div class="control-label">1. Choose Word Series</div>
+    <div class="controls-row">
+      <button class="btn btn-series active" id="btnPronouns" onclick="setSeries('pronouns')">これ(kore) / それ(sore) / あれ(are)</button>
+      <button class="btn btn-series" id="btnModifiers" onclick="setSeries('modifiers')">この(kono) / その(sono) / あの(ano) (+Noun)</button>
+      <button class="btn btn-series" id="btnLocations" onclick="setSeries('locations')">ここ(koko) / そこ(soko) / あそこ(asoko)</button>
+    </div>
+
+    <!-- 2. Context Selector -->
+    <div class="control-label" style="margin-top: 6px;">2. Choose Social Context</div>
+    <div class="controls-row">
+      <button class="btn btn-context active" id="btnSeparated" onclick="setContext('separated')">💬 Separate (2 People)</button>
+      <button class="btn btn-context" id="btnShared" onclick="setContext('shared')">🤝 Shared (2 People)</button>
+      <button class="btn btn-context" id="btnAlone" onclick="setContext('alone')">🧍 Alone (1 Person)</button>
+    </div>
+  </div>
+
+  <!-- Dynamic Stage -->
+  <div class="stage" id="stageContainer"></div>
+
+  <!-- Result Display -->
+  <div class="output-box" id="resultDisplay">Click a zone above...</div>
+
+  <script>
+    let currentSeries = 'pronouns';
+    let currentContext = 'separated';
+
+    // Word dictionary for each series
+    const wordMap = {
+      pronouns: {
+        ko: { jp: 'これ', ex: 'これ (This item)' },
+        so: { jp: 'それ', ex: 'それ (That item)' },
+        a:  { jp: 'あれ', ex: 'あれ (That item over there)' }
+      },
+      modifiers: {
+        ko: { jp: 'この', ex: 'この本 (This book)' },
+        so: { jp: 'その', ex: 'その本 (That book)' },
+        a:  { jp: 'あの', ex: 'あの本 (That book over there)' }
+      },
+      locations: {
+        ko: { jp: 'ここ', ex: 'ここ (Here / This place)' },
+        so: { jp: 'そこ', ex: 'そこ (There / That place)' },
+        a:  { jp: 'あそこ', ex: 'あそこ (Over there)' }
+      }
+    };
+
+    // Spatial Anchors for each context
+    const contextMap = {
+      separated: [
+        {
+          key: 'a',
+          anchor: '🏞️ Far Distance',
+          desc: 'Far away from BOTH you (Speaker) and the Listener'
+        },
+        {
+          key: 'so',
+          anchor: '👤 Listener Territory',
+          desc: 'Close to, held by, or located at the Listener\'s spot'
+        },
+        {
+          key: 'ko',
+          anchor: '🗣️ Speaker Territory (You)',
+          desc: 'In your hands, touching, or located right by You'
+        }
+      ],
+      shared: [
+        {
+          key: 'a',
+          anchor: '🚪 Outside Shared Area',
+          desc: 'Far across the room or outside your shared zone'
+        },
+        {
+          key: 'so',
+          anchor: '🛋️ Medium Distance',
+          desc: 'Slightly away from your combined immediate bubble'
+        },
+        {
+          key: 'ko',
+          anchor: '👥 Shared Immediate Space',
+          desc: 'Right in front of BOTH you and the Listener'
+        }
+      ],
+      alone: [
+        {
+          key: 'a',
+          anchor: '🏔️ Far Distance / Memory',
+          desc: 'Across the room, down the street, or in past memory'
+        },
+        {
+          key: 'so',
+          anchor: '🪑 Out of Reach',
+          desc: 'Across the desk or just beyond arm\'s reach'
+        },
+        {
+          key: 'ko',
+          anchor: '✋ Immediate Reach',
+          desc: 'In your hand, touching, or in active current thought'
+        }
+      ]
+    };
+
+    function setSeries(series) {
+      currentSeries = series;
+      document.getElementById('btnPronouns').classList.toggle('active', series === 'pronouns');
+      document.getElementById('btnModifiers').classList.toggle('active', series === 'modifiers');
+      document.getElementById('btnLocations').classList.toggle('active', series === 'locations');
+      renderStage();
+    }
+
+    function setContext(context) {
+      currentContext = context;
+      document.getElementById('btnSeparated').classList.toggle('active', context === 'separated');
+      document.getElementById('btnShared').classList.toggle('active', context === 'shared');
+      document.getElementById('btnAlone').classList.toggle('active', context === 'alone');
+      renderStage();
+    }
+
+    function renderStage() {
+      const container = document.getElementById('stageContainer');
+      container.innerHTML = '';
+
+      const activeContext = contextMap[currentContext];
+
+      activeContext.forEach(item => {
+        const wordInfo = wordMap[currentSeries][item.key];
+        const zone = document.createElement('div');
+        zone.className = 'zone';
+        zone.onclick = () => selectZone(wordInfo.jp, wordInfo.ex, item.anchor, item.desc);
+
+        zone.innerHTML = `
+          <div class="zone-anchor">${item.anchor}</div>
+          <div class="zone-title">${wordInfo.jp}</div>
+          <div class="zone-example">${wordInfo.ex}</div>
+          <div class="zone-desc">${item.desc}</div>
+        `;
+
+        container.appendChild(zone);
+      });
+    }
+
+    function selectZone(jpText, exampleText, anchor, desc) {
+      // 1. Visual Text Output
+      document.getElementById('resultDisplay').innerText = `${exampleText} — ${desc}`;
+
+      // 2. Native Speech Output
+      const utterance = new SpeechSynthesisUtterance(jpText);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.85;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Initial Setup
+    renderStage();
+  </script>
+
+</body>
+</html>
