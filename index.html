@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Study Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        jp: ['Noto Sans JP', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white text-gray-800 min-h-screen flex items-center justify-center p-4 font-sans">
+
+    <!-- Centered Card Panel -->
+    <main class="w-full max-w-md bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm">
+        
+        <!-- Header (Title only, no text underneath) -->
+        <header class="text-center mb-6">
+            <h1 class="text-xl font-bold text-gray-900">Japanese Study Index</h1>
+        </header>
+
+        <!-- Navigation Buttons -->
+        <nav class="space-y-3" aria-label="Practice Topics">
+
+            <!-- 1. Age Practice -->
+            <a href="AgePractice.html" class="flex items-center justify-between p-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl transition-colors">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-blue-100 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                    <div>
+                        <div class="text-sm font-semibold leading-tight">Age Practice</div>
+                        <div class="text-xs text-blue-100 font-jp mt-0.5">年齢 (ねんれい / Nenrei)</div>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+            <!-- 2. Calendar Days Of Month Practice -->
+            <a href="CalendarDaysOfMonthPractice.html" class="flex items-center justify-between p-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl transition-colors">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-blue-100 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                    <div>
+                        <div class="text-sm font-semibold leading-tight">Calendar Days Practice</div>
+                        <div class="text-xs text-blue-100 font-jp mt-0.5">日付 (ひづけ / Hizuke)</div>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+            <!-- 3. Number Practice -->
+            <a href="NumberPractice.html" class="flex items-center justify-between p-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl transition-colors">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-blue-100 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                    </svg>
+                    <div>
+                        <div class="text-sm font-semibold leading-tight">Number Practice</div>
+                        <div class="text-xs text-blue-100 font-jp mt-0.5">数字 (すうじ / Suuji)</div>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+            <!-- 4. Time Practice -->
+            <a href="TimePractice.html" class="flex items-center justify-between p-3.5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white rounded-xl transition-colors">
+                <div class="flex items-center gap-3">
+                    <svg class="w-5 h-5 text-blue-100 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    <div>
+                        <div class="text-sm font-semibold leading-tight">Time Practice</div>
+                        <div class="text-xs text-blue-100 font-jp mt-0.5">時間 (じかん / Jikan)</div>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-blue-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+
+        </nav>
+
+    </main>
+
+</body>
+</html>
