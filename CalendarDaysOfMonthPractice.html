@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Calendar Study Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .calendar-container {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .header-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background-color: #2c5282;
+    }
+
+    /* Grid Styles */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 8px;
+    }
+
+    .weekday-header {
+      background-color: #edf2f7;
+      padding: 10px;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .weekday-header .kanji { font-size: 1.1em; }
+    .weekday-header .sub { font-size: 0.8em; color: #4a5568; }
+
+    .day-cell {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px;
+      min-height: 85px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+
+    .day-cell.empty {
+      background-color: #f7fafc;
+      border-color: transparent;
+    }
+
+    /* Target Cell Highlights */
+    .day-cell.target {
+      border: 3px solid #e53e3e;
+      background-color: #fff5f5;
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+
+    .day-cell.target:hover {
+      background-color: #fed7d7;
+      transform: scale(1.02);
+    }
+
+    .target-unrevealed {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+    }
+
+    .target-day-number {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #c53030;
+      line-height: 1;
+    }
+
+    .target-label {
+      font-size: 0.7em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #9b2c2c;
+      margin-top: 4px;
+      font-weight: bold;
+    }
+
+    .target-revealed {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+
+    .target-revealed .japanese-info .kanji {
+      color: #c53030;
+    }
+
+    .day-number {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #2d3748;
+    }
+
+    .japanese-info {
+      text-align: right;
+    }
+
+    .kanji { font-size: 1.1em; font-weight: bold; }
+    .hiragana { font-size: 0.85em; color: #4a5568; }
+    .romaji { font-size: 0.8em; color: #718096; }
+  </style>
+</head>
+<body>
+
+<div class="calendar-container">
+  <div class="header-controls">
+    <h2 style="margin: 0; color: #2d3748;">Japanese Date Quiz</h2>
+    <button class="btn" id="generate-btn">Next Target Day</button>
+  </div>
+
+  <div class="calendar-grid" id="calendar-grid"></div>
+</div>
+
+<script>
+  const daysOfWeek = [
+    { english: "Sun", kanji: "日", hiragana: "にち", romaji: "nichi" },
+    { english: "Mon", kanji: "月", hiragana: "げつ", romaji: "getsu" },
+    { english: "Tue", kanji: "火", hiragana: "か", romaji: "ka" },
+    { english: "Wed", kanji: "水", hiragana: "すい", romaji: "sui" },
+    { english: "Thu", kanji: "木", hiragana: "もく", romaji: "moku" },
+    { english: "Fri", kanji: "金", hiragana: "きん", romaji: "kin" },
+    { english: "Sat", kanji: "土", hiragana: "ど", romaji: "do" }
+  ];
+
+  const daysOfMonth = [
+    { day: 1, kanji: "一日", hiragana: "ついたち", romaji: "tsuitachi" },
+    { day: 2, kanji: "二日", hiragana: "ふつか", romaji: "futsuka" },
+    { day: 3, kanji: "三日", hiragana: "みっか", romaji: "mikka" },
+    { day: 4, kanji: "四日", hiragana: "よっか", romaji: "yokka" },
+    { day: 5, kanji: "五日", hiragana: "いつか", romaji: "itsuka" },
+    { day: 6, kanji: "六日", hiragana: "むいか", romaji: "muika" },
+    { day: 7, kanji: "七日", hiragana: "なのか", romaji: "nanoka" },
+    { day: 8, kanji: "八日", hiragana: "ようか", romaji: "yooka" },
+    { day: 9, kanji: "九日", hiragana: "ここのか", romaji: "kokonoka" },
+    { day: 10, kanji: "十日", hiragana: "とおか", romaji: "tooka" },
+    { day: 11, kanji: "十一日", hiragana: "じゅういちにち", romaji: "juuichinichi" },
+    { day: 12, kanji: "十二日", hiragana: "じゅうににち", romaji: "juuni-nichi" },
+    { day: 13, kanji: "十三日", hiragana: "じゅうさんにち", romaji: "juusan-nichi" },
+    { day: 14, kanji: "十四日", hiragana: "じゅうよっか", romaji: "juuyokka" },
+    { day: 15, kanji: "十五日", hiragana: "じゅうごにち", romaji: "juugo-nichi" },
+    { day: 16, kanji: "十六日", hiragana: "じゅうろくにち", romaji: "juuroku-nichi" },
+    { day: 17, kanji: "十七日", hiragana: "じゅうしちにち", romaji: "juushichi-nichi" },
+    { day: 18, kanji: "十八日", hiragana: "じゅうはちにち", romaji: "juuhachi-nichi" },
+    { day: 19, kanji: "十九日", hiragana: "じゅうくにち", romaji: "juuku-nichi" },
+    { day: 20, kanji: "二十日", hiragana: "はつか", romaji: "hatsuka" },
+    { day: 21, kanji: "二十一日", hiragana: "にじゅういちにち", romaji: "nijuuichi-nichi" },
+    { day: 22, kanji: "二十二日", hiragana: "にじゅうににち", romaji: "nijuuni-nichi" },
+    { day: 23, kanji: "二十三日", hiragana: "にじゅうさんにち", romaji: "nijuusan-nichi" },
+    { day: 24, kanji: "二十四日", hiragana: "にじゅうよっか", romaji: "nijuuyokka" },
+    { day: 25, kanji: "二十五日", hiragana: "にじゅうごにち", romaji: "nijuugo-nichi" },
+    { day: 26, kanji: "二十六日", hiragana: "にじゅうろくにち", romaji: "nijuuroku-nichi" },
+    { day: 27, kanji: "二十七日", hiragana: "にじゅうしちにち", romaji: "nijuushichi-nichi" },
+    { day: 28, kanji: "二十八日", hiragana: "にじゅうはちにち", romaji: "nijuuhachi-nichi" },
+    { day: 29, kanji: "二十九日", hiragana: "にじゅうくにち", romaji: "nijuuku-nichi" },
+    { day: 30, kanji: "三十日", hiragana: "さんじゅうにち", romaji: "sanjuu-nichi" },
+    { day: 31, kanji: "三十一日", hiragana: "さんじゅういちにち", romaji: "sanjuuichi-nichi" }
+  ];
+
+  function renderCalendar() {
+    const grid = document.getElementById('calendar-grid');
+    grid.innerHTML = '';
+
+    // 1. Render Weekday Headers (Sun-Sat)
+    daysOfWeek.forEach(day => {
+      const header = document.createElement('div');
+      header.className = 'weekday-header';
+      header.innerHTML = `
+        <div class="kanji">${day.kanji}曜日</div>
+        <div class="sub">${day.hiragana}ようび (${day.romaji}youbi)</div>
+      `;
+      grid.appendChild(header);
+    });
+
+    // 2. Select a random target day and a random starting weekday offset (0-6)
+    const targetIndex = Math.floor(Math.random() * daysOfMonth.length);
+    const currentTargetObject = daysOfMonth[targetIndex];
+    const startDayOfWeek = Math.floor(Math.random() * 7);
+
+    // 3. Render Empty Offset Slots for the first week
+    for (let i = 0; i < startDayOfWeek; i++) {
+      const emptyCell = document.createElement('div');
+      emptyCell.className = 'day-cell empty';
+      grid.appendChild(emptyCell);
+    }
+
+    // 4. Render Days 1 to 31
+    daysOfMonth.forEach(item => {
+      const cell = document.createElement('div');
+      cell.className = 'day-cell';
+
+      if (item.day === currentTargetObject.day) {
+        // Target Cell (Shows ONLY date number initially)
+        cell.classList.add('target');
+        cell.innerHTML = `
+          <div class="target-unrevealed">
+            <div class="target-day-number">${item.day}</div>
+            <div class="target-label">Click to Reveal</div>
+          </div>
+        `;
+
+        // Click event to reveal Japanese reading inside the cell
+        cell.addEventListener('click', function handleReveal() {
+          cell.innerHTML = `
+            <div class="target-revealed">
+              <div class="day-number">${item.day}</div>
+              <div class="japanese-info">
+                <div class="kanji">${item.kanji}</div>
+                <div class="hiragana">${item.hiragana}</div>
+                <div class="romaji">${item.romaji}</div>
+              </div>
+            </div>
+          `;
+          cell.style.cursor = 'default';
+          cell.removeEventListener('click', handleReveal);
+        });
+      } else {
+        // Standard Non-target Days
+        cell.innerHTML = `
+          <div class="day-number">${item.day}</div>
+          <div class="japanese-info">
+            <div class="kanji">${item.kanji}</div>
+            <div class="hiragana">${item.hiragana}</div>
+            <div class="romaji">${item.romaji}</div>
+          </div>
+        `;
+      }
+
+      grid.appendChild(cell);
+    });
+  }
+
+  // Event listener & initial render
+  document.getElementById('generate-btn').addEventListener('click', renderCalendar);
+  renderCalendar();
+</script>
+
+</body>
+</html>
