@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Time Study Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2d3748;
+    }
+
+    .time-display {
+      font-size: 3em;
+      font-weight: bold;
+      color: #2b6cb0;
+      margin: 20px 0;
+      padding: 16px;
+      background-color: #ebf8ff;
+      border-radius: 8px;
+      border: 2px solid #bee3f8;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #2c5282;
+    }
+
+    .btn-secondary {
+      background-color: #319795;
+    }
+
+    .btn-secondary:hover {
+      background-color: #2c7a7b;
+    }
+
+    /* Answer Card Styles */
+    .answer-card {
+      border: 2px dashed #3182ce;
+      background-color: #f7fafc;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+      display: none;
+    }
+
+    .answer-card.visible {
+      display: block;
+    }
+
+    .answer-title {
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4a5568;
+      font-weight: bold;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .reading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .reading-row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      font-size: 0.85em;
+      color: #718096;
+      font-weight: bold;
+    }
+
+    .value {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2d3748;
+    }
+
+    .kanji-val {
+      font-size: 1.4em;
+      color: #2b6cb0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Japanese Time Practice</h2>
+
+  <!-- Time Display -->
+  <div class="time-display" id="time-display">--:-- --</div>
+
+  <!-- Action Buttons -->
+  <div class="controls">
+    <button class="btn btn-secondary" id="reveal-btn">Show Reading</button>
+    <button class="btn" id="generate-btn">Next Time</button>
+  </div>
+
+  <!-- Hidden Answer Section -->
+  <div class="answer-card" id="answer-card">
+    <div class="answer-title">Japanese Reading</div>
+
+    <div class="reading-row">
+      <span class="label">Kanji</span>
+      <span class="value kanji-val" id="ans-kanji">-</span>
+    </div>
+
+    <div class="reading-row">
+      <span class="label">Hiragana</span>
+      <span class="value" id="ans-hiragana">-</span>
+    </div>
+
+    <div class="reading-row">
+      <span class="label">Romaji</span>
+      <span class="value" id="ans-romaji">-</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Vocabulary Lookup Tables
+  const hoursData = {
+    1:  { kanji: "一時", hiragana: "いちじ", romaji: "ichiji" },
+    2:  { kanji: "二時", hiragana: "にじ", romaji: "niji" },
+    3:  { kanji: "三時", hiragana: "さんじ", romaji: "sanji" },
+    4:  { kanji: "四時", hiragana: "よじ", romaji: "yoji" }, // Irregular
+    5:  { kanji: "五時", hiragana: "ごじ", romaji: "goji" },
+    6:  { kanji: "六時", hiragana: "ろくじ", romaji: "rokuji" },
+    7:  { kanji: "七時", hiragana: "しちじ", romaji: "shichiji" }, // Irregular
+    8:  { kanji: "八時", hiragana: "はちじ", romaji: "hachiji" },
+    9:  { kanji: "九時", hiragana: "くじ", romaji: "kuji" }, // Irregular
+    10: { kanji: "十時", hiragana: "じゅうじ", romaji: "juuji" },
+    11: { kanji: "十一時", hiragana: "じゅういちじ", romaji: "juuichiji" },
+    12: { kanji: "十二時", hiragana: "じゅうにじ", romaji: "juuniji" }
+  };
+
+  const minutesData = {
+    0:  { kanji: "", hiragana: "", romaji: "" },
+    1:  { kanji: "一分", hiragana: "いっぷん", romaji: "ippun" },
+    2:  { kanji: "二分", hiragana: "にふん", romaji: "nifun" },
+    3:  { kanji: "三分", hiragana: "さんぷん", romaji: "sanpun" },
+    4:  { kanji: "四分", hiragana: "よんぷん", romaji: "yonpun" },
+    5:  { kanji: "五分", hiragana: "ごふん", romaji: "gofun" },
+    6:  { kanji: "六分", hiragana: "ろっぷん", romaji: "roppun" },
+    7:  { kanji: "七分", hiragana: "ななふん", romaji: "nanafun" },
+    8:  { kanji: "八分", hiragana: "はっぷん", romaji: "happun" },
+    9:  { kanji: "九分", hiragana: "きゅうふん", romaji: "kyuufun" },
+    10: { kanji: "十分", hiragana: "じゅっぷん", romaji: "juppun" },
+    15: { kanji: "十五分", hiragana: "じゅうごふん", romaji: "juugofun" },
+    20: { kanji: "二十分", hiragana: "にじゅっぷん", romaji: "nijuppun" },
+    25: { kanji: "二十五分", hiragana: "にじゅうごふん", romaji: "nijuugofun" },
+    30: { kanji: "半", hiragana: "はん", romaji: "han" }, // Alternate standard for :30
+    35: { kanji: "三十五分", hiragana: "さんじゅうごふん", romaji: "sanjuugofun" },
+    40: { kanji: "四十", hiragana: "よんじゅっぷん", romaji: "yonjuppun" },
+    45: { kanji: "四十五分", hiragana: "よんじゅうごふん", romaji: "yonjuugofun" },
+    50: { kanji: "五十分", hiragana: "ごじゅっぷん", romaji: "gojuppun" },
+    55: { kanji: "五十五分", hiragana: "ごじゅうごふん", romaji: "gojuugofun" }
+  };
+
+  const periodData = {
+    "AM": { kanji: "午前", hiragana: "ごぜん", romaji: "gozen" },
+    "PM": { kanji: "午後", hiragana: "ごご", romaji: "gogo" }
+  };
+
+  // Preset minute options for practical study intervals
+  const minuteOptions = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55];
+
+  let currentTimeState = null;
+
+  function generateTime() {
+    const hour = Math.floor(Math.random() * 12) + 1; // 1 to 12
+    const minute = minuteOptions[Math.floor(Math.random() * minuteOptions.length)];
+    const period = Math.random() < 0.5 ? "AM" : "PM";
+
+    const formattedMinute = minute < 10 ? `0${minute}` : minute;
+    const formattedTime = `${hour}:${formattedMinute} ${period}`;
+
+    // Build readings (AM/PM goes FIRST in Japanese)
+    const p = periodData[period];
+    const h = hoursData[hour];
+    const m = minutesData[minute];
+
+    const kanji = `${p.kanji}${h.kanji}${m.kanji}`;
+    const hiragana = `${p.hiragana} ${h.hiragana}${m.hiragana}`;
+    const romaji = `${p.romaji} ${h.romaji}${m.romaji ? ' ' + m.romaji : ''}`;
+
+    currentTimeState = { formattedTime, kanji, hiragana, romaji };
+
+    // Update UI
+    document.getElementById('time-display').textContent = formattedTime;
+    document.getElementById('answer-card').classList.remove('visible');
+  }
+
+  function revealReading() {
+    if (!currentTimeState) return;
+
+    document.getElementById('ans-kanji').textContent = currentTimeState.kanji;
+    document.getElementById('ans-hiragana').textContent = currentTimeState.hiragana;
+    document.getElementById('ans-romaji').textContent = currentTimeState.romaji;
+
+    document.getElementById('answer-card').classList.add('visible');
+  }
+
+  // Event Listeners
+  document.getElementById('generate-btn').addEventListener('click', generateTime);
+  document.getElementById('reveal-btn').addEventListener('click', revealReading);
+
+  // Initial Load
+  generateTime();
+</script>
+
+</body>
+</html>

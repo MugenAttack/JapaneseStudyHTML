@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Number Study Tool</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background: white;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 550px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #2d3748;
+    }
+
+    /* Range Controls */
+    .range-controls {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      align-items: center;
+      background-color: #edf2f7;
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .input-group label {
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #4a5568;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .input-group input {
+      width: 130px;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      color: #2d3748;
+      box-sizing: border-box;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #3182ce;
+      box-shadow: 0 0 0 2px rgba(49, 130, 206, 0.2);
+    }
+
+    /* Number Display */
+    .number-display {
+      font-size: 3.2em;
+      font-weight: bold;
+      color: #2b6cb0;
+      margin: 10px 0 20px 0;
+      padding: 20px;
+      background-color: #ebf8ff;
+      border-radius: 8px;
+      border: 2px solid #bee3f8;
+      letter-spacing: 1px;
+      word-break: break-all;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      background-color: #2b6cb0;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #2c5282;
+    }
+
+    .btn-secondary {
+      background-color: #319795;
+    }
+
+    .btn-secondary:hover {
+      background-color: #2c7a7b;
+    }
+
+    /* Answer Card Styles */
+    .answer-card {
+      border: 2px dashed #3182ce;
+      background-color: #f7fafc;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: left;
+      display: none;
+    }
+
+    .answer-card.visible {
+      display: block;
+    }
+
+    .answer-title {
+      font-size: 0.85em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #4a5568;
+      font-weight: bold;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .reading-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .reading-row:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      font-size: 0.85em;
+      color: #718096;
+      font-weight: bold;
+      min-width: 70px;
+    }
+
+    .value {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2d3748;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .kanji-val {
+      font-size: 1.5em;
+      color: #2b6cb0;
+    }
+
+    .error-msg {
+      color: #e53e3e;
+      font-size: 0.85em;
+      font-weight: bold;
+      margin-top: -10px;
+      margin-bottom: 15px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Japanese Number Practice</h2>
+
+  <!-- Range Setting Inputs -->
+  <div class="range-controls">
+    <div class="input-group">
+      <label for="min-num">Min Number</label>
+      <input type="number" id="min-num" value="1" min="0" max="100000000">
+    </div>
+    <div class="input-group">
+      <label for="max-num">Max Number</label>
+      <input type="number" id="max-num" value="10000" min="0" max="100000000">
+    </div>
+  </div>
+
+  <div class="error-msg" id="error-msg">Min must be less than Max (Max limit: 100,000,000).</div>
+
+  <!-- Generated Number Display -->
+  <div class="number-display" id="number-display">0</div>
+
+  <!-- Action Buttons -->
+  <div class="controls">
+    <button class="btn btn-secondary" id="reveal-btn">Show Reading</button>
+    <button class="btn" id="generate-btn">Next Number</button>
+  </div>
+
+  <!-- Hidden Answer Section -->
+  <div class="answer-card" id="answer-card">
+    <div class="answer-title">Japanese Reading</div>
+
+    <div class="reading-row">
+      <span class="label">Kanji</span>
+      <span class="value kanji-val" id="ans-kanji">-</span>
+    </div>
+
+    <div class="reading-row">
+      <span class="label">Hiragana</span>
+      <span class="value" id="ans-hiragana">-</span>
+    </div>
+
+    <div class="reading-row">
+      <span class="label">Romaji</span>
+      <span class="value" id="ans-romaji">-</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MAX_LIMIT = 100000000; // 1 億 (Oku)
+
+  const digitMap = [
+    { kanji: "", hiragana: "", romaji: "" },
+    { kanji: "一", hiragana: "いち", romaji: "ichi" },
+    { kanji: "二", hiragana: "に", romaji: "ni" },
+    { kanji: "三", hiragana: "さん", romaji: "san" },
+    { kanji: "四", hiragana: "よん", romaji: "yon" },
+    { kanji: "五", hiragana: "ご", romaji: "go" },
+    { kanji: "六", hiragana: "ろく", romaji: "roku" },
+    { kanji: "七", hiragana: "なな", romaji: "nana" },
+    { kanji: "八", hiragana: "はち", romaji: "hachi" },
+    { kanji: "九", hiragana: "きゅう", romaji: "kyuu" }
+  ];
+
+  let currentNumberState = null;
+
+  // Convert numbers up to 9,999 (4 digits / 1 units group)
+  function convertGroupUnder10k(num) {
+    if (num === 0) return { kanji: "", hiragana: "", romaji: "" };
+
+    let kanji = "";
+    let hiragana = [];
+    let romaji = [];
+
+    const thousands = Math.floor(num / 1000);
+    const hundreds = Math.floor((num % 1000) / 100);
+    const tens = Math.floor((num % 100) / 10);
+    const ones = num % 10;
+
+    // Thousands (千 - Sen)
+    if (thousands > 0) {
+      if (thousands === 1) {
+        kanji += "千";
+        hiragana.push("せん");
+        romaji.push("sen");
+      } else if (thousands === 3) { // Irregular: San-zen
+        kanji += "三千";
+        hiragana.push("さんぜん");
+        romaji.push("sanzen");
+      } else if (thousands === 8) { // Irregular: Has-sen
+        kanji += "八千";
+        hiragana.push("はっせん");
+        romaji.push("hassen");
+      } else {
+        kanji += digitMap[thousands].kanji + "千";
+        hiragana.push(digitMap[thousands].hiragana + "せん");
+        romaji.push(digitMap[thousands].romaji + "sen");
+      }
+    }
+
+    // Hundreds (百 - Hyaku)
+    if (hundreds > 0) {
+      if (hundreds === 1) {
+        kanji += "百";
+        hiragana.push("ひゃく");
+        romaji.push("hyaku");
+      } else if (hundreds === 3) { // Irregular: San-byaku
+        kanji += "三百";
+        hiragana.push("さんびゃく");
+        romaji.push("sanbyaku");
+      } else if (hundreds === 6) { // Irregular: Roppyaku
+        kanji += "六百";
+        hiragana.push("ろっぴゃく");
+        romaji.push("roppyaku");
+      } else if (hundreds === 8) { // Irregular: Happyaku
+        kanji += "八百";
+        hiragana.push("はっぴゃく");
+        romaji.push("happyaku");
+      } else {
+        kanji += digitMap[hundreds].kanji + "百";
+        hiragana.push(digitMap[hundreds].hiragana + "ひゃく");
+        romaji.push(digitMap[hundreds].romaji + "hyaku");
+      }
+    }
+
+    // Tens (十 - Juu)
+    if (tens > 0) {
+      if (tens === 1) {
+        kanji += "十";
+        hiragana.push("じゅう");
+        romaji.push("juu");
+      } else {
+        kanji += digitMap[tens].kanji + "十";
+        hiragana.push(digitMap[tens].hiragana + "じゅう");
+        romaji.push(digitMap[tens].romaji + "juu");
+      }
+    }
+
+    // Ones
+    if (ones > 0) {
+      kanji += digitMap[ones].kanji;
+      hiragana.push(digitMap[ones].hiragana);
+      romaji.push(digitMap[ones].romaji);
+    }
+
+    return {
+      kanji: kanji,
+      hiragana: hiragana.join(""),
+      romaji: romaji.join("-")
+    };
+  }
+
+  // Full conversion up to 100,000,000 (1 億)
+  function numberToJapanese(num) {
+    if (num === 0) return { kanji: "零", hiragana: "れい", romaji: "rei" };
+    if (num === 100000000) return { kanji: "一億", hiragana: "いちおく", romaji: "ichioku" };
+
+    let kanjiParts = [];
+    let hiraganaParts = [];
+    let romajiParts = [];
+
+    const manPart = Math.floor(num / 10000); // Thousands of 10,000s (万)
+    const basePart = num % 10000;            // Remainder under 10,000
+
+    // Process 万 (Man) section (10,000 to 99,990,000)
+    if (manPart > 0) {
+      const manObj = convertGroupUnder10k(manPart);
+      kanjiParts.push(manObj.kanji + "万");
+      hiraganaParts.push(manObj.hiragana + "まん");
+      romajiParts.push(manObj.romaji + "-man");
+    }
+
+    // Process remainder under 10,000
+    if (basePart > 0) {
+      const baseObj = convertGroupUnder10k(basePart);
+      kanjiParts.push(baseObj.kanji);
+      hiraganaParts.push(baseObj.hiragana);
+      romajiParts.push(baseObj.romaji);
+    }
+
+    return {
+      kanji: kanjiParts.join(""),
+      hiragana: hiraganaParts.join(" "),
+      romaji: romajiParts.join(" ")
+    };
+  }
+
+  function validateAndGetRange() {
+    const minInput = document.getElementById('min-num');
+    const maxInput = document.getElementById('max-num');
+    const errorMsg = document.getElementById('error-msg');
+
+    let min = parseInt(minInput.value, 10) || 0;
+    let max = parseInt(maxInput.value, 10) || 0;
+
+    // Hard Caps
+    if (min < 0) min = 0;
+    if (max > MAX_LIMIT) max = MAX_LIMIT;
+    if (min > MAX_LIMIT) min = MAX_LIMIT;
+
+    minInput.value = min;
+    maxInput.value = max;
+
+    if (min > max) {
+      errorMsg.style.display = 'block';
+      return null;
+    } else {
+      errorMsg.style.display = 'none';
+      return { min, max };
+    }
+  }
+
+  function generateNumber() {
+    const range = validateAndGetRange();
+    if (!range) return;
+
+    const randomNum = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+    const reading = numberToJapanese(randomNum);
+
+    currentNumberState = {
+      number: randomNum,
+      formattedNumber: randomNum.toLocaleString(), // Adds commas for readability
+      ...reading
+    };
+
+    // Update UI
+    document.getElementById('number-display').textContent = currentNumberState.formattedNumber;
+    document.getElementById('answer-card').classList.remove('visible');
+  }
+
+  function revealReading() {
+    if (!currentNumberState) return;
+
+    document.getElementById('ans-kanji').textContent = currentNumberState.kanji;
+    document.getElementById('ans-hiragana').textContent = currentNumberState.hiragana;
+    document.getElementById('ans-romaji').textContent = currentNumberState.romaji;
+
+    document.getElementById('answer-card').classList.add('visible');
+  }
+
+  // Event Listeners
+  document.getElementById('generate-btn').addEventListener('click', generateNumber);
+  document.getElementById('reveal-btn').addEventListener('click', revealReading);
+  document.getElementById('min-num').addEventListener('change', generateNumber);
+  document.getElementById('max-num').addEventListener('change', generateNumber);
+
+  // Initial Load
+  generateNumber();
+</script>
+
+</body>
+</html>
