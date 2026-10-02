@@ -16,12 +16,8 @@
     { "kanji": "財布", "jp": "さいふ", "romaji": "saifu", "en": "wallet" },
     { "kanji": "時計", "jp": "とけい", "romaji": "tokei", "en": "watch / clock" },
     { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" },
-    { "kanji": "車", "jp": "くるま", "romaji": "kuruma", "en": "car" }
   ],
   "time": [
-    { "kanji": "今日", "jp": "きょう", "romaji": "kyou", "en": "today" },
-    { "kanji": "今", "jp": "いま", "romaji": "ima", "en": "now" },
-    { "kanji": "毎日", "jp": "まいにち", "romaji": "mainichi", "en": "every day" }
   ],
   "place": [
     { "kanji": "ここ", "jp": "ここ", "romaji": "koko", "en": "here" },
