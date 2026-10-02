@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verb Action Practice</title>
+  <title>Verb Practice</title>
   <style>
     :root {
       --bg: #f8fafc;
@@ -33,14 +33,12 @@
       border: 1px solid var(--border);
     }
 
-    /* Top: Title */
     h1.title {
       text-align: center;
       font-size: 1.5rem;
       margin: 0 0 20px 0;
     }
 
-    /* Controls: Toggles for Time & Place */
     .controls-panel {
       display: flex;
       gap: 24px;
@@ -60,7 +58,6 @@
       cursor: pointer;
     }
 
-    /* Middle: 3 Display Boxes */
     .slots-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -106,9 +103,9 @@
     .slot-text {
       font-size: 1.1rem;
       font-weight: 600;
+      text-transform: capitalize;
     }
 
-    /* Bottom: Answer Section */
     .answer-wrapper {
       margin-top: 20px;
     }
@@ -118,7 +115,7 @@
       border: 1px solid #bfdbfe;
       border-radius: 8px;
       padding: 16px;
-      display: none; /* Hidden by default */
+      display: none;
     }
 
     .answer-panel.visible {
@@ -142,7 +139,6 @@
       width: 80px;
     }
 
-    /* Buttons */
     .button-group {
       display: flex;
       gap: 12px;
@@ -170,10 +166,8 @@
 <body>
 
 <div class="app-container">
-  <!-- Top: Title -->
-  <h1 class="title">Verb Action Practice</h1>
+  <h1 class="title">Verb Practice</h1>
 
-  <!-- Below Top: Toggles for Time & Place -->
   <div class="controls-panel">
     <label class="toggle-label">
       <input type="checkbox" id="toggle-time" checked onchange="updateApp()"> Time
@@ -184,7 +178,6 @@
     </label>
   </div>
 
-  <!-- Middle: 3 Display Boxes -->
   <div class="slots-grid">
     <div id="box-time" class="slot-box">
       <span class="slot-title">Time</span>
@@ -202,13 +195,11 @@
     </div>
   </div>
 
-  <!-- Action Buttons -->
   <div class="button-group">
     <button class="btn btn-reveal" onclick="toggleAnswer()">Reveal Answer</button>
     <button class="btn btn-generate" onclick="generateNewCombo()">Generate Combo</button>
   </div>
 
-  <!-- Bottom: Answer Panel (Hidden Until Revealed) -->
   <div class="answer-wrapper">
     <div id="answer-panel" class="answer-panel">
       <div class="answer-line"><span class="answer-label">Kanji:</span><span id="ans-kanji">---</span></div>
@@ -223,14 +214,13 @@
   let activeCombo = { time: null, place: null, verb: null };
   let isAnswerRevealed = false;
 
-  // Load JSON Data from external file
   async function loadData() {
     try {
-      const response = await fetch('./VerbData1.json');
+      const response = await fetch('./appData.json');
       appData = await response.json();
       generateNewCombo();
     } catch (error) {
-      console.error("Error loading Data.json:", error);
+      console.error("Error loading appData.json:", error);
     }
   }
 
@@ -243,22 +233,16 @@
     activeCombo.time = getRandom(appData.times);
     activeCombo.place = getRandom(appData.places);
     activeCombo.verb = getRandom(appData.verbs);
-
-    // Hide answer when generating a new question
+    
     isAnswerRevealed = false;
     document.getElementById("answer-panel").classList.remove("visible");
-
+    
     updateApp();
   }
 
   function toggleAnswer() {
     isAnswerRevealed = !isAnswerRevealed;
-    const panel = document.getElementById("answer-panel");
-    if (isAnswerRevealed) {
-      panel.classList.add("visible");
-    } else {
-      panel.classList.remove("visible");
-    }
+    document.getElementById("answer-panel").classList.toggle("visible", isAnswerRevealed);
   }
 
   function updateApp() {
@@ -267,17 +251,15 @@
     const timeEnabled = document.getElementById("toggle-time").checked;
     let placeEnabled = document.getElementById("toggle-place").checked;
 
-    // Verb overrides place option if action forbids location (e.g. motion verb)
     if (!activeCombo.verb.allowsPlace) {
       placeEnabled = false;
     }
 
-    // Update Box Visual States
+    // Pass the English (.en) value to display inside the slots
     toggleBox("box-time", "content-time", activeCombo.time, timeEnabled);
     toggleBox("box-place", "content-place", activeCombo.place, placeEnabled);
     toggleBox("box-verb", "content-verb", activeCombo.verb, true);
 
-    // Construct Answer Output Lines
     let kanjiParts = [];
     let hiraParts = [];
     let romajiParts = [];
@@ -312,14 +294,14 @@
     if (isEnabled && item) {
       box.classList.remove("disabled");
       let imgHTML = item.img ? `<img src="${item.img}" class="slot-img" alt="">` : '';
-      content.innerHTML = `${imgHTML}<div class="slot-text">${item.jp}</div>`;
+      // Displaying the English text inside the box
+      content.innerHTML = `${imgHTML}<div class="slot-text">${item.en}</div>`;
     } else {
       box.classList.add("disabled");
       content.innerHTML = `<div class="slot-text">---</div>`;
     }
   }
 
-  // Initial load
   loadData();
 </script>
 
