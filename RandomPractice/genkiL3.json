@@ -22,7 +22,7 @@
     { "kanji": "今晩", "jp": "こんばん", "romaji": "konban", "en": "tonight" },
     { "kanji": "明日", "jp": "あした", "romaji": "ashita", "en": "tomorrow" },
     { "kanji": "朝", "jp": "あさ", "romaji": "asa", "en": "morning" },
-    { "kanji": "週末", "jp": "しゅうまつ", "romaji": "shuumatsu", "en": "weekend" }
+    { "kanji": "週末", "jp": "しゅうまつ", "romaji": "shuumatsu", "en": "weekend" },
     { "kanji": "一時", "jp": "いちじ", "romaji": "ichiji", "en": "1 o'clock" },
     { "kanji": "二時", "jp": "にじ", "romaji": "niji", "en": "2 o'clock" },
     { "kanji": "三時", "jp": "さんじ", "romaji": "sanji", "en": "3 o'clock" },
