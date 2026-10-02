@@ -216,11 +216,11 @@
 
   async function loadData() {
     try {
-      const response = await fetch('./appData.json');
+      const response = await fetch('./VerbData1.json');
       appData = await response.json();
       generateNewCombo();
     } catch (error) {
-      console.error("Error loading appData.json:", error);
+      console.error("Error loading data:", error);
     }
   }
 
