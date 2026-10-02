@@ -41,12 +41,16 @@
   "major": {
   "label": "Major",
   "options": [
-  { "val": "Japanese Language", "jp": "日本語", "reading": "にほんご", "romaji": "Nihongo" },
-  { "val": "Economics", "jp": "経済", "reading": "けいざい", "romaji": "Keizai" },
-  { "val": "Computer Science", "jp": "情報科学", "reading": "じょうほうかがく", "romaji": "Jōhō kagaku" },
-  { "val": "International Relations", "jp": "国際関係", "reading": "こくさいかんけい", "romaji": "Kokusai kankei" },
-  { "val": "Business", "jp": "ビジネス", "reading": "ビジネス", "romaji": "Bijinesu" },
-  { "val": "Literature", "jp": "文学", "reading": "ぶんがく", "romaji": "Bungaku" }
+    { "val": "Asian Studies", "jp": "アジア研究", "reading": "あじあけんきゅう", "romaji": "Ajia kenkyū" },
+    { "val": "Economics", "jp": "経済", "reading": "けいざい", "romaji": "Keizai" },
+    { "val": "Engineering", "jp": "工学", "reading": "こうがく", "romaji": "Kōgaku" },
+    { "val": "International Relations", "jp": "国際関係", "reading": "こくさいかんけい", "romaji": "Kokusai kankei" },
+    { "val": "Computer", "jp": "コンピューター", "reading": "こんぴゅーたー", "romaji": "Konpyūtā" },
+    { "val": "Politics", "jp": "政治", "reading": "せいじ", "romaji": "Seiji" },
+    { "val": "Biology", "jp": "生物学", "reading": "せいぶつがく", "romaji": "Seibutsugaku" },
+    { "val": "Business", "jp": "ビジネス", "reading": "ビジネス", "romaji": "Bijinesu" },
+    { "val": "Literature", "jp": "文学", "reading": "ぶんがく", "romaji": "Bungaku" },
+    { "val": "History", "jp": "歴史", "reading": "れきし", "romaji": "Rekishi" }
   ]
-  }
+}
 }
