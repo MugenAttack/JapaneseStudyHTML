@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Japanese Demonstratives Master App</title>
+  <title>Japanese Pointer Practice</title>
   <style>
     :root {
       --bg-color: #121214;
@@ -101,7 +101,7 @@
       position: relative;
       width: 100%;
       max-width: 460px;
-      height: 440px;
+      height: 480px;
       background: var(--card-bg);
       border-radius: 16px;
       border: 2px solid var(--border-color);
@@ -149,10 +149,17 @@
       color: var(--text-main);
     }
 
+    .zone-romaji {
+      font-size: 0.9rem;
+      color: #ffa502;
+      font-weight: bold;
+    }
+
     .zone-example {
       font-size: 0.85rem;
       color: var(--accent-blue);
       font-weight: 500;
+      margin-top: 2px;
     }
 
     .zone-desc {
@@ -215,32 +222,32 @@
     let currentSeries = 'pronouns';
     let currentContext = 'separated';
 
-    // Word dictionary for each series
+    // Word dictionary with Romaji
     const wordMap = {
       pronouns: {
-        ko: { jp: 'これ', ex: 'これ (This item)' },
-        so: { jp: 'それ', ex: 'それ (That item)' },
-        a:  { jp: 'あれ', ex: 'あれ (That item over there)' }
+        ko: { jp: 'これ', romaji: 'kore', ex: 'これ / kore (This item)' },
+        so: { jp: 'それ', romaji: 'sore', ex: 'それ / sore (That item)' },
+        a:  { jp: 'あれ', romaji: 'are', ex: 'あれ / are (That item over there)' }
       },
       modifiers: {
-        ko: { jp: 'この', ex: 'この本 (This book)' },
-        so: { jp: 'その', ex: 'その本 (That book)' },
-        a:  { jp: 'あの', ex: 'あの本 (That book over there)' }
+        ko: { jp: 'この', romaji: 'kono', ex: 'この本 / kono hon (This book)' },
+        so: { jp: 'その', romaji: 'sono', ex: 'その本 / sono hon (That book)' },
+        a:  { jp: 'あの', romaji: 'ano', ex: 'あの本 / ano hon (That book over there)' }
       },
       locations: {
-        ko: { jp: 'ここ', ex: 'ここ (Here / This place)' },
-        so: { jp: 'そこ', ex: 'そこ (There / That place)' },
-        a:  { jp: 'あそこ', ex: 'あそこ (Over there)' }
+        ko: { jp: 'ここ', romaji: 'koko', ex: 'ここ / koko (Here / This place)' },
+        so: { jp: 'そこ', romaji: 'soko', ex: 'そこ / soko (There / That place)' },
+        a:  { jp: 'あそこ', romaji: 'asoko', ex: 'あそこ / asoko (Over there)' }
       }
     };
 
-    // Spatial Anchors for each context
+    // Reordered context mapping (Ko -> So -> A)
     const contextMap = {
       separated: [
         {
-          key: 'a',
-          anchor: '🏞️ Far Distance',
-          desc: 'Far away from BOTH you (Speaker) and the Listener'
+          key: 'ko',
+          anchor: '🗣️ Speaker Territory (You)',
+          desc: 'In your hands, touching, or located right by You'
         },
         {
           key: 'so',
@@ -248,16 +255,16 @@
           desc: 'Close to, held by, or located at the Listener\'s spot'
         },
         {
-          key: 'ko',
-          anchor: '🗣️ Speaker Territory (You)',
-          desc: 'In your hands, touching, or located right by You'
+          key: 'a',
+          anchor: '🏞️ Far Distance',
+          desc: 'Far away from BOTH you (Speaker) and the Listener'
         }
       ],
       shared: [
         {
-          key: 'a',
-          anchor: '🚪 Outside Shared Area',
-          desc: 'Far across the room or outside your shared zone'
+          key: 'ko',
+          anchor: '👥 Shared Immediate Space',
+          desc: 'Right in front of BOTH you and the Listener'
         },
         {
           key: 'so',
@@ -265,16 +272,16 @@
           desc: 'Slightly away from your combined immediate bubble'
         },
         {
-          key: 'ko',
-          anchor: '👥 Shared Immediate Space',
-          desc: 'Right in front of BOTH you and the Listener'
+          key: 'a',
+          anchor: '🚪 Outside Shared Area',
+          desc: 'Far across the room or outside your shared zone'
         }
       ],
       alone: [
         {
-          key: 'a',
-          anchor: '🏔️ Far Distance / Memory',
-          desc: 'Across the room, down the street, or in past memory'
+          key: 'ko',
+          anchor: '✋ Immediate Reach',
+          desc: 'In your hand, touching, or in active current thought'
         },
         {
           key: 'so',
@@ -282,9 +289,9 @@
           desc: 'Across the desk or just beyond arm\'s reach'
         },
         {
-          key: 'ko',
-          anchor: '✋ Immediate Reach',
-          desc: 'In your hand, touching, or in active current thought'
+          key: 'a',
+          anchor: '🏔️ Far Distance / Memory',
+          desc: 'Across the room, down the street, or in past memory'
         }
       ]
     };
@@ -320,6 +327,7 @@
         zone.innerHTML = `
           <div class="zone-anchor">${item.anchor}</div>
           <div class="zone-title">${wordInfo.jp}</div>
+          <div class="zone-romaji">(${wordInfo.romaji})</div>
           <div class="zone-example">${wordInfo.ex}</div>
           <div class="zone-desc">${item.desc}</div>
         `;
