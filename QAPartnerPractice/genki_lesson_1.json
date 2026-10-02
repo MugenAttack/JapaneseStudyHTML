@@ -60,9 +60,7 @@
     { "val": "Doctor", "jp": "医者", "reading": "いしゃ", "romaji": "Isha" },
     { "val": "Office Worker", "jp": "会社員", "reading": "かいしゃいん", "romaji": "Kaishain" },
     { "val": "Nurse", "jp": "看護師", "reading": "かんごし", "romaji": "Kangoshi" },
-    { "val": "High School Student", "jp": "高校生", "reading": "こうこうせい", "romaji": "Kōkōsei" },
     { "val": "Housewife", "jp": "主婦", "reading": "しゅふ", "romaji": "Shufu" },
-    { "val": "Graduate Student", "jp": "大学院生", "reading": "だいがくいんせい", "romaji": "Daigakuinsei" },
     { "val": "Lawyer", "jp": "弁護士", "reading": "べんごし", "romaji": "Bengoshi" },
     { "val": "Firefighter", "jp": "消防士", "reading": "しょうぼうし", "romaji": "Shōbōshi" }
   ]
