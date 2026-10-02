@@ -15,7 +15,20 @@
     { "kanji": "靴", "jp": "くつ", "romaji": "kutsu", "en": "shoes" },
     { "kanji": "財布", "jp": "さいふ", "romaji": "saifu", "en": "wallet" },
     { "kanji": "時計", "jp": "とけい", "romaji": "tokei", "en": "watch / clock" },
-    { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" }
+    { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" },
+    { "kanji": "誰", "jp": "だれ", "romaji": "dare", "en": "who" },
+    { "kanji": "どれ", "jp": "どれ", "romaji": "dore", "en": "which one" },
+    { "kanji": "おいしい", "jp": "おいしい", "romaji": "oishii", "en": "delicious" },
+    { "kanji": "魚", "jp": "さかな", "romaji": "sakana", "en": "fish" },
+    { "kanji": "とんかつ", "jp": "とんかつ", "romaji": "tonkatsu", "en": "pork cutlet" },
+    { "kanji": "肉", "jp": "にく", "romaji": "niku", "en": "meat" },
+    { "kanji": "メニュー", "jp": "めにゅー", "romaji": "menyuu", "en": "menu" },
+    { "kanji": "野菜", "jp": "やさい", "romaji": "yasai", "en": "vegetables" },
+    { "kanji": "ジーンズ", "jp": "じーんず", "romaji": "jiinzu", "en": "jeans" },
+    { "kanji": "自転車", "jp": "じてんしゃ", "romaji": "jitensha", "en": "bicycle" },
+    { "kanji": "ノート", "jp": "のーと", "romaji": "nooto", "en": "notebook" },
+    { "kanji": "Tシャツ", "jp": "てぃーしゃつ", "romaji": "tiishatsu", "en": "T-shirt" },
+    { "kanji": "スマホ", "jp": "すまほ", "romaji": "sumaho", "en": "smartphone" }
   ],
   "place": [
     { "kanji": "ここ", "jp": "ここ", "romaji": "koko", "en": "here" },
@@ -24,7 +37,8 @@
     { "kanji": "図書館", "jp": "としょかん", "romaji": "toshokan", "en": "library" },
     { "kanji": "郵便局", "jp": "ゆうびんきょく", "romaji": "yuubinkyoku", "en": "post office" },
     { "kanji": "銀行", "jp": "ぎんこう", "romaji": "ginkou", "en": "bank" },
-    { "kanji": "大学", "jp": "だいがく", "romaji": "daigaku", "en": "college / university" }
+    { "kanji": "コンビニ", "jp": "こんびに", "romaji": "konbini", "en": "convenience store" },
+    { "kanji": "トイレ", "jp": "といれ", "romaji": "toire", "en": "toilet / restroom" }
   ],
   "action": [
     { "kanji": "です", "jp": "です", "romaji": "desu", "en": "is / am / are" },
