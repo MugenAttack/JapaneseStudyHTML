@@ -43,7 +43,6 @@
       text-align: center;
     }
 
-    /* Control Groups */
     .controls-wrapper {
       display: flex;
       flex-direction: column;
@@ -82,21 +81,18 @@
       font-size: 0.82rem;
     }
 
-    /* Series Colors */
     .btn-series.active {
       background: var(--accent-purple);
       color: #fff;
       border-color: var(--accent-purple);
     }
 
-    /* Context Colors */
     .btn-context.active {
       background: var(--accent-blue);
       color: #fff;
       border-color: var(--accent-blue);
     }
 
-    /* Stage Area */
     .stage {
       position: relative;
       width: 100%;
@@ -113,7 +109,6 @@
       gap: 10px;
     }
 
-    /* Interactive Zones */
     .zone {
       flex: 1;
       background: rgba(255, 255, 255, 0.03);
@@ -168,7 +163,6 @@
       margin-top: 2px;
     }
 
-    /* Output Box */
     .output-box {
       margin-top: 20px;
       font-size: 1.2rem;
@@ -235,64 +229,47 @@
         a:  { jp: 'あの', romaji: 'ano', ex: 'あの本 / ano hon (That book over there)' }
       },
       locations: {
-        ko: { jp: 'ここ', romaji: 'koko', ex: 'ここ / koko (Here / This place)' },
-        so: { jp: 'そこ', romaji: 'soko', ex: 'そこ / soko (There / That place)' },
+        ko: { jp: 'ここ', romaji: 'koko', ex: 'ここ / koko (Here / Right here)' },
+        so: { jp: 'そこ', romaji: 'soko', ex: 'そこ / soko (There / That spot)' },
         a:  { jp: 'あそこ', romaji: 'asoko', ex: 'あそこ / asoko (Over there)' }
       }
     };
 
-    // Reordered context mapping (Ko -> So -> A)
-    const contextMap = {
+    // Generic spatial anchors (used for Pronouns & Modifiers)
+    const objectContextMap = {
       separated: [
-        {
-          key: 'ko',
-          anchor: '🗣️ Speaker Territory (You)',
-          desc: 'In your hands, touching, or located right by You'
-        },
-        {
-          key: 'so',
-          anchor: '👤 Listener Territory',
-          desc: 'Close to, held by, or located at the Listener\'s spot'
-        },
-        {
-          key: 'a',
-          anchor: '🏞️ Far Distance',
-          desc: 'Far away from BOTH you (Speaker) and the Listener'
-        }
+        { key: 'ko', anchor: '🗣️ Speaker Territory (You)', desc: 'In your hands, touching, or located right by You' },
+        { key: 'so', anchor: '👤 Listener Territory', desc: 'Close to, held by, or located at the Listener\'s spot' },
+        { key: 'a',  anchor: '🏞️ Far Distance', desc: 'Far away from BOTH you (Speaker) and the Listener' }
       ],
       shared: [
-        {
-          key: 'ko',
-          anchor: '👥 Shared Immediate Space',
-          desc: 'Right in front of BOTH you and the Listener'
-        },
-        {
-          key: 'so',
-          anchor: '🛋️ Medium Distance',
-          desc: 'Slightly away from your combined immediate bubble'
-        },
-        {
-          key: 'a',
-          anchor: '🚪 Outside Shared Area',
-          desc: 'Far across the room or outside your shared zone'
-        }
+        { key: 'ko', anchor: '👥 Shared Immediate Space', desc: 'Right in front of BOTH you and the Listener' },
+        { key: 'so', anchor: '🛋️ Medium Distance', desc: 'Slightly away from your combined immediate bubble' },
+        { key: 'a',  anchor: '🚪 Outside Shared Area', desc: 'Far across the room or outside your shared zone' }
       ],
       alone: [
-        {
-          key: 'ko',
-          anchor: '✋ Immediate Reach',
-          desc: 'In your hand, touching, or in active current thought'
-        },
-        {
-          key: 'so',
-          anchor: '🪑 Out of Reach',
-          desc: 'Across the desk or just beyond arm\'s reach'
-        },
-        {
-          key: 'a',
-          anchor: '🏔️ Far Distance / Memory',
-          desc: 'Across the room, down the street, or in past memory'
-        }
+        { key: 'ko', anchor: '✋ Immediate Reach', desc: 'In your hand, touching, or in active current thought' },
+        { key: 'so', anchor: '🪑 Out of Reach', desc: 'Across the desk or just beyond arm\'s reach' },
+        { key: 'a',  anchor: '🏔️ Far Distance / Memory', desc: 'Across the room, down the street, or in past memory' }
+      ]
+    };
+
+    // Location-specific spatial anchors (used exclusively for koko / soko / asoko)
+    const locationContextMap = {
+      separated: [
+        { key: 'ko', anchor: '📍 Speaker Location (Here)', desc: 'The spot where You (Speaker) are standing or sitting' },
+        { key: 'so', anchor: '📍 Listener Location (There)', desc: 'The spot where the Listener is standing or sitting' },
+        { key: 'a',  anchor: '📍 Distant Location (Over There)', desc: 'A spot far away from where BOTH of you are standing' }
+      ],
+      shared: [
+        { key: 'ko', anchor: '👥 Shared Spot (Right Here)', desc: 'The immediate area where both You and the Listener stand' },
+        { key: 'so', anchor: '🛋️ Nearby Area (There)', desc: 'A spot a few steps away within the same room' },
+        { key: 'a',  anchor: '🚪 Outside Area (Over There)', desc: 'A location completely outside your shared space or room' }
+      ],
+      alone: [
+        { key: 'ko', anchor: '🧍 Current Spot (Here)', desc: 'The exact place you are standing or sitting right now' },
+        { key: 'so', anchor: '🪑 Across the Room (There)', desc: 'A spot nearby across the room or across the desk' },
+        { key: 'a',  anchor: '🏔️ Far Away Spot (Over There)', desc: 'A location down the road, outside, or far in memory' }
       ]
     };
 
@@ -316,7 +293,9 @@
       const container = document.getElementById('stageContainer');
       container.innerHTML = '';
 
-      const activeContext = contextMap[currentContext];
+      // Select location map if locations series is active, otherwise use object map
+      const activeContextMap = (currentSeries === 'locations') ? locationContextMap : objectContextMap;
+      const activeContext = activeContextMap[currentContext];
 
       activeContext.forEach(item => {
         const wordInfo = wordMap[currentSeries][item.key];
@@ -337,17 +316,14 @@
     }
 
     function selectZone(jpText, exampleText, anchor, desc) {
-      // 1. Visual Text Output
       document.getElementById('resultDisplay').innerText = `${exampleText} — ${desc}`;
 
-      // 2. Native Speech Output
       const utterance = new SpeechSynthesisUtterance(jpText);
       utterance.lang = 'ja-JP';
       utterance.rate = 0.85;
       window.speechSynthesis.speak(utterance);
     }
 
-    // Initial Setup
     renderStage();
   </script>
 
