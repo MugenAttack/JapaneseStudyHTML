@@ -15,7 +15,7 @@
     { "kanji": "靴", "jp": "くつ", "romaji": "kutsu", "en": "shoes" },
     { "kanji": "財布", "jp": "さいふ", "romaji": "saifu", "en": "wallet" },
     { "kanji": "時計", "jp": "とけい", "romaji": "tokei", "en": "watch / clock" },
-    { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" },
+    { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" }
   ],
   "time": [
     { "kanji": "EMPTY", "jp": "EMPTY", "romaji": "EMPTY", "en": "EMPTY" }
@@ -46,7 +46,7 @@
     { "kanji": "四千五百", "jp": "よんせんごひゃく", "romaji": "yonsengohyaku", "en": "4,500" },
     { "kanji": "八千", "jp": "はっせん", "romaji": "hassen", "en": "8,000" },
     { "kanji": "一万", "jp": "いちまん", "romaji": "ichiman", "en": "10,000" },
-    { "kanji": "一万二千", "jp": "いちまんにせん", "romaji": "ichimannisen", "en": "13,000" },
-    { "kanji": "二万五千", "jp": "にまんごせん", "romaji": "nimangosen", "en": "2,500" }
+    { "kanji": "一万二千", "jp": "いちまんにせん", "romaji": "ichimannisen", "en": "12,000" },
+    { "kanji": "二万五千", "jp": "にまんごせん", "romaji": "nimangosen", "en": "25,000" }
   ]
 }
