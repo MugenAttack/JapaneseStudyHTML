@@ -18,6 +18,7 @@
     { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" },
   ],
   "time": [
+    { "kanji": "EMPTY", "jp": "EMPTY", "romaji": "EMPTY", "en": "EMPTY" }
   ],
   "place": [
     { "kanji": "ここ", "jp": "ここ", "romaji": "koko", "en": "here" },
