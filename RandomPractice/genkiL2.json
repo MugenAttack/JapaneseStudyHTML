@@ -1,0 +1,55 @@
+{
+  "setName": "Genki Lesson 2",
+  "object2": [
+    { "kanji": "これ", "jp": "これ", "romaji": "kore", "en": "this one" },
+    { "kanji": "それ", "jp": "それ", "romaji": "sore", "en": "that one near you" },
+    { "kanji": "あれ", "jp": "あれ", "romaji": "are", "en": "that one over there" },
+    { "kanji": "本", "jp": "ほん", "romaji": "hon", "en": "book" },
+    { "kanji": "辞書", "jp": "じしょ", "romaji": "jisho", "en": "dictionary" },
+    { "kanji": "雑誌", "jp": "ざっし", "romaji": "zasshi", "en": "magazine" },
+    { "kanji": "新聞", "jp": "しんぶん", "romaji": "shinbun", "en": "newspaper" },
+    { "kanji": "ノート", "jp": "ノート", "romaji": "nooto", "en": "notebook" },
+    { "kanji": "ペン", "jp": "ペン", "romaji": "pen", "en": "pen" },
+    { "kanji": "傘", "jp": "かさ", "romaji": "kasa", "en": "umbrella" },
+    { "kanji": "鞄", "jp": "かばん", "romaji": "kaban", "en": "bag" },
+    { "kanji": "靴", "jp": "くつ", "romaji": "kutsu", "en": "shoes" },
+    { "kanji": "財布", "jp": "さいふ", "romaji": "saifu", "en": "wallet" },
+    { "kanji": "時計", "jp": "とけい", "romaji": "tokei", "en": "watch / clock" },
+    { "kanji": "帽子", "jp": "ぼうし", "romaji": "boushi", "en": "hat / cap" },
+    { "kanji": "車", "jp": "くるま", "romaji": "kuruma", "en": "car" }
+  ],
+  "time": [
+    { "kanji": "今日", "jp": "きょう", "romaji": "kyou", "en": "today" },
+    { "kanji": "今", "jp": "いま", "romaji": "ima", "en": "now" },
+    { "kanji": "毎日", "jp": "まいにち", "romaji": "mainichi", "en": "every day" }
+  ],
+  "place": [
+    { "kanji": "ここ", "jp": "ここ", "romaji": "koko", "en": "here" },
+    { "kanji": "そこ", "jp": "そこ", "romaji": "soko", "en": "there near you" },
+    { "kanji": "あそこ", "jp": "あそこ", "romaji": "asoko", "en": "over there" },
+    { "kanji": "図書館", "jp": "としょかん", "romaji": "toshokan", "en": "library" },
+    { "kanji": "郵便局", "jp": "ゆうびんきょく", "romaji": "yuubinkyoku", "en": "post office" },
+    { "kanji": "銀行", "jp": "ぎんこう", "romaji": "ginkou", "en": "bank" },
+    { "kanji": "大学", "jp": "だいがく", "romaji": "daigaku", "en": "college / university" }
+  ],
+  "action": [
+    { "kanji": "です", "jp": "です", "romaji": "desu", "en": "is / am / are" },
+    { "kanji": "じゃないです", "jp": "じゃないです", "romaji": "ja nai desu", "en": "is not" },
+    { "kanji": "ください", "jp": "ください", "romaji": "kudasai", "en": "please give me" },
+    { "kanji": "いくら", "jp": "いくら", "romaji": "ikura", "en": "how much" }
+  ],
+  "number": [
+    { "kanji": "五百", "jp": "ごひゃく", "romaji": "gohyaku", "en": "number" },
+    { "kanji": "六百", "jp": "ろっぴゃく", "romaji": "roppyaku", "en": "number" },
+    { "kanji": "八百", "jp": "はっぴゃく", "romaji": "happyaku", "en": "number" },
+    { "kanji": "千", "jp": "せん", "romaji": "sen", "en": "number" },
+    { "kanji": "千五百", "jp": "せんごひゃく", "romaji": "sengohyaku", "en": "number" },
+    { "kanji": "三千", "jp": "さんぜん", "romaji": "sanzen", "en": "number" },
+    { "kanji": "三千八百", "jp": "さんぜんはっぴゃく", "romaji": "sanzenhappyaku", "en": "number" },
+    { "kanji": "四千五百", "jp": "よんせんごひゃく", "romaji": "yonsengohyaku", "en": "number" },
+    { "kanji": "八千", "jp": "はっせん", "romaji": "hassen", "en": "number" },
+    { "kanji": "一万", "jp": "いちまん", "romaji": "ichiman", "en": "number" },
+    { "kanji": "一万二千", "jp": "いちまんにせん", "romaji": "ichimannisen", "en": "number" },
+    { "kanji": "二万五千", "jp": "にまんごせん", "romaji": "nimangosen", "en": "number" }
+  ]
+}
