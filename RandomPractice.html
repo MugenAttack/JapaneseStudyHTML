@@ -292,7 +292,7 @@
   // Initialize application and fetch set manifest
   async function initializeApp() {
     try {
-      const response = await fetch('sets/manifest.json');
+      const response = await fetch('RandomPractice/manifest.json');
       const setsList = await response.json();
 
       const selectEl = document.getElementById('set-select');
