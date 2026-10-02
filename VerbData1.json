@@ -1,20 +1,461 @@
 {
   "times": [
-    { "id": "mainichi", "jp": "まいにち", "romaji": "mainichi", "kanji": "毎日", "en": "every day", "img": "" },
-    { "id": "ashita", "jp": "あした", "romaji": "ashita", "kanji": "明日", "en": "tomorrow", "img": "" },
-    { "id": "shichiji", "jp": "しちじに", "romaji": "shichiji ni", "kanji": "七時に", "en": "at 7 o'clock", "img": "" },
-    { "id": "rokuji", "jp": "ろくじに", "romaji": "rokuji ni", "kanji": "六時に", "en": "at 6 o'clock", "img": "" }
+    {
+      "id": "mainichi",
+      "kanji": "毎日",
+      "jp": "まいにち",
+      "romaji": "mainichi",
+      "en": "every day",
+      "img": ""
+    },
+    {
+      "id": "maiasa",
+      "kanji": "毎朝",
+      "jp": "まいあさ",
+      "romaji": "maiasa",
+      "en": "every morning",
+      "img": ""
+    },
+    {
+      "id": "konban",
+      "kanji": "今晩",
+      "jp": "こんばん",
+      "romaji": "konban",
+      "en": "tonight",
+      "img": ""
+    },
+    {
+      "id": "asa",
+      "kanji": "朝",
+      "jp": "あさ",
+      "romaji": "asa",
+      "en": "morning",
+      "img": ""
+    },
+    {
+      "id": "ban",
+      "kanji": "晩",
+      "jp": "ばん",
+      "romaji": "ban",
+      "en": "evening",
+      "img": ""
+    },
+    {
+      "id": "yoru",
+      "kanji": "夜",
+      "jp": "よる",
+      "romaji": "yoru",
+      "en": "night",
+      "img": ""
+    },
+    {
+      "id": "kyou",
+      "kanji": "今日",
+      "jp": "きょう",
+      "romaji": "kyou",
+      "en": "today",
+      "img": ""
+    },
+    {
+      "id": "ashita",
+      "kanji": "明日",
+      "jp": "あした",
+      "romaji": "ashita",
+      "en": "tomorrow",
+      "img": ""
+    },
+    {
+      "id": "shuumatsu",
+      "kanji": "週末",
+      "jp": "しゅうまつ",
+      "romaji": "shuumatsu",
+      "en": "weekend",
+      "img": ""
+    },
+    {
+      "id": "ichiji",
+      "kanji": "一時に",
+      "jp": "いちじに",
+      "romaji": "ichiji ni",
+      "en": "at 1 o'clock",
+      "img": ""
+    },
+    {
+      "id": "niji",
+      "kanji": "二時に",
+      "jp": "にじに",
+      "romaji": "niji ni",
+      "en": "at 2 o'clock",
+      "img": ""
+    },
+    {
+      "id": "sanji",
+      "kanji": "三時に",
+      "jp": "さんじに",
+      "romaji": "sanji ni",
+      "en": "at 3 o'clock",
+      "img": ""
+    },
+    {
+      "id": "yoji",
+      "kanji": "四時に",
+      "jp": "よじに",
+      "romaji": "yoji ni",
+      "en": "at 4 o'clock",
+      "img": ""
+    },
+    {
+      "id": "goji",
+      "kanji": "五時に",
+      "jp": "ごじに",
+      "romaji": "goji ni",
+      "en": "at 5 o'clock",
+      "img": ""
+    },
+    {
+      "id": "rokuji",
+      "kanji": "六時に",
+      "jp": "ろくじに",
+      "romaji": "rokuji ni",
+      "en": "at 6 o'clock",
+      "img": ""
+    },
+    {
+      "id": "shichiji",
+      "kanji": "七時に",
+      "jp": "しちじに",
+      "romaji": "shichiji ni",
+      "en": "at 7 o'clock",
+      "img": ""
+    },
+    {
+      "id": "hachiji",
+      "kanji": "八時に",
+      "jp": "はちじに",
+      "romaji": "hachiji ni",
+      "en": "at 8 o'clock",
+      "img": ""
+    },
+    {
+      "id": "kuji",
+      "kanji": "九時に",
+      "jp": "くじに",
+      "romaji": "kuji ni",
+      "en": "at 9 o'clock",
+      "img": ""
+    },
+    {
+      "id": "juuji",
+      "kanji": "十時に",
+      "jp": "じゅうじに",
+      "romaji": "juuji ni",
+      "en": "at 10 o'clock",
+      "img": ""
+    },
+    {
+      "id": "juuichiji",
+      "kanji": "十一時に",
+      "jp": "じゅういちじに",
+      "romaji": "juuichiji ni",
+      "en": "at 11 o'clock",
+      "img": ""
+    },
+    {
+      "id": "juuniji",
+      "kanji": "十二時に",
+      "jp": "じゅうにじに",
+      "romaji": "juuniji ni",
+      "en": "at 12 o'clock",
+      "img": ""
+    },
+    {
+      "id": "getsuyoubi",
+      "kanji": "月曜日に",
+      "jp": "げつようびに",
+      "romaji": "getsuyoubi ni",
+      "en": "on Monday",
+      "img": ""
+    },
+    {
+      "id": "kayoubi",
+      "kanji": "火曜日に",
+      "jp": "かようびに",
+      "romaji": "kayoubi ni",
+      "en": "on Tuesday",
+      "img": ""
+    },
+    {
+      "id": "suiyoubi",
+      "kanji": "水曜日に",
+      "jp": "すいようびに",
+      "romaji": "suiyoubi ni",
+      "en": "on Wednesday",
+      "img": ""
+    },
+    {
+      "id": "mokuyoubi",
+      "kanji": "木曜日に",
+      "jp": "もくようびに",
+      "romaji": "mokuyoubi ni",
+      "en": "on Thursday",
+      "img": ""
+    },
+    {
+      "id": "kinyoubi",
+      "kanji": "金曜日に",
+      "jp": "きんようびに",
+      "romaji": "kinyoubi ni",
+      "en": "on Friday",
+      "img": ""
+    },
+    {
+      "id": "doyoubi",
+      "kanji": "土曜日に",
+      "jp": "どようびに",
+      "romaji": "doyoubi ni",
+      "en": "on Saturday",
+      "img": ""
+    },
+    {
+      "id": "nichiyoubi",
+      "kanji": "日曜日に",
+      "jp": "にちようびに",
+      "romaji": "nichiyoubi ni",
+      "en": "on Sunday",
+      "img": ""
+    }
   ],
   "places": [
-    { "id": "uchi", "jp": "うちで", "romaji": "uchi de", "kanji": "家で", "en": "at home", "img": "" },
-    { "id": "toshokan", "jp": "としょかんで", "romaji": "toshokan de", "kanji": "図書館で", "en": "at the library", "img": "" },
-    { "id": "mise", "jp": "みせで", "romaji": "mise de", "kanji": "店で", "en": "at the shop", "img": "" },
-    { "id": "kissaten", "jp": "きっさてんで", "romaji": "kissaten de", "kanji": "喫茶店で", "en": "at the cafe", "img": "" }
+    {
+      "id": "ie",
+      "kanji": "家で",
+      "jp": "うちで",
+      "romaji": "uchi de",
+      "en": "at home",
+      "img": ""
+    },
+    {
+      "id": "gakkou",
+      "kanji": "学校で",
+      "jp": "がっこうで",
+      "romaji": "gakkou de",
+      "en": "at school",
+      "img": ""
+    },
+    {
+      "id": "tosyokan",
+      "kanji": "図書館で",
+      "jp": "としょかんで",
+      "romaji": "toshokan de",
+      "en": "at the library",
+      "img": ""
+    },
+    {
+      "id": "kissaten",
+      "kanji": "喫茶店で",
+      "jp": "きっさてんで",
+      "romaji": "kissaten de",
+      "en": "at a cafe",
+      "img": ""
+    },
+    {
+      "id": "daigaku",
+      "kanji": "大学で",
+      "jp": "だいがくで",
+      "romaji": "daigaku de",
+      "en": "at university",
+      "img": ""
+    }
   ],
   "verbs": [
-    { "id": "yomimasu", "jp": "ほんを よみます", "romaji": "hon o yomimasu", "kanji": "本を 読みます", "en": "read a book", "allowsPlace": true, "img": "" },
-    { "id": "nomimasu", "jp": "おちゃを のみます", "romaji": "ocha o nomimasu", "kanji": "お茶を 飲みます", "en": "drink tea", "allowsPlace": true, "img": "" },
-    { "id": "mimasu", "jp": "えいがを みます", "romaji": "eiga o mimasu", "kanji": "映画を 見ます", "en": "watch a movie", "allowsPlace": true, "img": "" },
-    { "id": "ikimasu", "jp": "うちへ いきます", "romaji": "uchi e ikimasu", "kanji": "家へ 行きます", "en": "go home", "allowsPlace": false, "img": "" }
+    {
+      "id": "ikimasu",
+      "kanji": "学校へ 行きます",
+      "jp": "がっこうへ いきます",
+      "romaji": "gakkou e ikimasu",
+      "en": "go to school",
+      "allowsPlace": false,
+      "img": ""
+    },
+    {
+      "id": "kaerimasu",
+      "kanji": "うちへ 帰ります",
+      "jp": "うちへ かえります",
+      "romaji": "uchi e kaerimasu",
+      "en": "return home",
+      "allowsPlace": false,
+      "img": ""
+    },
+    {
+      "id": "kimasu",
+      "kanji": "学校へ 来ます",
+      "jp": "がっこうへ きます",
+      "romaji": "gakkou e kimasu",
+      "en": "come to school",
+      "allowsPlace": false,
+      "img": ""
+    },
+    {
+      "id": "kikimasu",
+      "kanji": "音楽を 聴きます",
+      "jp": "おんがくを ききます",
+      "romaji": "ongaku o kikimasu",
+      "en": "listen to music",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "nomimasu_mizu",
+      "kanji": "水を 飲みます",
+      "jp": "みずを のみます",
+      "romaji": "mizu o nomimasu",
+      "en": "drink water",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "nomimasu_ocha",
+      "kanji": "お茶を 飲みます",
+      "jp": "おちゃを のみます",
+      "romaji": "ocha o nomimasu",
+      "en": "drink tea",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "nomimasu_koohii",
+      "kanji": "コーヒーを 飲みます",
+      "jp": "こーひーを のみます",
+      "romaji": "koohii o nomimasu",
+      "en": "drink coffee",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "hanashimasu",
+      "kanji": "日本語を 話します",
+      "jp": "にほんごを はなします",
+      "romaji": "nihongo o hanashimasu",
+      "en": "speak Japanese",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "yomimasu_hon",
+      "kanji": "本を 読みます",
+      "jp": "ほんを よみます",
+      "romaji": "hon o yomimasu",
+      "en": "read a book",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "yomimasu_zasshi",
+      "kanji": "雑誌を 読みます",
+      "jp": "ざっしを よみます",
+      "romaji": "zasshi o yomimasu",
+      "en": "read a magazine",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "yomimasu_shinbun",
+      "kanji": "新聞を 読みます",
+      "jp": "しんぶんを よみます",
+      "romaji": "shinbun o yomimasu",
+      "en": "read a newspaper",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "okirimasu",
+      "kanji": "起きます",
+      "jp": "おきます",
+      "romaji": "okirimasu",
+      "en": "get up / wake up",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "tabemasu_gohan",
+      "kanji": "朝ご飯を 食べます",
+      "jp": "あさごはんを たべます",
+      "romaji": "asagohan o tabemasu",
+      "en": "eat breakfast",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "tabemasu_hirugohan",
+      "kanji": "昼ご飯を 食べます",
+      "jp": "ひるごはんを たべます",
+      "romaji": "hirugohan o tabemasu",
+      "en": "eat lunch",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "tabemasu_bangohan",
+      "kanji": "晩ご飯を 食べます",
+      "jp": "ばんごはんを たべます",
+      "romaji": "bangohan o tabemasu",
+      "en": "eat dinner",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "neru",
+      "kanji": "寝ます",
+      "jp": "ねます",
+      "romaji": "nemasu",
+      "en": "go to sleep",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "mimasu_tv",
+      "kanji": "テレビを 見ます",
+      "jp": "てれびを みます",
+      "romaji": "terebi o mimasu",
+      "en": "watch TV",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "mimasu_eiga",
+      "kanji": "映画を 見ます",
+      "jp": "えいがを みます",
+      "romaji": "eiga o mimasu",
+      "en": "watch a movie",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "shimasu_sports",
+      "kanji": "スポーツを します",
+      "jp": "すぽーつを します",
+      "romaji": "supootsu o shimasu",
+      "en": "do sports",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "shimasu_date",
+      "kanji": "デートを します",
+      "jp": "でーとを します",
+      "romaji": "deeto o shimasu",
+      "en": "go on a date",
+      "allowsPlace": true,
+      "img": ""
+    },
+    {
+      "id": "benkyou_shimasu",
+      "kanji": "勉強します",
+      "jp": "べんきょうします",
+      "romaji": "benkyou shimasu",
+      "en": "study",
+      "allowsPlace": true,
+      "img": ""
+    }
   ]
 }
