@@ -1,20 +1,20 @@
 {
   "times": [
-    { "id": "mainichi", "jp": "まいにち", "romaji": "mainichi", "kanji": "毎日", "isRelative": true, "img": "" },
-    { "id": "ashita", "jp": "あした", "romaji": "ashita", "kanji": "明日", "isRelative": true, "img": "" },
-    { "id": "shichiji", "jp": "しちじに", "romaji": "shichiji ni", "kanji": "七時に", "isRelative": false, "img": "" },
-    { "id": "rokuji", "jp": "ろくじに", "romaji": "rokuji ni", "kanji": "六時に", "isRelative": false, "img": "" }
+    { "id": "mainichi", "jp": "まいにち", "romaji": "mainichi", "kanji": "毎日", "en": "every day", "img": "" },
+    { "id": "ashita", "jp": "あした", "romaji": "ashita", "kanji": "明日", "en": "tomorrow", "img": "" },
+    { "id": "shichiji", "jp": "しちじに", "romaji": "shichiji ni", "kanji": "七時に", "en": "at 7 o'clock", "img": "" },
+    { "id": "rokuji", "jp": "ろくじに", "romaji": "rokuji ni", "kanji": "六時に", "en": "at 6 o'clock", "img": "" }
   ],
   "places": [
-    { "id": "uchi", "jp": "うちで", "romaji": "uchi de", "kanji": "家で", "img": "" },
-    { "id": "toshokan", "jp": "としょかんで", "romaji": "toshokan de", "kanji": "図書館で", "img": "" },
-    { "id": "mise", "jp": "みせで", "romaji": "mise de", "kanji": "店で", "img": "" },
-    { "id": "kissaten", "jp": "きっさてんで", "romaji": "kissaten de", "kanji": "喫茶店で", "img": "" }
+    { "id": "uchi", "jp": "うちで", "romaji": "uchi de", "kanji": "家で", "en": "at home", "img": "" },
+    { "id": "toshokan", "jp": "としょかんで", "romaji": "toshokan de", "kanji": "図書館で", "en": "at the library", "img": "" },
+    { "id": "mise", "jp": "みせで", "romaji": "mise de", "kanji": "店で", "en": "at the shop", "img": "" },
+    { "id": "kissaten", "jp": "きっさてんで", "romaji": "kissaten de", "kanji": "喫茶店で", "en": "at the cafe", "img": "" }
   ],
   "verbs": [
-    { "id": "yomimasu", "jp": "ほんを よみます", "romaji": "hon o yomimasu", "kanji": "本を 読みます", "allowsPlace": true, "img": "" },
-    { "id": "nomimasu", "jp": "おちゃを のみます", "romaji": "ocha o nomimasu", "kanji": "お茶を 飲みます", "allowsPlace": true, "img": "" },
-    { "id": "mimasu", "jp": "えいがを みます", "romaji": "eiga o mimasu", "kanji": "映画を 見ます", "allowsPlace": true, "img": "" },
-    { "id": "ikimasu", "jp": "うちへ いきます", "romaji": "uchi e ikimasu", "kanji": "家へ 行きます", "allowsPlace": false, "img": "" }
+    { "id": "yomimasu", "jp": "ほんを よみます", "romaji": "hon o yomimasu", "kanji": "本を 読みます", "en": "read a book", "allowsPlace": true, "img": "" },
+    { "id": "nomimasu", "jp": "おちゃを のみます", "romaji": "ocha o nomimasu", "kanji": "お茶を 飲みます", "en": "drink tea", "allowsPlace": true, "img": "" },
+    { "id": "mimasu", "jp": "えいがを みます", "romaji": "eiga o mimasu", "kanji": "映画を 見ます", "en": "watch a movie", "allowsPlace": true, "img": "" },
+    { "id": "ikimasu", "jp": "うちへ いきます", "romaji": "uchi e ikimasu", "kanji": "家へ 行きます", "en": "go home", "allowsPlace": false, "img": "" }
   ]
 }
