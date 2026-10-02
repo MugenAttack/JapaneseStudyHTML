@@ -16,17 +16,13 @@
     { "kanji": "スポーツ", "jp": "スポーツ", "romaji": "supootsu", "en": "sports" }
   ],
   "time": [
-    { "kanji": "毎日", "jp": "まいにち", "romaji": "mainichi", "en": "every day" },
     { "kanji": "毎朝", "jp": "まいあさ", "romaji": "maiasa", "en": "every morning" },
     { "kanji": "毎晩", "jp": "まいばん", "romaji": "maiban", "en": "every night" },
     { "kanji": "今日", "jp": "きょう", "romaji": "kyou", "en": "today" },
     { "kanji": "今晩", "jp": "こんばん", "romaji": "konban", "en": "tonight" },
     { "kanji": "明日", "jp": "あした", "romaji": "ashita", "en": "tomorrow" },
     { "kanji": "朝", "jp": "あさ", "romaji": "asa", "en": "morning" },
-    { "kanji": "週末", "jp": "しゅうまつ", "romaji": "shuumatsu", "en": "weekend" },
-    { "kanji": "ときどき", "jp": "ときどき", "romaji": "tokidoki", "en": "sometimes" },
-    { "kanji": "よく", "jp": "よく", "romaji": "yoku", "en": "often" },
-    { "kanji": "たいてい", "jp": "たいてい", "romaji": "taitei", "en": "usually" },
+    { "kanji": "週末", "jp": "しゅうまつ", "romaji": "shuumatsu", "en": "weekend" }
     { "kanji": "一時", "jp": "いちじ", "romaji": "ichiji", "en": "1 o'clock" },
     { "kanji": "二時", "jp": "にじ", "romaji": "niji", "en": "2 o'clock" },
     { "kanji": "三時", "jp": "さんじ", "romaji": "sanji", "en": "3 o'clock" },
@@ -38,8 +34,7 @@
     { "kanji": "九時", "jp": "くじ", "romaji": "kuji", "en": "9 o'clock" },
     { "kanji": "十時", "jp": "じゅうじ", "romaji": "juuji", "en": "10 o'clock" },
     { "kanji": "十一時", "jp": "じゅういちじ", "romaji": "juuichiji", "en": "11 o'clock" },
-    { "kanji": "十二時", "jp": "じゅうにじ", "romaji": "juuniji", "en": "12 o'clock" },
-    { "kanji": "半", "jp": "はん", "romaji": "han", "en": "half past (e.g., 1:30)" }
+    { "kanji": "十二時", "jp": "じゅうにじ", "romaji": "juuniji", "en": "12 o'clock" }
   ],
   "place": [
     { "kanji": "学校", "jp": "がっこう", "romaji": "gakkou", "en": "school" },
@@ -65,20 +60,6 @@
     { "kanji": "寝ます", "jp": "ねます", "romaji": "nemasu", "en": "sleep" }
   ],
   "number": [
-    [
-      { "kanji": "一", "jp": "いち", "romaji": "ichi", "en": "1" },
-      { "kanji": "二", "jp": "に", "romaji": "ni", "en": "2" },
-      { "kanji": "三", "jp": "さん", "romaji": "san", "en": "3" },
-      { "kanji": "四", "jp": "よん", "romaji": "yon", "en": "4" },
-      { "kanji": "五", "jp": "ご", "romaji": "go", "en": "5" },
-      { "kanji": "六", "jp": "ろく", "romaji": "roku", "en": "6" },
-      { "kanji": "七", "jp": "なな", "romaji": "nana", "en": "7" },
-      { "kanji": "八", "jp": "はち", "romaji": "hachi", "en": "8" },
-      { "kanji": "九", "jp": "きゅう", "romaji": "kyuu", "en": "9" },
-      { "kanji": "十", "jp": "じゅう", "romaji": "juu", "en": "10" },
-      { "kanji": "十一", "jp": "じゅういち", "romaji": "juuichi", "en": "11" },
-      { "kanji": "十二", "jp": "じゅうに", "romaji": "juuni", "en": "12" },
-      { "kanji": "半", "jp": "はん", "romaji": "han", "en": "half" }
-    ]
+     
   ]
 }
