@@ -60,6 +60,6 @@
     { "kanji": "寝ます", "jp": "ねます", "romaji": "nemasu", "en": "sleep" }
   ],
   "number": [
-     
+     { "kanji": "EMPTY", "jp": "EMPTY", "romaji": "EMPTY", "en": "EMPTY" }
   ]
 }
