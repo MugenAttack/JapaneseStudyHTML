@@ -1,0 +1,52 @@
+{
+  "categories": [
+  "name",
+  "age",
+  "year",
+  "major",
+  ],
+  "name": {
+  "label": "Name",
+  "options": [
+  { "val": "Ken", "jp": "ケン", "reading": "ケン", "romaji": "Ken" },
+  { "val": "Mary", "jp": "メアリー", "reading": "メアリー", "romaji": "Mearī" },
+  { "val": "Takeshi", "jp": "たけし", "reading": "たけし", "romaji": "Takeshi" },
+  { "val": "Sora", "jp": "空", "reading": "そら", "romaji": "Sora" },
+  { "val": "Yuki", "jp": "ゆき", "reading": "ゆき", "romaji": "Yuki" },
+  { "val": "Alex", "jp": "アレックス", "reading": "アレックス", "romaji": "Arekkusu" },
+  { "val": "Hana", "jp": "花", "reading": "はな", "romaji": "Hana" }
+  ]
+  },
+  "age": {
+  "label": "Age",
+  "options": [
+  { "val": "18 years old", "jp": "18歳", "reading": "じゅうはっさい", "romaji": "Jūhassai" },
+  { "val": "19 years old", "jp": "19歳", "reading": "じゅうきゅうさい", "romaji": "Jūkyū sai" },
+  { "val": "20 years old", "jp": "20歳", "reading": "はたち", "romaji": "Hatachi" },
+  { "val": "21 years old", "jp": "21歳", "reading": "にじゅういっさい", "romaji": "Nijūissai" },
+  { "val": "22 years old", "jp": "22歳", "reading": "にじゅうにさい", "romaji": "Nijūni sai" },
+  { "val": "25 years old", "jp": "25歳", "reading": "にじゅうごさい", "romaji": "Nijūgo sai" }
+  ]
+  },
+  "year": {
+  "label": "Student Year",
+  "options": [
+  { "val": "1st Year (Freshman)", "jp": "一年生", "reading": "いちねんせい", "romaji": "Ichinensei" },
+  { "val": "2nd Year (Sophomore)", "jp": "二年生", "reading": "にねんせい", "romaji": "Ninensei" },
+  { "val": "3rd Year (Junior)", "jp": "三年生", "reading": "さんねんせい", "romaji": "Sannensei" },
+  { "val": "4th Year (Senior)", "jp": "四年生", "reading": "よんねんせい", "romaji": "Yonnensei" },
+  { "val": "Graduate Student", "jp": "大学院生", "reading": "だいがくいんせい", "romaji": "Daigakuinsei" }
+  ]
+  },
+  "major": {
+  "label": "Major",
+  "options": [
+  { "val": "Japanese Language", "jp": "日本語", "reading": "にほんご", "romaji": "Nihongo" },
+  { "val": "Economics", "jp": "経済", "reading": "けいざい", "romaji": "Keizai" },
+  { "val": "Computer Science", "jp": "情報科学", "reading": "じょうほうかがく", "romaji": "Jōhō kagaku" },
+  { "val": "International Relations", "jp": "国際関係", "reading": "こくさいかんけい", "romaji": "Kokusai kankei" },
+  { "val": "Business", "jp": "ビジネス", "reading": "ビジネス", "romaji": "Bijinesu" },
+  { "val": "Literature", "jp": "文学", "reading": "ぶんがく", "romaji": "Bungaku" }
+  ]
+  }
+}
