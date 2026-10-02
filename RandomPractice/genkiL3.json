@@ -1,0 +1,70 @@
+{
+  "setName": "Genki Lesson 3",
+  "object2": [
+    { "kanji": "朝ごはん", "jp": "あさごはん", "romaji": "asagohan", "en": "breakfast" },
+    { "kanji": "昼ごはん", "jp": "ひるごはん", "romaji": "hirugohan", "en": "lunch" },
+    { "kanji": "晩ごはん", "jp": "ばんごはん", "romaji": "bangohan", "en": "dinner" },
+    { "kanji": "お茶", "jp": "おちゃ", "romaji": "ocha", "en": "green tea" },
+    { "kanji": "水", "jp": "みず", "romaji": "mizu", "en": "water" },
+    { "kanji": "音楽", "jp": "おんがく", "romaji": "ongaku", "en": "music" },
+    { "kanji": "雑誌", "jp": "ざっし", "romaji": "zasshi", "en": "magazine" },
+    { "kanji": "本", "jp": "ほん", "romaji": "hon", "en": "book" },
+    { "kanji": "テレビ", "jp": "テレビ", "romaji": "terebi", "en": "TV" },
+    { "kanji": "映画", "jp": "えいが", "romaji": "eiga", "en": "movie" },
+    { "kanji": "日本語", "jp": "にほんご", "romaji": "nihongo", "en": "Japanese language" },
+    { "kanji": "英語", "jp": "えいご", "romaji": "eigo", "en": "English language" },
+    { "kanji": "スポーツ", "jp": "スポーツ", "romaji": "supootsu", "en": "sports" }
+  ],
+  "time": [
+    { "kanji": "毎日", "jp": "まいにち", "romaji": "mainichi", "en": "every day" },
+    { "kanji": "毎朝", "jp": "まいあさ", "romaji": "maiasa", "en": "every morning" },
+    { "kanji": "毎晩", "jp": "まいばん", "romaji": "maiban", "en": "every night" },
+    { "kanji": "今日", "jp": "きょう", "romaji": "kyou", "en": "today" },
+    { "kanji": "今晩", "jp": "こんばん", "romaji": "konban", "en": "tonight" },
+    { "kanji": "明日", "jp": "あした", "romaji": "ashita", "en": "tomorrow" },
+    { "kanji": "朝", "jp": "あさ", "romaji": "asa", "en": "morning" },
+    { "kanji": "週末", "jp": "しゅうまつ", "romaji": "shuumatsu", "en": "weekend" },
+    { "kanji": "ときどき", "jp": "ときどき", "romaji": "tokidoki", "en": "sometimes" },
+    { "kanji": "よく", "jp": "よく", "romaji": "yoku", "en": "often" },
+    { "kanji": "たいてい", "jp": "たいてい", "romaji": "taitei", "en": "usually" }
+  ],
+  "place": [
+    { "kanji": "学校", "jp": "がっこう", "romaji": "gakkou", "en": "school" },
+    { "kanji": "大学", "jp": "だいがく", "romaji": "daigaku", "en": "college / university" },
+    { "kanji": "図書館", "jp": "としょかん", "romaji": "toshokan", "en": "library" },
+    { "kanji": "家", "jp": "うち", "romaji": "uchi", "en": "home / house" },
+    { "kanji": "喫茶店", "jp": "きっさてん", "romaji": "kissaten", "en": "coffee shop" },
+    { "kanji": "カフェ", "jp": "カフェ", "romaji": "kafe", "en": "cafe" },
+    { "kanji": "東京", "jp": "とうきょう", "romaji": "toukyou", "en": "Tokyo" }
+  ],
+  "action": [
+    { "kanji": "行きます", "jp": "いきます", "romaji": "ikimasu", "en": "go" },
+    { "kanji": "来ます", "jp": "きます", "romaji": "kimasu", "en": "come" },
+    { "kanji": "帰ります", "jp": "かえります", "romaji": "kaerimasu", "en": "return / go home" },
+    { "kanji": "飲みます", "jp": "のみます", "romaji": "nomimasu", "en": "drink" },
+    { "kanji": "食べます", "jp": "たべます", "romaji": "tabemasu", "en": "eat" },
+    { "kanji": "見ます", "jp": "みます", "romaji": "mimasu", "en": "see / watch" },
+    { "kanji": "聞きます", "jp": "ききます", "romaji": "kikimasu", "en": "listen / hear" },
+    { "kanji": "読みます", "jp": "よみます", "romaji": "yomimasu", "en": "read" },
+    { "kanji": "話します", "jp": "はなします", "romaji": "hanashimasu", "en": "speak / talk" },
+    { "kanji": "勉強します", "jp": "べんきょうします", "romaji": "benkyoushimasu", "en": "study" },
+    { "kanji": "します", "jp": "します", "romaji": "shimasu", "en": "do" },
+    { "kanji": "起き meす", "jp": "おきます", "romaji": "okimasu", "en": "get up" },
+    { "kanji": "寝ます", "jp": "ねます", "romaji": "nemasu", "en": "sleep" }
+  ],
+  "number": [
+    { "kanji": "一時", "jp": "いちじ", "romaji": "ichiji", "en": "1 o'clock" },
+    { "kanji": "二時", "jp": "にじ", "romaji": "niji", "en": "2 o'clock" },
+    { "kanji": "三時", "jp": "さんじ", "romaji": "sanji", "en": "3 o'clock" },
+    { "kanji": "四時", "jp": "よじ", "romaji": "yoji", "en": "4 o'clock" },
+    { "kanji": "五時", "jp": "ごじ", "romaji": "goji", "en": "5 o'clock" },
+    { "kanji": "六時", "jp": "ろくじ", "romaji": "rokuji", "en": "6 o'clock" },
+    { "kanji": "七時", "jp": "しちじ", "romaji": "shichiji", "en": "7 o'clock" },
+    { "kanji": "八時", "jp": "はちじ", "romaji": "hachiji", "en": "8 o'clock" },
+    { "kanji": "九時", "jp": "くじ", "romaji": "kuji", "en": "9 o'clock" },
+    { "kanji": "十時", "jp": "じゅうじ", "romaji": "juuji", "en": "10 o'clock" },
+    { "kanji": "十一時", "jp": "じゅういちじ", "romaji": "juuichiji", "en": "11 o'clock" },
+    { "kanji": "十二時", "jp": "じゅうにじ", "romaji": "juuniji", "en": "12 o'clock" },
+    { "kanji": "半", "jp": "はん", "romaji": "han", "en": "half past (e.g., 1:30)" }
+  ]
+}
