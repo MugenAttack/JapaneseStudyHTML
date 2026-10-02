@@ -179,7 +179,7 @@
 
         async function fetchManifest() {
             try {
-                const response = await fetch('manifest.json');
+                const response = await fetch('QAPartnerPractice/manifest.json');
                 if (!response.ok) throw new Error('Manifest unavailable');
                 currentManifest = await response.json();
                 populateLessonDropdown(currentManifest);
