@@ -1,16 +1,16 @@
 {
   "topic": [
     {
-      "en": "doctor",
-      "kanji": "医者",
-      "kana": "いしゃ",
-      "romaji": "isha"
-    },
-    {
       "en": "I",
       "kanji": "私",
       "kana": "わたし",
       "romaji": "watashi"
+    },
+    {
+      "en": "friend",
+      "kanji": "友達",
+      "kana": "ともだち",
+      "romaji": "tomodachi"
     },
     {
       "en": "lawyer",
@@ -19,16 +19,28 @@
       "romaji": "bengoshi"
     },
     {
-      "en": "student",
-      "kanji": "学生",
-      "kana": "がくせい",
-      "romaji": "gakusei"
+      "en": "office worker",
+      "kanji": "会社員",
+      "kana": "かいしゃいん",
+      "romaji": "kaishain"
     },
     {
-      "en": "I (used by men)",
-      "kanji": "僕",
-      "kana": "ぼく",
-      "romaji": "boku"
+      "en": "high school student",
+      "kanji": "高校生",
+      "kana": "こうこうせい",
+      "romaji": "koukousei"
+    },
+    {
+      "en": "graduate student",
+      "kanji": "大学院生",
+      "kana": "だいがくいんせい",
+      "romaji": "daigakuinsei"
+    },
+    {
+      "en": "doctor",
+      "kanji": "医者",
+      "kana": "いしゃ",
+      "romaji": "isha"
     },
     {
       "en": "who",
@@ -39,55 +51,49 @@
   ],
   "time": [
     {
-      "en": "today",
-      "kanji": "今日",
-      "kana": "きょう",
-      "romaji": "kyou"
+      "en": "A.M.",
+      "kanji": "午前",
+      "kana": "ごぜん",
+      "romaji": "gozen"
     },
     {
-      "en": "tomorrow",
-      "kanji": "明日",
-      "kana": "あした",
-      "romaji": "ashita"
+      "en": "half",
+      "kanji": "半",
+      "kana": "はん",
+      "romaji": "han"
     },
     {
-      "en": "tonight",
-      "kanji": "今晩",
-      "kana": "こんばん",
-      "romaji": "konban"
+      "en": "half past two",
+      "kanji": "二時半",
+      "kana": "にじはん",
+      "romaji": "niji han"
     },
     {
-      "en": "weekend",
-      "kanji": "週末",
-      "kana": "しゅうまつ",
-      "romaji": "shuumatsu"
+      "en": "now",
+      "kanji": "今",
+      "kana": "いま",
+      "romaji": "ima"
     },
     {
-      "en": "yesterday",
-      "kanji": "昨日",
-      "kana": "きのう",
-      "romaji": "kinou"
+      "en": "one o'clock",
+      "kanji": "一時",
+      "kana": "いちじ",
+      "romaji": "ichiji"
     },
     {
-      "en": "Tuesday",
-      "kanji": "火曜日",
-      "kana": "かようび",
-      "romaji": "kayoubi"
-    },
-    {
-      "en": "Thursday",
-      "kanji": "木曜日",
-      "kana": "もくようび",
-      "romaji": "mokuyoubi"
-    },
-    {
-      "en": "Wednesday",
-      "kanji": "水曜日",
-      "kana": "すいようび",
-      "romaji": "suiyoubi"
+      "en": "P.M.",
+      "kanji": "午後",
+      "kana": "ごご",
+      "romaji": "gogo"
     }
   ],
   "place": [
+    {
+      "en": "high school",
+      "kanji": "高校",
+      "kana": "こうこう",
+      "romaji": "koukou"
+    },
     {
       "en": "college; university",
       "kanji": "大学",
@@ -95,22 +101,28 @@
       "romaji": "daigaku"
     },
     {
-      "en": "toilet; restroom",
-      "kanji": "トイレ",
-      "kana": "といれ",
-      "romaji": "toire"
+      "en": "here",
+      "kanji": "ここ",
+      "kana": "ここ",
+      "romaji": "koko"
     },
     {
-      "en": "library",
-      "kanji": "図書館",
-      "kana": "としょかん",
-      "romaji": "toshokan"
+      "en": "over there",
+      "kanji": "あそこ",
+      "kana": "あそこ",
+      "romaji": "asoko"
     },
     {
-      "en": "post office",
-      "kanji": "郵便局",
-      "kana": "ゆうびんきょく",
-      "romaji": "yuubinkyoku"
+      "en": "there",
+      "kanji": "そこ",
+      "kana": "そこ",
+      "romaji": "soko"
+    },
+    {
+      "en": "where",
+      "kanji": "どこ",
+      "kana": "どこ",
+      "romaji": "doko"
     },
     {
       "en": "bank",
@@ -119,90 +131,162 @@
       "romaji": "ginkou"
     },
     {
-      "en": "school",
-      "kanji": "学校",
-      "kana": "がっこう",
-      "romaji": "gakkou"
+      "en": "convenience store",
+      "kanji": "コンビニ",
+      "kana": "こんびに",
+      "romaji": "konbini"
     },
     {
-      "en": "bookstore",
-      "kanji": "本屋",
-      "kana": "ほんや",
-      "romaji": "hon'ya"
+      "en": "post office",
+      "kanji": "郵便局",
+      "kana": "ゆうびんきょく",
+      "romaji": "yuubinkyoku"
     },
     {
-      "en": "bus stop",
-      "kanji": "バス停",
-      "kana": "ばすてい",
-      "romaji": "basutei"
+      "en": "library",
+      "kanji": "図書館",
+      "kana": "としょかん",
+      "romaji": "toshokan"
     },
     {
-      "en": "hospital",
-      "kanji": "病院",
-      "kana": "びょういん",
-      "romaji": "byouin"
-    },
-    {
-      "en": "hotel",
-      "kanji": "ホテル",
-      "kana": "ほてる",
-      "romaji": "hoteru"
+      "en": "toilet; restroom",
+      "kanji": "トイレ",
+      "kana": "といれ",
+      "romaji": "toire"
     }
   ],
   "action": [
     {
-      "en": "breakfast",
-      "kanji": "朝ご飯",
-      "kana": "あさごはん",
-      "romaji": "asagohan"
+      "en": "telephone",
+      "kanji": "電話",
+      "kana": "でんわ",
+      "romaji": "denwa"
     },
     {
-      "en": "coffee",
-      "kanji": "コーヒー",
-      "kana": "こーひー",
-      "romaji": "koohee"
+      "en": "bag",
+      "kanji": "鞄",
+      "kana": "かばん",
+      "romaji": "kaban"
     },
     {
-      "en": "green tea",
-      "kanji": "お茶",
-      "kana": "おちゃ",
-      "romaji": "ocha"
+      "en": "bicycle",
+      "kanji": "自転車",
+      "kana": "じてんしゃ",
+      "romaji": "jitensha"
     },
     {
-      "en": "dinner",
-      "kanji": "晩ご飯",
-      "kana": "ばんごはん",
-      "romaji": "bangohan"
+      "en": "jeans",
+      "kanji": "ジーンズ",
+      "kana": "じーんず",
+      "romaji": "jiinzu"
     },
     {
-      "en": "hamburger",
-      "kanji": "ハンバーガー",
-      "kana": "はんばーがー",
-      "romaji": "hanbaagaa"
+      "en": "meat",
+      "kanji": "肉",
+      "kana": "にく",
+      "romaji": "niku"
     },
     {
-      "en": "lunch",
-      "kanji": "昼ご飯",
-      "kana": "ひるごはん",
-      "romaji": "hirugohan"
+      "en": "menu",
+      "kanji": "メニュー",
+      "kana": "めにかゅう",
+      "romaji": "menyuu"
     },
     {
-      "en": "movie",
-      "kanji": "映画",
-      "kana": "えいが",
-      "romaji": "eiga"
+      "en": "newspaper",
+      "kanji": "新聞",
+      "kana": "しんぶん",
+      "romaji": "shinbun"
     },
     {
-      "en": "music",
-      "kanji": "音楽",
-      "kana": "おんがく",
-      "romaji": "ongaku"
+      "en": "notebook",
+      "kanji": "ノート",
+      "kana": "のーと",
+      "romaji": "nooto"
     },
     {
-      "en": "magazine",
-      "kanji": "雑誌",
-      "kana": "ざっし",
-      "romaji": "zasshi"
+      "en": "pork cutlet",
+      "kanji": "とんかつ",
+      "kana": "とんかつ",
+      "romaji": "tonkatsu"
+    },
+    {
+      "en": "fish",
+      "kanji": "魚",
+      "kana": "さかな",
+      "romaji": "sakana"
+    },
+    {
+      "en": "shoes",
+      "kanji": "靴",
+      "kana": "くつ",
+      "romaji": "kutsu"
+    },
+    {
+      "en": "smartphone; mobile",
+      "kanji": "スマホ",
+      "kana": "すまほ",
+      "romaji": "sumaho"
+    },
+    {
+      "en": "T-shirt",
+      "kanji": "Tシャツ",
+      "kana": "てぃーしゃつ",
+      "romaji": "tiishatsu"
+    },
+    {
+      "en": "umbrella",
+      "kanji": "傘",
+      "kana": "かさ",
+      "romaji": "kasa"
+    },
+    {
+      "en": "vegetable",
+      "kanji": "野菜",
+      "kana": "やさい",
+      "romaji": "yasai"
+    },
+    {
+      "en": "wallet",
+      "kanji": "財布",
+      "kana": "さいふ",
+      "romaji": "saifu"
+    },
+    {
+      "en": "watch; clock",
+      "kanji": "時計",
+      "kana": "とけい",
+      "romaji": "tokei"
+    },
+    {
+      "en": "book",
+      "kanji": "本",
+      "kana": "ほん",
+      "romaji": "hon"
+    },
+    {
+      "en": "hat; cap",
+      "kanji": "帽子",
+      "kana": "ぼうし",
+      "romaji": "boushi"
+    },
+    {
+      "en": "pen",
+      "kanji": "ペン",
+      "kana": "ぺん",
+      "romaji": "pen"
+    },
+    {
+      "en": "delicious",
+      "kanji": "おいしい",
+      "kana": "おいしい",
+      "romaji": "oishii"
+    },
+    {
+      "en": "expensive; high",
+      "kanji": "高い",
+      "kana": "たかい",
+      "romaji": "takai"
     }
   ]
 }
