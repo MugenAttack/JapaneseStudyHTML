@@ -1,7 +1,10 @@
 {
-  "Topics": "VocabLists/topics.csv",
+  "School": "VocabLists/school.csv",
+  "Person": "VocabLists/person.csv",
   "Time": "VocabLists/time.csv",
-  "Locations": "VocabLists/locations.csv",
-  "Verbs / Objects": "VocabLists/verbs_objects.csv",
-  "Numbers": "VocabLists/numbers.csv"
+  "Expressions": "VocabLists/expressions.csv",
+  "Countries": "VocabLists/countries.csv",
+  "Majors": "VocabLists/majors.csv",
+  "Occupations": "VocabLists/occupations.csv",
+  "Family": "VocabLists/family.csv"
 }
