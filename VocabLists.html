@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Viewer</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #64748b;
+      --table-header-bg: #f1f5f9;
+      --table-row-hover: #f8fafc;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 950px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .control-box {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-box label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    select {
+      width: 100%;
+      max-width: 400px;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background-color: #fff;
+      color: var(--text);
+      outline: none;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .item-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    tbody tr:hover {
+      background-color: var(--table-row-hover);
+    }
+
+    .english-cell {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .kanji-cell {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+
+    .kana-cell {
+      color: #334155;
+    }
+
+    .romaji-cell {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* Tags Container & Badges */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 12px;
+      white-space: nowrap;
+    }
+
+    .status-msg {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .error-msg {
+      color: #dc2626;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="control-box">
+    <label for="category-select">CSV Category Selection</label>
+    <select id="category-select" onchange="handleCategoryChange()">
+      <option value="">Loading categories from manifest...</option>
+    </select>
+  </div>
+
+  <div class="panel">
+    <div class="category-header">
+      <h2 id="category-title">Category Viewer</h2>
+      <span class="item-count" id="item-count">0 items</span>
+    </div>
+
+    <div id="content-area">
+      <div class="status-msg">Select a category from the drop down box above.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const AppState = {
+    manifest: {},
+    cache: {}
+  };
+
+  const VOCAB_FOLDER = 'VocabLists';
+
+  // CSV parser: Columns 1-4 are fixed fields; columns 5+ are collected into 'tags'
+  function parseCSV(text) {
+    const lines = text.trim().split(/\r?\n/);
+    if (lines.length === 0) return [];
+
+    return lines
+      .filter(line => line.trim().length > 0)
+      .map(line => {
+        const parts = line.split(',').map(item => item.trim());
+        return {
+          english: parts[0] || '',
+          kanji: parts[1] || '',
+          kana: parts[2] || '',
+          romaji: parts[3] || '',
+          // Slice everything from index 4 onwards into an array of tags
+          tags: parts.slice(4).filter(tag => tag.length > 0)
+        };
+      });
+  }
+
+  async function init() {
+    const contentArea = document.getElementById('content-area');
+    const select = document.getElementById('category-select');
+
+    try {
+      const res = await fetch(`./${VOCAB_FOLDER}/manifest.json`);
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Could not load ./${VOCAB_FOLDER}/manifest.json`);
+      }
+
+      AppState.manifest = await res.json();
+      const categories = Object.keys(AppState.manifest);
+
+      if (categories.length === 0) {
+        contentArea.innerHTML = '<div class="status-msg">No categories found in manifest.json.</div>';
+        select.innerHTML = '<option value="">No Categories Available</option>';
+        return;
+      }
+
+      select.innerHTML = '';
+      categories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+
+      loadCategory(categories[0]);
+
+    } catch (err) {
+      console.error(err);
+      contentArea.innerHTML = `<div class="error-msg"><strong>Loading Error:</strong><br>${err.message}</div>`;
+    }
+  }
+
+  function handleCategoryChange() {
+    const select = document.getElementById('category-select');
+    if (select.value) {
+      loadCategory(select.value);
+    }
+  }
+
+  async function loadCategory(categoryName) {
+    const contentArea = document.getElementById('content-area');
+    const titleEl = document.getElementById('category-title');
+
+    titleEl.textContent = categoryName;
+
+    if (AppState.cache[categoryName]) {
+      renderTable(AppState.cache[categoryName]);
+      return;
+    }
+
+    contentArea.innerHTML = `<div class="status-msg">Loading CSV...</div>`;
+
+    try {
+      let fileName = AppState.manifest[categoryName];
+
+      if (fileName.startsWith('VocabLists/') || fileName.startsWith('./VocabLists/')) {
+        fileName = fileName.replace(/^(\.\/)?VocabLists\//, '');
+      }
+
+      const targetPath = `./${VOCAB_FOLDER}/${fileName}`;
+
+      const res = await fetch(targetPath);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Failed to load '${targetPath}'`);
+      }
+
+      const csvText = await res.text();
+      const items = parseCSV(csvText);
+
+      AppState.cache[categoryName] = items;
+      renderTable(items);
+
+    } catch (err) {
+      console.error(err);
+      contentArea.innerHTML = `<div class="error-msg"><strong>CSV Load Error:</strong><br>${err.message}</div>`;
+    }
+  }
+
+  function renderTable(items) {
+    const contentArea = document.getElementById('content-area');
+    const countEl = document.getElementById('item-count');
+
+    countEl.textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+
+    if (!items || items.length === 0) {
+      contentArea.innerHTML = '<div class="status-msg">No items found in this CSV.</div>';
+      return;
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-wrapper';
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th>English</th>
+          <th>Kanji</th>
+          <th>Hiragana / Katakana</th>
+          <th>Romaji</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${items.map(item => `
+          <tr>
+            <td class="english-cell">${item.english}</td>
+            <td class="kanji-cell">${item.kanji}</td>
+            <td class="kana-cell">${item.kana}</td>
+            <td class="romaji-cell">${item.romaji}</td>
+            <td>
+              <div class="tags-container">
+                ${item.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('')}
+              </div>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    `;
+
+    wrapper.appendChild(table);
+    contentArea.innerHTML = '';
+    contentArea.appendChild(wrapper);
+  }
+
+  init();
+</script>
+
+</body>
+</html>

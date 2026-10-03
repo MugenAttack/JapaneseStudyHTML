@@ -1,0 +1,7 @@
+{
+  "Topics": "VocabLists/topics.csv",
+  "Time": "VocabLists/time.csv",
+  "Locations": "VocabLists/locations.csv",
+  "Verbs / Objects": "VocabLists/verbs_objects.csv",
+  "Numbers": "VocabLists/numbers.csv"
+}
