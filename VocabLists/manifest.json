@@ -1,9 +1,10 @@
 {
   "People": "VocabLists/people.csv",
+  "Time": "VocabLists/time.csv",
   "Objects": "VocabLists/objects.csv",
   "Places": "VocabLists/places.csv",
   "Adjectives": "VocabLists/adjectives.csv",
   "Verbs": "VocabLists/verbs.csv",
   "Adverbs": "VocabLists/adverbs.csv",
-  "Other": "VocabLists/others.csv"
+  "Other": "VocabLists/other.csv"
 }
