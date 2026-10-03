@@ -4,7 +4,7 @@
   "age",
   "year",
   "major",
-  "occupation" 
+  "occupation"
   ],
   "name": {
   "label": "Name",
@@ -65,5 +65,5 @@
     { "val": "Firefighter", "jp": "消防士", "reading": "しょうぼうし", "romaji": "Shōbōshi" }
   ]
 }
-  
+
 }
