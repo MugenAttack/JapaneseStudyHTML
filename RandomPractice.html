@@ -216,20 +216,20 @@
   <!-- Set Selection Dropdown -->
   <div class="set-selector-container">
     <label for="set-select">Practice Set:</label>
-    <select id="set-select" class="set-select" onchange="loadSet(this.value,true)">
-      <!-- Options are loaded dynamically via sets/manifest.json -->
+    <select id="set-select" class="set-select" onchange="loadSet(this.value, true)">
+      <!-- Options are loaded dynamically via manifest.json or fallback -->
     </select>
   </div>
 
   <!-- Slots Display -->
   <div class="slots-grid">
-    <div class="slot-box" id="box-object2" onclick="toggleBox('object2')">
-      <span class="slot-title">Topic / Object</span>
-      <div id="en-object2" class="slot-text-en">---</div>
-      <div id="details-object2" class="slot-details">
-        <span class="jp-kanji" id="kanji-object2"></span>
-        <span class="jp-kana" id="kana-object2"></span>
-        <span class="jp-romaji" id="romaji-object2"></span>
+    <div class="slot-box" id="box-topic" onclick="toggleBox('topic')">
+      <span class="slot-title">Topic / Subject</span>
+      <div id="en-topic" class="slot-text-en">---</div>
+      <div id="details-topic" class="slot-details">
+        <span class="jp-kanji" id="kanji-topic"></span>
+        <span class="jp-kana" id="kana-topic"></span>
+        <span class="jp-romaji" id="romaji-topic"></span>
       </div>
       <span class="click-hint">Click to reveal</span>
     </div>
@@ -266,17 +266,6 @@
       </div>
       <span class="click-hint">Click to reveal</span>
     </div>
-
-    <div class="slot-box" id="box-number" onclick="toggleBox('number')">
-      <span class="slot-title">Number</span>
-      <div id="en-number" class="slot-text-en">---</div>
-      <div id="details-number" class="slot-details">
-        <span class="jp-kanji" id="kanji-number"></span>
-        <span class="jp-kana" id="kana-number"></span>
-        <span class="jp-romaji" id="romaji-number"></span>
-      </div>
-      <span class="click-hint">Click to reveal</span>
-    </div>
   </div>
 
   <div class="button-group">
@@ -288,9 +277,52 @@
 <script>
   let currentSetData = {};
   let currentJsonHash = 0;
-  const categories = ['object2', 'time', 'place', 'action', 'number'];
+  const categories = ['topic', 'time', 'place', 'action'];
 
-  // Fast string hash generator (cyrb53/djb2 variant)
+  const fallbackData = {
+    "topic": [
+      { "en": "doctor", "kanji": "医者", "kana": "いしゃ", "romaji": "isha" },
+      { "en": "I", "kanji": "私", "kana": "わたし", "romaji": "watashi" },
+      { "en": "lawyer", "kanji": "弁護士", "kana": "べんごし", "romaji": "bengoshi" },
+      { "en": "student", "kanji": "学生", "kana": "がくせい", "romaji": "gakusei" },
+      { "en": "I (used by men)", "kanji": "僕", "kana": "ぼく", "romaji": "boku" },
+      { "en": "who", "kanji": "誰", "kana": "だれ", "romaji": "dare" }
+    ],
+    "time": [
+      { "en": "today", "kanji": "今日", "kana": "きょう", "romaji": "kyou" },
+      { "en": "tomorrow", "kanji": "明日", "kana": "あした", "romaji": "ashita" },
+      { "en": "tonight", "kanji": "今晩", "kana": "こんばん", "romaji": "konban" },
+      { "en": "weekend", "kanji": "週末", "kana": "しゅうまつ", "romaji": "shuumatsu" },
+      { "en": "yesterday", "kanji": "昨日", "kana": "きのう", "romaji": "kinou" },
+      { "en": "Tuesday", "kanji": "火曜日", "kana": "かようび", "romaji": "kayoubi" },
+      { "en": "Thursday", "kanji": "木曜日", "kana": "もくようび", "romaji": "mokuyoubi" },
+      { "en": "Wednesday", "kanji": "水曜日", "kana": "すいようび", "romaji": "suiyoubi" }
+    ],
+    "place": [
+      { "en": "college; university", "kanji": "大学", "kana": "だいがく", "romaji": "daigaku" },
+      { "en": "toilet; restroom", "kanji": "トイレ", "kana": "といれ", "romaji": "toire" },
+      { "en": "library", "kanji": "図書館", "kana": "としょかん", "romaji": "toshokan" },
+      { "en": "post office", "kanji": "郵便局", "kana": "ゆうびんきょく", "romaji": "yuubinkyoku" },
+      { "en": "bank", "kanji": "銀行", "kana": "ぎんこう", "romaji": "ginkou" },
+      { "en": "school", "kanji": "学校", "kana": "がっこう", "romaji": "gakkou" },
+      { "en": "bookstore", "kanji": "本屋", "kana": "ほんや", "romaji": "hon'ya" },
+      { "en": "bus stop", "kanji": "バス停", "kana": "ばすてい", "romaji": "basutei" },
+      { "en": "hospital", "kanji": "病院", "kana": "びょういん", "romaji": "byouin" },
+      { "en": "hotel", "kanji": "ホテル", "kana": "ほてる", "romaji": "hoteru" }
+    ],
+    "action": [
+      { "en": "breakfast", "kanji": "朝ご飯", "kana": "あさごはん", "romaji": "asagohan" },
+      { "en": "coffee", "kanji": "コーヒー", "kana": "こーひー", "romaji": "koohee" },
+      { "en": "green tea", "kanji": "お茶", "kana": "おちゃ", "romaji": "ocha" },
+      { "en": "dinner", "kanji": "晩ご飯", "kana": "ばんごはん", "romaji": "bangohan" },
+      { "en": "hamburger", "kanji": "ハンバーガー", "kana": "はんばーがー", "romaji": "hanbaagaa" },
+      { "en": "lunch", "kanji": "昼ご飯", "kana": "ひるごはん", "romaji": "hirugohan" },
+      { "en": "movie", "kanji": "映画", "kana": "えいが", "romaji": "eiga" },
+      { "en": "music", "kanji": "音楽", "kana": "おんがく", "romaji": "ongaku" },
+      { "en": "magazine", "kanji": "雑誌", "kana": "ざっし", "romaji": "zasshi" }
+    ]
+  };
+
   function hashString(str) {
     let hash = 5381;
     for (let i = 0; i < str.length; i++) {
@@ -299,14 +331,12 @@
     return hash >>> 0;
   }
 
-  // Generates an hourly seed combined with the JSON content hash
   function getHourlyJsonSeed() {
     const d = new Date();
     const timeSeed = d.getFullYear() * 1000000 + (d.getMonth() + 1) * 10000 + d.getDate() * 100 + d.getHours();
     return timeSeed ^ currentJsonHash;
   }
 
-  // Simple seeded pseudo-random generator (Mulberry32)
   function seededRandom(seed) {
     let t = seed += 0x6D2B79F5;
     t = Math.imul(t ^ (t >>> 15), t | 1);
@@ -314,15 +344,14 @@
     return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
   }
 
-  // Initialize application and fetch set manifest
   async function initializeApp() {
+    const selectEl = document.getElementById('set-select');
     try {
       const response = await fetch('RandomPractice/manifest.json');
+      if (!response.ok) throw new Error('Manifest not found');
       const setsList = await response.json();
 
-      const selectEl = document.getElementById('set-select');
       selectEl.innerHTML = '';
-
       setsList.forEach(setItem => {
         const option = document.createElement('option');
         option.value = setItem.file;
@@ -334,19 +363,27 @@
         loadSet(setsList[0].file, true);
       }
     } catch (error) {
-      console.error('Error initializing set manifest:', error);
+      console.warn('Could not load manifest file, defaulting to inline JSON:', error);
+      selectEl.innerHTML = '<option value="default">Default Set</option>';
+      currentSetData = fallbackData;
+      currentJsonHash = hashString(JSON.stringify(fallbackData));
+      generateNewCombo(true);
     }
   }
 
-  // Load selected dataset file
   async function loadSet(filePath, isInitial = false) {
+    if (filePath === 'default') {
+      currentSetData = fallbackData;
+      currentJsonHash = hashString(JSON.stringify(fallbackData));
+      generateNewCombo(isInitial);
+      return;
+    }
+
     try {
       const response = await fetch(filePath);
       const jsonText = await response.text();
-      
       currentSetData = JSON.parse(jsonText);
       currentJsonHash = hashString(jsonText);
-
       generateNewCombo(isInitial);
     } catch (error) {
       console.error('Error loading vocabulary set:', error);
@@ -354,11 +391,10 @@
   }
 
   function getRandom(arr, useHourlySeed = false, categoryIndex = 0) {
-    if (!arr || arr.length === 0) return { en: "---", kanji: "", jp: "", romaji: "" };
+    if (!arr || arr.length === 0) return { en: "---", kanji: "", kana: "", romaji: "" };
 
     let randVal;
     if (useHourlySeed) {
-      // Seed depends on hour, JSON content hash, and category position
       const seed = getHourlyJsonSeed() + (categoryIndex * 997);
       randVal = seededRandom(seed);
     } else {
@@ -370,11 +406,11 @@
 
   function toggleBox(type) {
     const box = document.getElementById(`box-${type}`);
-    box.classList.toggle('revealed');
+    if (box) box.classList.toggle('revealed');
   }
 
   function toggleAll() {
-    const boxes = categories.map(type => document.getElementById(`box-${type}`));
+    const boxes = categories.map(type => document.getElementById(`box-${type}`)).filter(Boolean);
     const anyHidden = boxes.some(b => !b.classList.contains('revealed'));
 
     boxes.forEach(box => {
@@ -387,22 +423,20 @@
   }
 
   function generateNewCombo(useHourlySeed = false) {
-    if (!currentSetData.object2) return;
-
     categories.forEach((type, idx) => {
-      const item = getRandom(currentSetData[type], useHourlySeed, idx);
       const box = document.getElementById(`box-${type}`);
+      if (!box) return;
 
+      const item = getRandom(currentSetData[type], useHourlySeed, idx);
       box.classList.remove('revealed');
 
       document.getElementById(`en-${type}`).innerText = item.en;
       document.getElementById(`kanji-${type}`).innerText = item.kanji;
-      document.getElementById(`kana-${type}`).innerText = item.jp;
+      document.getElementById(`kana-${type}`).innerText = item.kana;
       document.getElementById(`romaji-${type}`).innerText = item.romaji;
     });
   }
 
-  // Run initial setup
   initializeApp();
 </script>
 

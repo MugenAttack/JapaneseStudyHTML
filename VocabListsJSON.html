@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category Viewer & Multi-Category JSON Builder</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --success: #059669;
+      --success-hover: #047857;
+      --border: #cbd5e1;
+      --text: #0f172a;
+      --muted: #64748b;
+      --table-header-bg: #f1f5f9;
+      --table-row-hover: #f8fafc;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .main-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .control-box {
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .control-box label {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 0.95rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background-color: #fff;
+      color: var(--text);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    select:focus, input[type="text"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+
+    h2, h3 {
+      margin: 0;
+      color: var(--text);
+    }
+
+    h2 { font-size: 1.25rem; }
+    h3 { font-size: 1.1rem; }
+
+    .item-count {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    tbody tr:hover {
+      background-color: var(--table-row-hover);
+    }
+
+    .checkbox-cell {
+      text-align: center;
+      width: 32px;
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--accent);
+    }
+
+    .english-cell { font-weight: 600; color: var(--text); }
+    .kanji-cell { font-weight: 600; color: var(--accent); font-size: 1.05rem; }
+    .kana-cell { color: #334155; }
+    .romaji-cell { color: var(--muted); font-style: italic; }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag-badge {
+      display: inline-block;
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    /* Selected Panel & Export Controls */
+    .selected-panel {
+      position: sticky;
+      top: 24px;
+      max-height: calc(100vh - 80px);
+    }
+
+    .cat-mgmt-row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .add-cat-box {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .btn-icon {
+      padding: 8px 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #f1f5f9;
+      cursor: pointer;
+      color: var(--text);
+    }
+    .btn-icon:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-icon-danger {
+      color: #dc2626;
+    }
+
+    .category-group-header {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      padding: 6px 4px 4px 4px;
+      border-bottom: 1px solid var(--border);
+      margin-top: 8px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .selected-list {
+      flex: 1;
+      overflow-y: auto;
+      min-height: 250px;
+      max-height: 450px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin: 12px 0;
+      padding: 6px;
+      background: #fafafa;
+    }
+
+    .selected-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      font-size: 0.85rem;
+    }
+
+    .selected-item .remove-btn {
+      background: none;
+      border: none;
+      color: #ef4444;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    button.btn {
+      flex: 1;
+      padding: 10px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      color: #fff;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-primary { background-color: var(--accent); }
+    .btn-primary:hover { background-color: var(--accent-hover); }
+
+    .btn-success { background-color: var(--success); }
+    .btn-success:hover { background-color: var(--success-hover); }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border) !important;
+    }
+    .btn-outline:hover { background-color: #f1f5f9; color: var(--text); }
+
+    textarea.json-output {
+      width: 100%;
+      height: 180px;
+      margin-top: 12px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      padding: 10px;
+      box-sizing: border-box;
+      resize: vertical;
+      background-color: #f8fafc;
+    }
+
+    .status-msg {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .error-msg {
+      color: #dc2626;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      padding: 12px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="control-box">
+    <div class="control-group">
+      <label for="category-select">CSV Category Selection</label>
+      <select id="category-select" onchange="handleCategoryChange()">
+        <option value="">Loading categories from manifest...</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <!-- Main Table Panel -->
+    <div class="panel">
+      <div class="category-header">
+        <h2 id="category-title">Category Viewer</h2>
+        <span class="item-count" id="item-count">0 items</span>
+      </div>
+
+      <div id="content-area">
+        <div class="status-msg">Select a category from the drop down box above.</div>
+      </div>
+    </div>
+
+    <!-- Export & Selected Items Sidebar Panel -->
+    <div class="panel selected-panel">
+      <div class="category-header">
+        <h3>Target List</h3>
+        <span class="item-count" id="selected-count">0 total selected</span>
+      </div>
+
+      <div class="control-group" style="margin-bottom: 8px;">
+        <label for="json-category-select" style="font-size: 0.85rem;">Active Output Category</label>
+        <div class="cat-mgmt-row">
+          <select id="json-category-select" onchange="handleJsonCategoryChange()">
+            <option value="custom_selection">custom_selection</option>
+          </select>
+          <button class="btn-icon" onclick="toggleAddCategoryInput()" title="Add Output Category">+</button>
+          <button class="btn-icon btn-icon-danger" onclick="deleteJsonCategory()" title="Delete Active Category">&minus;</button>
+        </div>
+
+        <!-- In-Page Add Category Form -->
+        <div class="add-cat-box" id="add-cat-box" style="display: none;">
+          <input type="text" id="new-cat-input" placeholder="New category name..." onkeyup="handleNewCategoryKeyup(event)">
+          <button class="btn btn-primary" style="padding: 6px 12px; flex: 0 0 auto;" onclick="confirmAddJsonCategory()">Save</button>
+        </div>
+      </div>
+
+      <div class="selected-list" id="selected-list-view">
+        <div class="status-msg" style="text-align: center; padding: 20px 0;">No items selected.</div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-outline" onclick="clearSelected()">Clear All</button>
+        <button class="btn btn-primary" onclick="generateJSON()">Generate JSON</button>
+      </div>
+
+      <textarea id="json-output" class="json-output" placeholder="Click 'Generate JSON' to preview..."></textarea>
+
+      <button class="btn btn-success" id="copy-btn" style="margin-top: 8px;" onclick="copyJSON()">Copy JSON</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const AppState = {
+    manifest: {},
+    cache: {},
+    jsonCategories: {
+      'custom_selection': new Map()
+    },
+    activeJsonCategory: 'custom_selection'
+  };
+
+  const VOCAB_FOLDER = 'VocabLists';
+
+  function parseCSV(text) {
+    const lines = text.trim().split(/\r?\n/);
+    if (lines.length === 0) return [];
+
+    return lines
+      .filter(line => line.trim().length > 0)
+      .map(line => {
+        const parts = line.split(',').map(item => item.trim());
+        return {
+          en: parts[0] || '',
+          kanji: parts[1] || '',
+          kana: parts[2] || '',
+          romaji: parts[3] || '',
+          tags: parts.slice(4).filter(tag => tag.length > 0)
+        };
+      });
+  }
+
+  async function init() {
+    const contentArea = document.getElementById('content-area');
+    const select = document.getElementById('category-select');
+
+    try {
+      const res = await fetch(`./${VOCAB_FOLDER}/manifest.json`);
+
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Could not load ./${VOCAB_FOLDER}/manifest.json`);
+      }
+
+      AppState.manifest = await res.json();
+      const categories = Object.keys(AppState.manifest);
+
+      if (categories.length === 0) {
+        contentArea.innerHTML = '<div class="status-msg">No categories found in manifest.json.</div>';
+        select.innerHTML = '<option value="">No Categories Available</option>';
+        return;
+      }
+
+      select.innerHTML = '';
+      categories.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        select.appendChild(option);
+      });
+
+      loadCategory(categories[0]);
+
+    } catch (err) {
+      console.error(err);
+      contentArea.innerHTML = `<div class="error-msg"><strong>Loading Error:</strong><br>${err.message}</div>`;
+    }
+  }
+
+  function handleCategoryChange() {
+    const select = document.getElementById('category-select');
+    if (select.value) {
+      loadCategory(select.value);
+    }
+  }
+
+  async function loadCategory(categoryName) {
+    const contentArea = document.getElementById('content-area');
+    const titleEl = document.getElementById('category-title');
+
+    titleEl.textContent = categoryName;
+
+    if (AppState.cache[categoryName]) {
+      renderTable(AppState.cache[categoryName]);
+      return;
+    }
+
+    contentArea.innerHTML = `<div class="status-msg">Loading CSV...</div>`;
+
+    try {
+      let fileName = AppState.manifest[categoryName];
+
+      if (fileName.startsWith('VocabLists/') || fileName.startsWith('./VocabLists/')) {
+        fileName = fileName.replace(/^(\.\/)?VocabLists\//, '');
+      }
+
+      const targetPath = `./${VOCAB_FOLDER}/${fileName}`;
+
+      const res = await fetch(targetPath);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: Failed to load '${targetPath}'`);
+      }
+
+      const csvText = await res.text();
+      const items = parseCSV(csvText);
+
+      AppState.cache[categoryName] = items;
+      renderTable(items);
+
+    } catch (err) {
+      console.error(err);
+      contentArea.innerHTML = `<div class="error-msg"><strong>CSV Load Error:</strong><br>${err.message}</div>`;
+    }
+  }
+
+  function getItemKey(item) {
+    return `${item.en}||${item.kanji}||${item.kana}`;
+  }
+
+  function renderTable(items) {
+    const contentArea = document.getElementById('content-area');
+    const countEl = document.getElementById('item-count');
+
+    countEl.textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
+
+    if (!items || items.length === 0) {
+      contentArea.innerHTML = '<div class="status-msg">No items found in this CSV.</div>';
+      return;
+    }
+
+    const currentMap = AppState.jsonCategories[AppState.activeJsonCategory] || new Map();
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'table-wrapper';
+
+    const table = document.createElement('table');
+    table.innerHTML = `
+      <thead>
+        <tr>
+          <th class="checkbox-cell"><input type="checkbox" id="select-all" onchange="toggleSelectAll(this)"></th>
+          <th>English</th>
+          <th>Kanji</th>
+          <th>Kana</th>
+          <th>Romaji</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${items.map(item => {
+          const key = getItemKey(item);
+          const isChecked = currentMap.has(key);
+          return `
+            <tr>
+              <td class="checkbox-cell">
+                <input type="checkbox"
+                       class="row-checkbox"
+                       data-key="${encodeURIComponent(key)}"
+                       ${isChecked ? 'checked' : ''}
+                       onchange="toggleItemSelection(this)">
+              </td>
+              <td class="english-cell">${item.en}</td>
+              <td class="kanji-cell">${item.kanji}</td>
+              <td class="kana-cell">${item.kana}</td>
+              <td class="romaji-cell">${item.romaji}</td>
+              <td>
+                <div class="tags-container">
+                  ${item.tags.map(tag => `<span class="tag-badge">${tag}</span>`).join('')}
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join('')}
+      </tbody>
+    `;
+
+    wrapper.appendChild(table);
+    contentArea.innerHTML = '';
+    contentArea.appendChild(wrapper);
+
+    updateSelectAllCheckbox();
+  }
+
+  function toggleItemSelection(checkbox) {
+    const key = decodeURIComponent(checkbox.dataset.key);
+    const categoryName = document.getElementById('category-select').value;
+    const items = AppState.cache[categoryName] || [];
+    const item = items.find(i => getItemKey(i) === key);
+
+    const activeMap = AppState.jsonCategories[AppState.activeJsonCategory];
+
+    if (checkbox.checked) {
+      if (item) {
+        const { tags, ...exportItem } = item;
+        activeMap.set(key, exportItem);
+      }
+    } else {
+      activeMap.delete(key);
+    }
+
+    updateSelectedSidebar();
+    updateSelectAllCheckbox();
+  }
+
+  function toggleSelectAll(masterCheckbox) {
+    const categoryName = document.getElementById('category-select').value;
+    const items = AppState.cache[categoryName] || [];
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const activeMap = AppState.jsonCategories[AppState.activeJsonCategory];
+
+    rowCheckboxes.forEach(cb => {
+      cb.checked = masterCheckbox.checked;
+      const key = decodeURIComponent(cb.dataset.key);
+      const item = items.find(i => getItemKey(i) === key);
+
+      if (masterCheckbox.checked) {
+        if (item) {
+          const { tags, ...exportItem } = item;
+          activeMap.set(key, exportItem);
+        }
+      } else {
+        activeMap.delete(key);
+      }
+    });
+
+    updateSelectedSidebar();
+  }
+
+  function updateSelectAllCheckbox() {
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    const masterCheckbox = document.getElementById('select-all');
+    if (!masterCheckbox || rowCheckboxes.length === 0) return;
+
+    const allChecked = Array.from(rowCheckboxes).every(cb => cb.checked);
+    masterCheckbox.checked = allChecked;
+  }
+
+  function toggleAddCategoryInput() {
+    const box = document.getElementById('add-cat-box');
+    const input = document.getElementById('new-cat-input');
+
+    if (box.style.display === 'none') {
+      box.style.display = 'flex';
+      input.value = '';
+      input.focus();
+    } else {
+      box.style.display = 'none';
+    }
+  }
+
+  function handleNewCategoryKeyup(event) {
+    if (event.key === 'Enter') {
+      confirmAddJsonCategory();
+    } else if (event.key === 'Escape') {
+      document.getElementById('add-cat-box').style.display = 'none';
+    }
+  }
+
+  function confirmAddJsonCategory() {
+    const input = document.getElementById('new-cat-input');
+    const name = input.value.trim();
+
+    if (!name) return;
+
+    if (AppState.jsonCategories[name]) {
+      alert("A category with this name already exists.");
+      return;
+    }
+
+    AppState.jsonCategories[name] = new Map();
+    AppState.activeJsonCategory = name;
+
+    document.getElementById('add-cat-box').style.display = 'none';
+    refreshJsonCategoryDropdown();
+    syncTableCheckboxes();
+    updateSelectedSidebar();
+  }
+
+  function deleteJsonCategory() {
+    const catKeys = Object.keys(AppState.jsonCategories);
+    if (catKeys.length <= 1) {
+      alert("At least one JSON category must remain.");
+      return;
+    }
+
+    const current = AppState.activeJsonCategory;
+    delete AppState.jsonCategories[current];
+    AppState.activeJsonCategory = Object.keys(AppState.jsonCategories)[0];
+
+    refreshJsonCategoryDropdown();
+    syncTableCheckboxes();
+    updateSelectedSidebar();
+  }
+
+  function handleJsonCategoryChange() {
+    const select = document.getElementById('json-category-select');
+    AppState.activeJsonCategory = select.value;
+    syncTableCheckboxes();
+    updateSelectedSidebar();
+  }
+
+  function refreshJsonCategoryDropdown() {
+    const select = document.getElementById('json-category-select');
+    select.innerHTML = '';
+
+    Object.keys(AppState.jsonCategories).forEach(cat => {
+      const option = document.createElement('option');
+      option.value = cat;
+      option.textContent = cat;
+      if (cat === AppState.activeJsonCategory) option.selected = true;
+      select.appendChild(option);
+    });
+  }
+
+  function syncTableCheckboxes() {
+    const activeMap = AppState.jsonCategories[AppState.activeJsonCategory] || new Map();
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+
+    rowCheckboxes.forEach(cb => {
+      const key = decodeURIComponent(cb.dataset.key);
+      cb.checked = activeMap.has(key);
+    });
+
+    updateSelectAllCheckbox();
+  }
+
+  function getTotalSelectedCount() {
+    let total = 0;
+    Object.values(AppState.jsonCategories).forEach(map => {
+      total += map.size;
+    });
+    return total;
+  }
+
+  function updateSelectedSidebar() {
+    const countEl = document.getElementById('selected-count');
+    const listView = document.getElementById('selected-list-view');
+    const totalCount = getTotalSelectedCount();
+
+    countEl.textContent = `${totalCount} total selected`;
+
+    if (totalCount === 0) {
+      listView.innerHTML = `<div class="status-msg" style="text-align: center; padding: 20px 0;">No items selected.</div>`;
+      return;
+    }
+
+    listView.innerHTML = '';
+    Object.entries(AppState.jsonCategories).forEach(([catName, map]) => {
+      if (map.size === 0) return;
+
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'category-group-header';
+      headerDiv.textContent = `${catName} (${map.size})`;
+      listView.appendChild(headerDiv);
+
+      map.forEach((item, key) => {
+        const div = document.createElement('div');
+        div.className = 'selected-item';
+        div.innerHTML = `
+          <div>
+            <strong>${item.kanji || item.kana}</strong>
+            <span style="color: var(--muted);">(${item.en})</span>
+          </div>
+          <button class="remove-btn" onclick="removeSingleItem('${catName}', '${encodeURIComponent(key)}')">&times;</button>
+        `;
+        listView.appendChild(div);
+      });
+    });
+  }
+
+  function removeSingleItem(catName, encodedKey) {
+    const key = decodeURIComponent(encodedKey);
+    if (AppState.jsonCategories[catName]) {
+      AppState.jsonCategories[catName].delete(key);
+    }
+
+    if (catName === AppState.activeJsonCategory) {
+      const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+      rowCheckboxes.forEach(cb => {
+        if (decodeURIComponent(cb.dataset.key) === key) {
+          cb.checked = false;
+        }
+      });
+      updateSelectAllCheckbox();
+    }
+
+    updateSelectedSidebar();
+  }
+
+  function clearSelected() {
+    Object.keys(AppState.jsonCategories).forEach(cat => {
+      AppState.jsonCategories[cat].clear();
+    });
+
+    const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+    rowCheckboxes.forEach(cb => cb.checked = false);
+
+    const masterCheckbox = document.getElementById('select-all');
+    if (masterCheckbox) masterCheckbox.checked = false;
+
+    document.getElementById('json-output').value = '';
+    updateSelectedSidebar();
+  }
+
+  function generateJSON() {
+    const jsonStructure = {};
+
+    Object.entries(AppState.jsonCategories).forEach(([catName, map]) => {
+      jsonStructure[catName] = Array.from(map.values());
+    });
+
+    document.getElementById('json-output').value = JSON.stringify(jsonStructure, null, 2);
+  }
+
+  async function copyJSON() {
+    const textarea = document.getElementById('json-output');
+    if (!textarea.value) {
+      generateJSON();
+    }
+
+    if (!textarea.value) return;
+
+    try {
+      await navigator.clipboard.writeText(textarea.value);
+      const copyBtn = document.getElementById('copy-btn');
+      const originalText = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      setTimeout(() => {
+        copyBtn.textContent = originalText;
+      }, 1500);
+    } catch (err) {
+      textarea.select();
+      document.execCommand('copy');
+    }
+  }
+
+  init();
+</script>
+
+</body>
+</html>
