@@ -1,0 +1,352 @@
+{
+  "time": [
+    {
+      "en": "at about ...",
+      "kanji": "〜ごろ",
+      "kana": "〜ごろ",
+      "romaji": "... goro"
+    },
+    {
+      "en": "every day",
+      "kanji": "毎日",
+      "kana": "まいにち",
+      "romaji": "mainichi"
+    },
+    {
+      "en": "every night",
+      "kanji": "毎晩",
+      "kana": "まいばん",
+      "romaji": "maiban"
+    },
+    {
+      "en": "morning",
+      "kanji": "朝",
+      "kana": "あさ",
+      "romaji": "asa"
+    },
+    {
+      "en": "Saturday",
+      "kanji": "土曜日",
+      "kana": "どようび",
+      "romaji": "doyoubi"
+    },
+    {
+      "en": "today",
+      "kanji": "今日",
+      "kana": "きょう",
+      "romaji": "kyou"
+    },
+    {
+      "en": "Sunday",
+      "kanji": "日曜日",
+      "kana": "にちようび",
+      "romaji": "nichiyoubi"
+    },
+    {
+      "en": "tomorrow",
+      "kanji": "明日",
+      "kana": "あした",
+      "romaji": "ashita"
+    },
+    {
+      "en": "tonight",
+      "kanji": "今晩",
+      "kana": "こんばん",
+      "romaji": "konban"
+    },
+    {
+      "en": "weekend",
+      "kanji": "週末",
+      "kana": "しゅうまつ",
+      "romaji": "shuumatsu"
+    },
+    {
+      "en": "when",
+      "kanji": "いつ",
+      "kana": "いつ",
+      "romaji": "itsu"
+    }
+  ],
+  "objects": [
+    {
+      "en": "breakfast",
+      "kanji": "朝ご飯",
+      "kana": "あさごはん",
+      "romaji": "asagohan"
+    },
+    {
+      "en": "coffee",
+      "kanji": "コーヒー",
+      "kana": "こーひー",
+      "romaji": "koohee"
+    },
+    {
+      "en": "date (romantic; not calendar)",
+      "kanji": "デート",
+      "kana": "でーと",
+      "romaji": "deeto"
+    },
+    {
+      "en": "dinner",
+      "kanji": "晩ご飯",
+      "kana": "ばんごはん",
+      "romaji": "bangohan"
+    },
+    {
+      "en": "green tea",
+      "kanji": "お茶",
+      "kana": "おちゃ",
+      "romaji": "ocha"
+    },
+    {
+      "en": "hamburger",
+      "kanji": "ハンバーガー",
+      "kana": "はんばーがー",
+      "romaji": "hanbaagaa"
+    },
+    {
+      "en": "ice cream",
+      "kanji": "アイスクリーム",
+      "kana": "あいすくりーむ",
+      "romaji": "aisukuriimu"
+    },
+    {
+      "en": "lunch",
+      "kanji": "昼ご飯",
+      "kana": "ひるごはん",
+      "romaji": "hirugohan"
+    },
+    {
+      "en": "magazine",
+      "kanji": "雑誌",
+      "kana": "ざっし",
+      "romaji": "zasshi"
+    },
+    {
+      "en": "movie",
+      "kanji": "映画",
+      "kana": "えいが",
+      "romaji": "eiga"
+    },
+    {
+      "en": "music",
+      "kanji": "音楽",
+      "kana": "おんがく",
+      "romaji": "ongaku"
+    },
+    {
+      "en": "sake; alcoholic drink",
+      "kanji": "お酒",
+      "kana": "おさけ",
+      "romaji": "osake"
+    },
+    {
+      "en": "sports",
+      "kanji": "スポーツ",
+      "kana": "すぽーつ",
+      "romaji": "supootsu"
+    },
+    {
+      "en": "tennis",
+      "kanji": "テニス",
+      "kana": "てにす",
+      "romaji": "tenisu"
+    },
+    {
+      "en": "TV",
+      "kanji": "テレビ",
+      "kana": "てれび",
+      "romaji": "terebi"
+    },
+    {
+      "en": "water",
+      "kanji": "水",
+      "kana": "みず",
+      "romaji": "mizu"
+    }
+  ],
+  "places": [
+    {
+      "en": "cafe",
+      "kanji": "カフェ",
+      "kana": "かふぇ",
+      "romaji": "kafe"
+    },
+    {
+      "en": "home; house",
+      "kanji": "家",
+      "kana": "いえ",
+      "romaji": "ie"
+    },
+    {
+      "en": "home; house; my place",
+      "kanji": "家",
+      "kana": "うち",
+      "romaji": "uchi"
+    },
+    {
+      "en": "school",
+      "kanji": "学校",
+      "kana": "がっこう",
+      "romaji": "gakkou"
+    }
+  ],
+  "adjectives": [
+    {
+      "en": "early",
+      "kanji": "早い",
+      "kana": "はやい",
+      "romaji": "hayai"
+    },
+    {
+      "en": "good",
+      "kanji": "いい",
+      "kana": "いい",
+      "romaji": "ii"
+    }
+  ],
+  "verbs": [
+    {
+      "en": "to come (destination ni/e)",
+      "kanji": "来る",
+      "kana": "くる",
+      "romaji": "kuru"
+    },
+    {
+      "en": "to do (~o)",
+      "kanji": "する",
+      "kana": "する",
+      "romaji": "suru"
+    },
+    {
+      "en": "to drink (~o)",
+      "kanji": "飲む",
+      "kana": "のむ",
+      "romaji": "nomu"
+    },
+    {
+      "en": "to eat (~o)",
+      "kanji": "食べる",
+      "kana": "たべる",
+      "romaji": "taberu"
+    },
+    {
+      "en": "to get up",
+      "kanji": "起きる",
+      "kana": "おきる",
+      "romaji": "okiru"
+    },
+    {
+      "en": "to go (destination ni/e)",
+      "kanji": "行く",
+      "kana": "いく",
+      "romaji": "iku"
+    },
+    {
+      "en": "to go back; to return (destination ni/e)",
+      "kanji": "帰る",
+      "kana": "かえる",
+      "romaji": "kaeru"
+    },
+    {
+      "en": "to listen; to hear (~o)",
+      "kanji": "聞く",
+      "kana": "きく",
+      "romaji": "kiku"
+    },
+    {
+      "en": "to read (~o)",
+      "kanji": "読む",
+      "kana": "よむ",
+      "romaji": "yomu"
+    },
+    {
+      "en": "to see; to look at; to watch (~o)",
+      "kanji": "見る",
+      "kana": "みる",
+      "romaji": "miru"
+    },
+    {
+      "en": "to sleep; to go to sleep",
+      "kanji": "寝る",
+      "kana": "ねる",
+      "romaji": "neru"
+    },
+    {
+      "en": "to speak; to talk (language e/de)",
+      "kanji": "話す",
+      "kana": "はなす",
+      "romaji": "hanasu"
+    },
+    {
+      "en": "to study (~o)",
+      "kanji": "勉強する",
+      "kana": "べんきょうする",
+      "romaji": "benkyousuru"
+    }
+  ],
+  "adverbs": [
+    {
+      "en": "a little",
+      "kanji": "ちょっと",
+      "kana": "ちょっと",
+      "romaji": "chotto"
+    },
+    {
+      "en": "not at all",
+      "kanji": "全然",
+      "kana": "ぜんぜん",
+      "romaji": "zenzen"
+    },
+    {
+      "en": "not much",
+      "kanji": "あまり",
+      "kana": "あまり",
+      "romaji": "amari"
+    },
+    {
+      "en": "often; much",
+      "kanji": "よく",
+      "kana": "よく",
+      "romaji": "yoku"
+    },
+    {
+      "en": "sometimes",
+      "kanji": "時々",
+      "kana": "ときどき",
+      "romaji": "tokidoki"
+    },
+    {
+      "en": "usually",
+      "kanji": "たいてい",
+      "kana": "たいてい",
+      "romaji": "taitei"
+    }
+  ],
+  "other": [
+    {
+      "en": "but",
+      "kanji": "でも",
+      "kana": "でも",
+      "romaji": "demo"
+    },
+    {
+      "en": "How about ...?; How is ...?",
+      "kanji": "どうですか",
+      "kana": "どうですか",
+      "romaji": "dou desu ka"
+    },
+    {
+      "en": "That's right.; Let me see.",
+      "kanji": "そうですね",
+      "kana": "そうですね",
+      "romaji": "sou desu ne"
+    },
+    {
+      "en": "yes",
+      "kanji": "ええ",
+      "kana": "ええ",
+      "romaji": "ee"
+    }
+  ]
+}
