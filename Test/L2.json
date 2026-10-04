@@ -1,0 +1,294 @@
+{
+  "people": [
+    {
+      "en": "who",
+      "kanji": "誰",
+      "kana": "だれ",
+      "romaji": "dare"
+    }
+  ],
+  "objects": [
+    {
+      "en": "bag",
+      "kanji": "鞄",
+      "kana": "かばん",
+      "romaji": "kaban"
+    },
+    {
+      "en": "bicycle",
+      "kanji": "自転車",
+      "kana": "じてんしゃ",
+      "romaji": "jitensha"
+    },
+    {
+      "en": "jeans",
+      "kanji": "ジーンズ",
+      "kana": "じーんず",
+      "romaji": "jiinzu"
+    },
+    {
+      "en": "meat",
+      "kanji": "肉",
+      "kana": "にく",
+      "romaji": "niku"
+    },
+    {
+      "en": "menu",
+      "kanji": "メニュー",
+      "kana": "めにかゅう",
+      "romaji": "menyuu"
+    },
+    {
+      "en": "newspaper",
+      "kanji": "新聞",
+      "kana": "しんぶん",
+      "romaji": "shinbun"
+    },
+    {
+      "en": "notebook",
+      "kanji": "ノート",
+      "kana": "のーと",
+      "romaji": "nooto"
+    },
+    {
+      "en": "pork cutlet",
+      "kanji": "とんかつ",
+      "kana": "とんかつ",
+      "romaji": "tonkatsu"
+    },
+    {
+      "en": "fish",
+      "kanji": "魚",
+      "kana": "さかな",
+      "romaji": "sakana"
+    },
+    {
+      "en": "shoes",
+      "kanji": "靴",
+      "kana": "くつ",
+      "romaji": "kutsu"
+    },
+    {
+      "en": "smartphone; mobile",
+      "kanji": "スマホ",
+      "kana": "すまほ",
+      "romaji": "sumaho"
+    },
+    {
+      "en": "T-shirt",
+      "kanji": "Tシャツ",
+      "kana": "てぃーしゃつ",
+      "romaji": "tiishatsu"
+    },
+    {
+      "en": "umbrella",
+      "kanji": "傘",
+      "kana": "かさ",
+      "romaji": "kasa"
+    },
+    {
+      "en": "vegetable",
+      "kanji": "野菜",
+      "kana": "やさい",
+      "romaji": "yasai"
+    },
+    {
+      "en": "wallet",
+      "kanji": "財布",
+      "kana": "さいふ",
+      "romaji": "saifu"
+    },
+    {
+      "en": "watch; clock",
+      "kanji": "時計",
+      "kana": "とけい",
+      "romaji": "tokei"
+    },
+    {
+      "en": "book",
+      "kanji": "本",
+      "kana": "ほん",
+      "romaji": "hon"
+    },
+    {
+      "en": "hat; cap",
+      "kanji": "帽子",
+      "kana": "ぼうし",
+      "romaji": "boushi"
+    },
+    {
+      "en": "pen",
+      "kanji": "ペン",
+      "kana": "ぺん",
+      "romaji": "pen"
+    }
+  ],
+  "places": [
+    {
+      "en": "here",
+      "kanji": "ここ",
+      "kana": "ここ",
+      "romaji": "koko"
+    },
+    {
+      "en": "over there",
+      "kanji": "あそこ",
+      "kana": "あそこ",
+      "romaji": "asoko"
+    },
+    {
+      "en": "there",
+      "kanji": "そこ",
+      "kana": "そこ",
+      "romaji": "soko"
+    },
+    {
+      "en": "where",
+      "kanji": "どこ",
+      "kana": "どこ",
+      "romaji": "doko"
+    },
+    {
+      "en": "bank",
+      "kanji": "銀行",
+      "kana": "ぎんこう",
+      "romaji": "ginkou"
+    },
+    {
+      "en": "convenience store",
+      "kanji": "コンビニ",
+      "kana": "こんびに",
+      "romaji": "konbini"
+    },
+    {
+      "en": "library",
+      "kanji": "図書館",
+      "kana": "としょかん",
+      "romaji": "toshokan"
+    },
+    {
+      "en": "post office",
+      "kanji": "郵便局",
+      "kana": "ゆうびんきょく",
+      "romaji": "yuubinkyoku"
+    },
+    {
+      "en": "toilet; restroom",
+      "kanji": "トイレ",
+      "kana": "といれ",
+      "romaji": "toire"
+    }
+  ],
+  "adjectives": [
+    {
+      "en": "delicious",
+      "kanji": "おいしい",
+      "kana": "おいしい",
+      "romaji": "oishii"
+    },
+    {
+      "en": "expensive; high",
+      "kanji": "高い",
+      "kana": "たかい",
+      "romaji": "takai"
+    }
+  ],
+  "other": [
+    {
+      "en": "English (language)",
+      "kanji": "英語",
+      "kana": "えいご",
+      "romaji": "eigo"
+    },
+    {
+      "en": "how much",
+      "kanji": "いくら",
+      "kana": "いくら",
+      "romaji": "ikura"
+    },
+    {
+      "en": "Please give me ...",
+      "kanji": "（〜を）ください",
+      "kana": "（〜を）ください",
+      "romaji": "(... o) kudasai"
+    },
+    {
+      "en": "Thank you.",
+      "kanji": "どうも",
+      "kana": "どうも",
+      "romaji": "doumo"
+    },
+    {
+      "en": "Please.; Here it is.",
+      "kanji": "どうぞ",
+      "kana": "どうぞ",
+      "romaji": "doozo"
+    },
+    {
+      "en": "that ...",
+      "kanji": "その",
+      "kana": "その",
+      "romaji": "sono"
+    },
+    {
+      "en": "that ... (over there)",
+      "kanji": "あの",
+      "kana": "あの",
+      "romaji": "ano"
+    },
+    {
+      "en": "that one",
+      "kanji": "それ",
+      "kana": "それ",
+      "romaji": "sore"
+    },
+    {
+      "en": "that one (over there)",
+      "kanji": "あれ",
+      "kana": "あれ",
+      "romaji": "are"
+    },
+    {
+      "en": "this ...",
+      "kanji": "この",
+      "kana": "この",
+      "romaji": "kono"
+    },
+    {
+      "en": "this one",
+      "kanji": "これ",
+      "kana": "これ",
+      "romaji": "kore"
+    },
+    {
+      "en": "Welcome (to our store).",
+      "kanji": "いらっしゃいませ",
+      "kana": "いらっしゃいませ",
+      "romaji": "irasshaimase"
+    },
+    {
+      "en": "which ...",
+      "kanji": "どの",
+      "kana": "どの",
+      "romaji": "dono"
+    },
+    {
+      "en": "which one",
+      "kanji": "どれ",
+      "kana": "どれ",
+      "romaji": "dore"
+    },
+    {
+      "en": "... please.",
+      "kanji": "（〜を）おねがいします",
+      "kana": "（〜を）おねがいします",
+      "romaji": "(... o) onegaishimasu"
+    },
+    {
+      "en": "... yen",
+      "kanji": "〜円",
+      "kana": "〜えん",
+      "romaji": "... en"
+    }
+  ]
+}

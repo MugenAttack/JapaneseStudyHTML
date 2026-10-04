@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Word Recall Test</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --text: #0f172a;
+      --border: #cbd5e1;
+      --correct: #16a34a;
+      --correct-bg: #dcfce7;
+      --wrong: #dc2626;
+      --wrong-bg: #fee2e2;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 24px 12px;
+      margin: 0;
+    }
+
+    .app-container {
+      background: var(--card);
+      width: 100%;
+      max-width: 600px;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    h1.title {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 0 0 8px 0;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.95rem;
+      margin: 0 0 16px 0;
+    }
+
+    .set-selector-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .set-select, .num-input, .recall-input {
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 1rem;
+    }
+
+    .num-input {
+      width: 80px;
+      text-align: center;
+    }
+
+    /* Screen Management */
+    .screen {
+      display: none;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    /* Setup Screen */
+    .setup-box {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+    }
+
+    /* Progress Display */
+    .progress-bar {
+      text-align: center;
+      font-weight: bold;
+      color: #64748b;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .prompt-box {
+      border: 2px solid var(--accent);
+      background: #eff6ff;
+      border-radius: 10px;
+      padding: 24px 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .prompt-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #2563eb;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .prompt-word {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-top: 6px;
+      color: #1e293b;
+      text-transform: capitalize;
+    }
+
+    .input-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .recall-input {
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .feedback-box {
+      display: none;
+      padding: 14px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .feedback-box.correct {
+      display: block;
+      background: var(--correct-bg);
+      color: #14532d;
+      border: 1px solid var(--correct);
+    }
+
+    .feedback-box.wrong {
+      display: block;
+      background: var(--wrong-bg);
+      color: #7f1d1d;
+      border: 1px solid var(--wrong);
+    }
+
+    .feedback-details {
+      font-weight: normal;
+      font-size: 0.95rem;
+      margin-top: 4px;
+    }
+
+    .btn-action {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-action:hover {
+      background: #1d4ed8;
+    }
+
+    /* Results Screen */
+    .results-section {
+      margin-top: 16px;
+    }
+
+    .results-header {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    .word-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+      max-height: 350px;
+      overflow-y: auto;
+      padding: 4px;
+    }
+
+    .result-card {
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid;
+    }
+
+    .result-card.correct {
+      background: var(--correct-bg);
+      border-color: var(--correct);
+      color: #14532d;
+    }
+
+    .result-card.wrong {
+      background: var(--wrong-bg);
+      border-color: var(--wrong);
+      color: #7f1d1d;
+    }
+
+    .result-card .en {
+      font-weight: bold;
+      font-size: 0.9rem;
+      text-transform: capitalize;
+    }
+
+    .result-card .jp {
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    .result-card .sub {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    .user-answer {
+      font-size: 0.75rem;
+      margin-top: 4px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <h1 class="title">Recall Test</h1>
+
+  <!-- Setup Screen -->
+  <div id="setup-screen" class="screen active">
+    <p class="subtitle">Type the Japanese translation (Kanji, Kana, or Romaji) for each prompt!</p>
+    <div class="setup-box">
+      <div class="set-selector-container">
+        <label for="set-select">Practice Set:</label>
+        <select id="set-select" class="set-select" onchange="loadSet(this.value)">
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="num-questions">Questions:</label>
+        <input type="number" id="num-questions" class="num-input" value="10" min="1" max="100">
+      </div>
+
+      <button class="btn-action" onclick="startTest()">Start Test</button>
+    </div>
+  </div>
+
+  <!-- Test Screen -->
+  <div id="test-screen" class="screen">
+    <div class="progress-bar">
+      Question <span id="current-q">1</span> of <span id="total-q">10</span>
+    </div>
+
+    <div class="prompt-box">
+      <div id="prompt-category" class="prompt-category">Category</div>
+      <div id="prompt-word" class="prompt-word">---</div>
+    </div>
+
+    <form id="recall-form" class="input-form" onsubmit="handleFormSubmit(event)">
+      <input type="text" id="answer-input" class="recall-input" placeholder="Type Kanji, Kana, or Romaji..." autocomplete="off" autofocus>
+      <button type="submit" id="submit-btn" class="btn-action">Check Answer</button>
+    </form>
+
+    <div id="feedback-box" class="feedback-box">
+      <div id="feedback-title"></div>
+      <div id="feedback-details" class="feedback-details"></div>
+    </div>
+
+    <button id="next-btn" class="btn-action" style="display: none;" onclick="nextQuestion()">Next Question</button>
+  </div>
+
+  <!-- Results Screen -->
+  <div id="results-screen" class="screen">
+    <div class="results-header" id="summary-header">Test Complete!</div>
+
+    <div class="results-section">
+      <div class="word-list" id="results-list"></div>
+    </div>
+
+    <button class="btn-action" onclick="restart()">Try Again</button>
+  </div>
+</div>
+
+<script>
+  let currentSetData = {};
+  let unaskedWords = [];
+  let currentTarget = null;
+
+  let totalQuestions = 10;
+  let currentQuestionIndex = 0;
+
+  let correctResults = [];
+  let wrongResults = [];
+
+  // Minimum similarity percentage (0.80 = 80%) required for fuzzy match
+  const SIMILARITY_THRESHOLD = 0.80;
+
+  const fallbackData = {
+    "topic": [
+      { "en": "doctor", "kanji": "医者", "kana": "いしゃ", "romaji": "isha" },
+      { "en": "I", "kanji": "私", "kana": "わたし", "romaji": "watashi" },
+      { "en": "lawyer", "kanji": "弁護士", "kana": "べんごし", "romaji": "bengoshi" },
+      { "en": "student", "kanji": "学生", "kana": "がくせい", "romaji": "gakusei" },
+      { "en": "I (used by men)", "kanji": "僕", "kana": "ぼく", "romaji": "boku" },
+      { "en": "who", "kanji": "誰", "kana": "だれ", "romaji": "dare" }
+    ],
+    "time": [
+      { "en": "today", "kanji": "今日", "kana": "きょう", "romaji": "kyou" },
+      { "en": "tomorrow", "kanji": "明日", "kana": "あした", "romaji": "ashita" },
+      { "en": "tonight", "kanji": "今晩", "kana": "こんばん", "romaji": "konban" },
+      { "en": "weekend", "kanji": "週末", "kana": "しゅうまつ", "romaji": "shuumatsu" },
+      { "en": "yesterday", "kanji": "昨日", "kana": "きのう", "romaji": "kinou" },
+      { "en": "Tuesday", "kanji": "火曜日", "kana": "かようび", "romaji": "kayoubi" },
+      { "en": "Thursday", "kanji": "木曜日", "kana": "もくようび", "romaji": "mokuyoubi" },
+      { "en": "Wednesday", "kanji": "水曜日", "kana": "すいようび", "romaji": "suiyoubi" }
+    ],
+    "place": [
+      { "en": "college; university", "kanji": "大学", "kana": "だいがく", "romaji": "daigaku" },
+      { "en": "toilet; restroom", "kanji": "トイレ", "kana": "といれ", "romaji": "toire" },
+      { "en": "library", "kanji": "図書館", "kana": "としょかん", "romaji": "toshokan" },
+      { "en": "post office", "kanji": "郵便局", "kana": "ゆうびんきょく", "romaji": "yuubinkyoku" },
+      { "en": "bank", "kanji": "銀行", "kana": "ぎんこう", "romaji": "ginkou" },
+      { "en": "school", "kanji": "学校", "kana": "がっこう", "romaji": "gakkou" },
+      { "en": "bookstore", "kanji": "本屋", "kana": "ほんや", "romaji": "hon'ya" },
+      { "en": "bus stop", "kanji": "バス停", "kana": "ばすてい", "romaji": "basutei" },
+      { "en": "hospital", "kanji": "病院", "kana": "びょういん", "romaji": "byouin" },
+      { "en": "hotel", "kanji": "ホテル", "kana": "ほてる", "romaji": "hoteru" }
+    ],
+    "action": [
+      { "en": "breakfast", "kanji": "朝ご飯", "kana": "あさごはん", "romaji": "asagohan" },
+      { "en": "coffee", "kanji": "コーヒー", "kana": "こーひー", "romaji": "koohee" },
+      { "en": "green tea", "kanji": "お茶", "kana": "おちゃ", "romaji": "ocha" },
+      { "en": "dinner", "kanji": "晩ご飯", "kana": "ばんごはん", "romaji": "bangohan" },
+      { "en": "hamburger", "kanji": "ハンバーガー", "kana": "はんばーがー", "romaji": "hanbaagaa" },
+      { "en": "lunch", "kanji": "昼ご飯", "kana": "ひるごはん", "romaji": "hirugohan" },
+      { "en": "movie", "kanji": "映画", "kana": "えいが", "romaji": "eiga" },
+      { "en": "music", "kanji": "音楽", "kana": "おんがく", "romaji": "ongaku" },
+      { "en": "magazine", "kanji": "雑誌", "kana": "ざっし", "romaji": "zasshi" }
+    ]
+  };
+
+  async function initializeApp() {
+    const selectEl = document.getElementById('set-select');
+    try {
+      const response = await fetch('Test/manifest.json');
+      if (!response.ok) throw new Error('Manifest not found');
+      const setsList = await response.json();
+
+      selectEl.innerHTML = '';
+      setsList.forEach(setItem => {
+        const option = document.createElement('option');
+        option.value = setItem.file;
+        option.textContent = setItem.name;
+        selectEl.appendChild(option);
+      });
+
+      if (setsList.length > 0) {
+        loadSet(setsList[0].file);
+      }
+    } catch (error) {
+      selectEl.innerHTML = '<option value="default">Default Set</option>';
+      currentSetData = fallbackData;
+    }
+  }
+
+  async function loadSet(filePath) {
+    if (filePath === 'default') {
+      currentSetData = fallbackData;
+      return;
+    }
+
+    try {
+      const response = await fetch(filePath);
+      currentSetData = await response.json();
+    } catch (error) {
+      console.error('Error loading vocabulary set:', error);
+    }
+  }
+
+  function showScreen(screenId) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(screenId).classList.add('active');
+  }
+
+  function startTest() {
+    unaskedWords = [];
+    Object.keys(currentSetData).forEach(cat => {
+      if (Array.isArray(currentSetData[cat])) {
+        currentSetData[cat].forEach(item => {
+          unaskedWords.push({ ...item, category: cat });
+        });
+      }
+    });
+
+    if (unaskedWords.length === 0) return;
+
+    const reqAmount = parseInt(document.getElementById('num-questions').value, 10) || 10;
+    totalQuestions = Math.min(reqAmount, unaskedWords.length);
+    currentQuestionIndex = 0;
+
+    correctResults = [];
+    wrongResults = [];
+
+    showScreen('test-screen');
+    nextQuestion();
+  }
+
+  function nextQuestion() {
+    document.getElementById('feedback-box').className = 'feedback-box';
+    document.getElementById('next-btn').style.display = 'none';
+
+    const recallForm = document.getElementById('recall-form');
+    const inputEl = document.getElementById('answer-input');
+
+    recallForm.style.display = 'flex';
+    inputEl.disabled = false;
+    inputEl.value = '';
+
+    if (currentQuestionIndex >= totalQuestions || unaskedWords.length === 0) {
+      finishTest();
+      return;
+    }
+
+    currentQuestionIndex++;
+    document.getElementById('current-q').innerText = currentQuestionIndex;
+    document.getElementById('total-q').innerText = totalQuestions;
+
+    const targetIdx = Math.floor(Math.random() * unaskedWords.length);
+    currentTarget = unaskedWords.splice(targetIdx, 1)[0];
+
+    document.getElementById('prompt-category').innerText = currentTarget.category;
+    document.getElementById('prompt-word').innerText = currentTarget.en;
+
+    setTimeout(() => inputEl.focus(), 50);
+  }
+
+  function sanitize(str) {
+    return (str || '').toLowerCase().trim().replace(/[^a-z0-9ぁ-んァ-ヶ一-龠ー]/g, '');
+  }
+
+  function getLevenshteinDistance(a, b) {
+    const matrix = [];
+
+    for (let i = 0; i <= b.length; i++) {
+      matrix[i] = [i];
+    }
+    for (let j = 0; j <= a.length; j++) {
+      matrix[0][j] = j;
+    }
+
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        if (b.charAt(i - 1) === a.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+        }
+      }
+    }
+    return matrix[b.length][a.length];
+  }
+
+  function calculateSimilarity(str1, str2) {
+    const s1 = sanitize(str1);
+    const s2 = sanitize(str2);
+
+    if (!s1 || !s2) return 0;
+    if (s1 === s2) return 1.0;
+
+    const maxLen = Math.max(s1.length, s2.length);
+    const distance = getLevenshteinDistance(s1, s2);
+    return (maxLen - distance) / maxLen;
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const inputEl = document.getElementById('answer-input');
+    const rawInput = inputEl.value;
+
+    if (!rawInput.trim()) return;
+
+    inputEl.disabled = true;
+    document.getElementById('submit-btn').style.display = 'none';
+
+    const userClean = sanitize(rawInput);
+    const kanjiClean = sanitize(currentTarget.kanji);
+    const kanaClean = sanitize(currentTarget.kana);
+    const romajiClean = sanitize(currentTarget.romaji);
+
+    // 1. Direct match check (Kanji, Kana, or Romaji)
+    let isCorrect = (
+      userClean === kanjiClean ||
+      userClean === kanaClean ||
+      userClean === romajiClean
+    );
+
+    // 2. Similarity calculation fallback (if not an exact match)
+    if (!isCorrect) {
+      const scoreKanji = calculateSimilarity(userClean, kanjiClean);
+      const scoreKana = calculateSimilarity(userClean, kanaClean);
+      const scoreRomaji = calculateSimilarity(userClean, romajiClean);
+
+      const bestScore = Math.max(scoreKanji, scoreKana, scoreRomaji);
+      isCorrect = bestScore >= SIMILARITY_THRESHOLD;
+    }
+
+    const feedbackBox = document.getElementById('feedback-box');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackDetails = document.getElementById('feedback-details');
+
+    if (isCorrect) {
+      feedbackBox.className = 'feedback-box correct';
+      feedbackTitle.innerText = 'Correct!';
+      feedbackDetails.innerText = `${currentTarget.kanji} • ${currentTarget.kana} (${currentTarget.romaji})`;
+      correctResults.push({ ...currentTarget, userInput: rawInput });
+    } else {
+      feedbackBox.className = 'feedback-box wrong';
+      feedbackTitle.innerText = 'Incorrect';
+      feedbackDetails.innerText = `Correct Answer: ${currentTarget.kanji} • ${currentTarget.kana} (${currentTarget.romaji})`;
+      wrongResults.push({ ...currentTarget, userInput: rawInput });
+    }
+
+    document.getElementById('recall-form').style.display = 'none';
+    document.getElementById('submit-btn').style.display = 'block';
+    document.getElementById('next-btn').style.display = 'block';
+    document.getElementById('next-btn').focus();
+  }
+
+  function finishTest() {
+    showScreen('results-screen');
+    document.getElementById('summary-header').innerText = `Completed ${totalQuestions} Questions (${correctResults.length}/${totalQuestions} Correct)`;
+
+    const list = document.getElementById('results-list');
+    list.innerHTML = '';
+
+    correctResults.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'result-card correct';
+      card.innerHTML = `
+        <div class="en">${item.en}</div>
+        <div class="jp">${item.kanji}</div>
+        <div class="sub">${item.kana} (${item.romaji})</div>
+      `;
+      list.appendChild(card);
+    });
+
+    wrongResults.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'result-card wrong';
+      card.innerHTML = `
+        <div class="en">${item.en}</div>
+        <div class="jp">${item.kanji}</div>
+        <div class="sub">${item.kana} (${item.romaji})</div>
+        <div class="user-answer">Your answer: "${item.userInput || 'blank'}"</div>
+      `;
+      list.appendChild(card);
+    });
+  }
+
+  function restart() {
+    showScreen('setup-screen');
+  }
+
+  initializeApp();
+</script>
+
+</body>
+</html>

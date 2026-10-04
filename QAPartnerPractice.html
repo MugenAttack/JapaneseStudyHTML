@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japanese Q&A Practice Tool</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
@@ -18,8 +20,8 @@
 </head>
 <body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col">
 
-    <!-- Header & Lesson Manifest Selector -->
-    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50">
+    <!-- Header & Lesson Selector -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="bg-red-500 text-white p-2 rounded-xl shadow-inner">
@@ -27,10 +29,11 @@
                 </div>
                 <div>
                     <h1 class="font-bold text-lg tracking-tight leading-none">Japanese Info Gap Practice</h1>
-                    <p class="text-xs text-slate-400 mt-0.5">Genki Q&A Pair Activity</p>
+                    <p class="text-xs text-slate-400 mt-0.5">Dynamic Category Q&A Activity</p>
                 </div>
             </div>
 
+            <!-- Lesson Manifest Selector -->
             <div class="flex items-center space-x-2 bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-700">
                 <i class="fa-solid fa-book-open text-xs text-red-400"></i>
                 <select id="lessonSelect" onchange="changeLesson(this.value)" class="bg-transparent text-slate-100 text-sm font-medium focus:outline-none cursor-pointer pr-2">
@@ -43,7 +46,7 @@
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main App Container -->
     <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
 
         <!-- Toolbar & Seed Controls -->
@@ -54,7 +57,7 @@
                     <span class="text-xs font-bold text-indigo-700">Your Seed (P1):</span>
                     <input type="number" id="p1SeedInput" value="101" class="w-20 px-2 py-0.5 text-sm rounded border border-indigo-200 focus:ring-2 focus:ring-indigo-500 outline-none font-mono text-center">
                     <button onclick="randomizeSeed('p1SeedInput')" class="text-indigo-600 hover:text-indigo-800 p-1" title="Randomize P1 Seed">
-                        <i class="fa-solid fa-dice"></i>
+                        <i class="fa-solid fa-dice text-sm"></i>
                     </button>
                 </div>
 
@@ -63,7 +66,7 @@
                     <span class="text-xs font-bold text-emerald-700">Partner Seed (P2):</span>
                     <input type="number" id="p2SeedInput" value="202" class="w-20 px-2 py-0.5 text-sm rounded border border-emerald-200 focus:ring-2 focus:ring-emerald-500 outline-none font-mono text-center">
                     <button onclick="randomizeSeed('p2SeedInput')" class="text-emerald-600 hover:text-emerald-800 p-1" title="Randomize P2 Seed">
-                        <i class="fa-solid fa-dice"></i>
+                        <i class="fa-solid fa-dice text-sm"></i>
                     </button>
                     <button onclick="toggleSeedMask()" id="maskBtn" class="text-emerald-700 hover:text-emerald-900 p-1" title="Toggle Seed Mask">
                         <i class="fa-solid fa-eye-slash text-xs"></i>
@@ -83,7 +86,7 @@
             </div>
         </div>
 
-        <!-- Side-by-Side Content Area -->
+        <!-- Side-by-Side Content Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 
             <!-- Player 1 Column -->
@@ -93,9 +96,10 @@
                         <i class="fa-solid fa-user text-indigo-200"></i>
                         <h2 class="font-bold text-base">Your Info (P1)</h2>
                     </div>
+                    <span id="p1CategoryCount" class="text-xs bg-indigo-700 px-2.5 py-1 rounded-lg text-indigo-100 font-medium">0 questions</span>
                 </div>
                 <div class="p-5 flex-1 space-y-4" id="p1Container">
-                    <!-- Dynamic P1 persona items generated here -->
+                    <!-- Dynamic P1 category response cards rendered here -->
                 </div>
             </div>
 
@@ -106,17 +110,18 @@
                         <i class="fa-solid fa-user-group text-emerald-200"></i>
                         <h2 class="font-bold text-base">Partner Info (P2)</h2>
                     </div>
+                    <span id="p2CategoryCount" class="text-xs bg-emerald-700 px-2.5 py-1 rounded-lg text-emerald-100 font-medium">0 questions</span>
                 </div>
                 <div class="p-5 flex-1 space-y-4" id="p2Container">
-                    <!-- Dynamic P2 note log & reveal cards generated here -->
+                    <!-- Dynamic P2 partner notes & reveal cards rendered here -->
                 </div>
             </div>
 
         </div>
     </main>
 
-    <!-- JavaScript Logic -->
     <script>
+        // Global State Variables
         let currentManifest = [];
         let currentDataset = null;
         let p1Data = {};
@@ -134,43 +139,30 @@
             }
         }
 
-        // Default Genki Lesson fallback dataset
+        // Helper: Convert any arbitrary string/category key into a safe, valid DOM element ID
+        function sanitizeId(str) {
+            return String(str).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9_-]/g, '');
+        }
+
+        // Default Fallback Dataset
         const fallbackDataset = {
-            "categories": ["name", "age", "occupation", "major"],
-            "name": {
-                "label": "Name",
-                "options": [
-                    { "val": "Ken", "jp": "ケン", "reading": "ケン", "romaji": "Ken" },
-                    { "val": "Mary", "jp": "メアリー", "reading": "メアリー", "romaji": "Mearī" },
-                    { "val": "Takeshi", "jp": "たけし", "reading": "たけし", "romaji": "Takeshi" },
-                    { "val": "Sora", "jp": "空", "reading": "そら", "romaji": "Sora" }
-                ]
-            },
-            "age": {
-                "label": "Age",
-                "options": [
-                    { "val": "19 years old", "jp": "19歳", "reading": "じゅうきゅうさい", "romaji": "Jūkyū sai" },
-                    { "val": "20 years old", "jp": "20歳", "reading": "はたち", "romaji": "Hatachi" },
-                    { "val": "21 years old", "jp": "21歳", "reading": "にじゅういっさい", "romaji": "Nijūissai" },
-                    { "val": "22 years old", "jp": "22歳", "reading": "にじゅうにさい", "romaji": "Nijūni sai" }
-                ]
-            },
-            "occupation": {
-                "label": "Occupation",
-                "options": [
-                    { "val": "Student", "jp": "学生", "reading": "がくせい", "romaji": "Gakusei" },
-                    { "val": "Teacher", "jp": "先生", "reading": "せんせい", "romaji": "Sensei" },
-                    { "val": "Company Employee", "jp": "会社員", "reading": "かいしゃいん", "romaji": "Kaishain" }
-                ]
-            },
-            "major": {
-                "label": "Major",
-                "options": [
-                    { "val": "Japanese Language", "jp": "日本語", "reading": "にほんご", "romaji": "Nihongo" },
-                    { "val": "Economics", "jp": "経済", "reading": "けいざい", "romaji": "Keizai" },
-                    { "val": "Computer Science", "jp": "情報科学", "reading": "じょうほうかがく", "romaji": "Jōhō kagaku" }
-                ]
-            }
+            "topic": [
+                { "en": "I", "kanji": "私", "kana": "わたし", "romaji": "watashi" },
+                { "en": "friend", "kanji": "友達", "kana": "ともだち", "romaji": "tomodachi" },
+                { "en": "doctor", "kanji": "医者", "kana": "いしゃ", "romaji": "isha" }
+            ],
+            "time": [
+                { "en": "now", "kanji": "今", "kana": "いま", "romaji": "ima" },
+                { "en": "half past two", "kanji": "二時半", "kana": "にじはん", "romaji": "niji han" }
+            ],
+            "place": [
+                { "en": "university", "kanji": "大学", "kana": "だいがく", "romaji": "daigaku" },
+                { "en": "library", "kanji": "図書館", "kana": "としょかん", "romaji": "toshokan" }
+            ],
+            "action": [
+                { "en": "telephone", "kanji": "電話", "kana": "でんわ", "romaji": "denwa" },
+                { "en": "book", "kanji": "本", "kana": "ほん", "romaji": "hon" }
+            ]
         };
 
         window.onload = function() {
@@ -245,38 +237,83 @@
             }
         }
 
+        // Dynamic Extractor: Reads ALL top-level keys as potential categories
+        function getCategories(dataset) {
+            if (!dataset || typeof dataset !== 'object') return [];
+
+            // Explicit categories key if provided
+            if (Array.isArray(dataset.categories)) {
+                return dataset.categories;
+            }
+
+            // Read all top-level keys that map to arrays or category objects
+            return Object.keys(dataset).filter(key => {
+                if (key === 'title' || key === 'description' || key === 'categories') return false;
+                const value = dataset[key];
+                return Array.isArray(value) || (value && typeof value === 'object' && Array.isArray(value.options));
+            });
+        }
+
+        // Extract option list for a given category key
+        function getCategoryOptions(dataset, catKey) {
+            const raw = dataset[catKey];
+            if (!raw) return [];
+            if (Array.isArray(raw)) return raw;
+            if (Array.isArray(raw.options)) return raw.options;
+            return [];
+        }
+
+        // Normalize vocabulary item fields dynamically across various schema naming conventions
+        function normalizeItem(rawItem) {
+            if (!rawItem || typeof rawItem !== 'object') {
+                const text = String(rawItem || '');
+                return { en: text, kanji: text, kana: text, romaji: '' };
+            }
+
+            const mainJp = rawItem.kanji || rawItem.jp || rawItem.japanese || rawItem.kana || rawItem.hiragana || '';
+            const reading = rawItem.kana || rawItem.reading || rawItem.furigana || rawItem.hiragana || '';
+            const english = rawItem.en || rawItem.val || rawItem.english || rawItem.meaning || rawItem.translation || mainJp;
+            const romaji = rawItem.romaji || '';
+
+            return {
+                ...rawItem,
+                en: english,
+                kanji: mainJp,
+                kana: reading,
+                romaji: romaji
+            };
+        }
+
+        // Evaluates a seed to pick 1 item per category
         function evaluateSeed(seed, dataset) {
             const rng = mulberry32(parseInt(seed) || 123);
             const result = {};
-            
-            if (!dataset || !dataset.categories) return result;
+            const categories = getCategories(dataset);
 
-            // Sequential independent draw per category
-            dataset.categories.forEach(catKey => {
-                const catData = dataset[catKey];
-                if (catData && catData.options && catData.options.length > 0) {
-                    const randomVal = rng();
-                    const chosenIdx = Math.floor(randomVal * catData.options.length);
-                    result[catKey] = {
-                        label: catData.label || catKey,
-                        item: catData.options[chosenIdx]
+            categories.forEach(categoryKey => {
+                const options = getCategoryOptions(dataset, categoryKey);
+                if (options && options.length > 0) {
+                    const chosenIdx = Math.floor(rng() * options.length);
+                    const normalized = normalizeItem(options[chosenIdx]);
+                    result[categoryKey] = {
+                        label: categoryKey,
+                        item: normalized
                     };
                 }
             });
             return result;
         }
 
-        // Formats Japanese text strictly as Kanji (Hiragana)
+        // Formats Japanese text: "Kanji (Kana)" or just "Kana" if Kanji equals Kana or is empty
         function formatJapaneseText(item) {
             if (!item) return '';
-            const mainText = item.jp || '';
-            const reading = item.reading || item.furigana || '';
-            
-            // If reading exists and differs from main text, format as "Kanji (reading)"
-            if (reading && reading !== mainText) {
-                return `${mainText} (${reading})`;
+            const kanji = item.kanji || item.kana || '';
+            const kana = item.kana || '';
+
+            if (kana && kana !== kanji) {
+                return `${kanji} (${kana})`;
             }
-            return mainText;
+            return kanji;
         }
 
         function generateGame() {
@@ -297,27 +334,29 @@
             const container = document.getElementById('p1Container');
             container.innerHTML = '';
 
-            if (!currentDataset || !currentDataset.categories) return;
+            const categories = getCategories(currentDataset);
+            document.getElementById('p1CategoryCount').textContent = `${categories.length} questions`;
 
-            currentDataset.categories.forEach(key => {
-                const data = p1Data[key];
+            categories.forEach(categoryKey => {
+                const data = p1Data[categoryKey];
                 if (!data) return;
 
                 const card = document.createElement('div');
-                card.className = "bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5";
-                
+                card.className = "bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1.5 transition hover:border-indigo-200";
+
                 const formattedText = formatJapaneseText(data.item);
+                const audioText = data.item.kanji || data.item.kana || '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-center">
                         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">${data.label}</span>
-                        <button onclick="speakText('${escapeQuotes(data.item.jp)}')" class="text-indigo-600 hover:text-indigo-800 p-1.5 rounded-lg hover:bg-indigo-100 transition" title="Listen Word">
+                        <button onclick="speakText('${escapeQuotes(audioText)}')" class="text-indigo-600 hover:text-indigo-800 p-1.5 rounded-lg hover:bg-indigo-100 transition" title="Listen Word">
                             <i class="fa-solid fa-volume-high text-xs"></i>
                         </button>
                     </div>
                     <div class="text-lg font-bold text-slate-800 japanese-text">${formattedText}</div>
                     <div class="text-xs text-slate-500 font-medium">${data.item.romaji || ''}</div>
-                    <div class="text-xs font-semibold text-indigo-700 bg-indigo-50/50 inline-block px-2 py-0.5 rounded border border-indigo-100">${data.item.val}</div>
+                    <div class="text-xs font-semibold text-indigo-700 bg-indigo-50 inline-block px-2 py-0.5 rounded border border-indigo-100">${data.item.en || ''}</div>
                 `;
                 container.appendChild(card);
             });
@@ -327,18 +366,21 @@
             const container = document.getElementById('p2Container');
             container.innerHTML = '';
 
-            if (!currentDataset || !currentDataset.categories) return;
+            const categories = getCategories(currentDataset);
+            document.getElementById('p2CategoryCount').textContent = `${categories.length} questions`;
 
-            currentDataset.categories.forEach(key => {
-                const data = p2Data[key];
+            categories.forEach(categoryKey => {
+                const data = p2Data[categoryKey];
                 if (!data) return;
 
-                const existingInput = document.getElementById(`note-${key}`)?.value || '';
+                const safeId = sanitizeId(categoryKey);
+                const existingInput = document.getElementById(`note-${safeId}`)?.value || '';
 
                 const card = document.createElement('div');
-                card.className = "bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3";
+                card.className = "bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 transition hover:border-emerald-200";
 
                 const formattedText = formatJapaneseText(data.item);
+                const audioText = data.item.kanji || data.item.kana || '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-center">
@@ -346,19 +388,19 @@
                     </div>
 
                     <div>
-                        <input type="text" id="note-${key}" value="${existingInput}" placeholder="Type partner answer..." class="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
+                        <input type="text" id="note-${safeId}" value="${existingInput}" placeholder="Type partner answer..." class="w-full text-sm px-3 py-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:outline-none bg-white">
                     </div>
 
-                    <div id="reveal-${key}" class="${isRevealed ? '' : 'hidden'} bg-amber-50 p-3 rounded-lg border border-amber-200 space-y-1">
+                    <div id="reveal-${safeId}" class="${isRevealed ? '' : 'hidden'} bg-amber-50 p-3 rounded-lg border border-amber-200 space-y-1">
                         <div class="flex justify-between items-center">
                             <span class="text-xs font-bold text-amber-800">True Answer:</span>
-                            <button onclick="speakText('${escapeQuotes(data.item.jp)}')" class="text-amber-700 hover:text-amber-900 p-1" title="Listen Word">
+                            <button onclick="speakText('${escapeQuotes(audioText)}')" class="text-amber-700 hover:text-amber-900 p-1" title="Listen Word">
                                 <i class="fa-solid fa-volume-high text-xs"></i>
                             </button>
                         </div>
                         <div class="text-base font-bold text-slate-800 japanese-text">${formattedText}</div>
                         <div class="text-xs text-slate-500 font-medium">${data.item.romaji || ''}</div>
-                        <div class="text-xs font-semibold text-emerald-700">${data.item.val}</div>
+                        <div class="text-xs font-semibold text-emerald-700">${data.item.en || ''}</div>
                     </div>
                 `;
                 container.appendChild(card);
@@ -368,11 +410,11 @@
         function toggleReveal() {
             isRevealed = !isRevealed;
             updateRevealBtnUI();
-            
-            if (!currentDataset || !currentDataset.categories) return;
 
-            currentDataset.categories.forEach(key => {
-                const revealBox = document.getElementById(`reveal-${key}`);
+            const categories = getCategories(currentDataset);
+            categories.forEach(categoryKey => {
+                const safeId = sanitizeId(categoryKey);
+                const revealBox = document.getElementById(`reveal-${safeId}`);
                 if (revealBox) {
                     if (isRevealed) {
                         revealBox.classList.remove('hidden');
@@ -399,6 +441,7 @@
             }
         }
 
+        // Text-to-speech for Japanese pronunciation
         function speakText(text) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
