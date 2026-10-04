@@ -1,26 +1,26 @@
-to come (destination ni/e),来る,くる,kuru,Lesson 3
-to do (~o),する,する,suru,Lesson 3
-to drink (~o),飲む,のむ,nomu,Lesson 3
-to eat (~o),食べる,たべる,taberu,Lesson 3
-to get up,起きる,おきる,okiru,Lesson 3
-to go (destination ni/e),行く,いく,iku,Lesson 3
-to go back; to return (destination ni/e),帰る,かえる,kaeru,Lesson 3
-to listen; to hear (~o),聞く,きく,kiku,Lesson 3
-to read (~o),読む,よむ,yomu,Lesson 3
-to see; to look at; to watch (~o),見る,みる,miru,Lesson 3
-to sleep; to go to sleep,寝る,ねる,neru,Lesson 3
-to speak; to talk (language e/de),話す,はなす,hanasu,Lesson 3
-to study (~o),勉強する,べんきょうする,benkyousuru,Lesson 3
-(a person) is in ...; stays at ...,いる,いる,iru,Lesson 4
-there is ...,ある,ある,aru,Lesson 4
-to buy (~o),買う,かう,kau,Lesson 4
-to meet; to see (a person),会う,あう,au,Lesson 4
-to take (a picture) (~o),撮る,とる,toru,Lesson 4
-to understand (~ga),わかる,わかる,wakaru,Lesson 4
-to wait (~o),待つ,まつ,matsu,Lesson 4
-to write (person ni thing o),書く,かく,kaku,Lesson 4
-to ask (person ni),聞く,きく,kiku,Lesson 5
-to do; to perform (~o),やる,やる,yaru,Lesson 5
-to go out,出かける,でかける,dekakeru,Lesson 5
-to ride; to board (~ni),乗る,のる,noru,Lesson 5
-to swim,泳ぐ,およぐ,oyogu,Lesson 5
+to come (destination ni/e),来る,くる,kuru,Lesson 3,irregular verb
+to do (~o),する,する,suru,Lesson 3,irregular verb
+to drink (~o),飲む,のむ,nomu,Lesson 3,u-verb
+to eat (~o),食べる,たべる,taberu,Lesson 3,ru-verb
+to get up,起きる,おきる,okiru,Lesson 3,ru-verb
+to go (destination ni/e),行く,いく,iku,Lesson 3,u-verb
+to go back; to return (destination ni/e),帰る,かえる,kaeru,Lesson 3,u-verb
+to listen; to hear (~o),聞く,きく,kiku,Lesson 3,u-verb
+to read (~o),読む,よむ,yomu,Lesson 3,u-verb
+to see; to look at; to watch (~o),見る,みる,miru,Lesson 3,ru-verb
+to sleep; to go to sleep,寝る,ねる,neru,Lesson 3,ru-verb
+to speak; to talk (language e/de),話す,はなす,hanasu,Lesson 3,u-verb
+to study (~o),勉強する,べんきょうする,benkyousuru,Lesson 3,irregular verb
+(a person) is in ...; stays at ...,いる,いる,iru,Lesson 4,ru-verb
+there is ...,ある,ある,aru,Lesson 4,u-verb
+to buy (~o),買う,かう,kau,Lesson 4,u-verb
+to meet; to see (a person),会う,あう,au,Lesson 4,u-verb
+to take (a picture) (~o),撮る,とる,toru,Lesson 4,u-verb
+to understand (~ga),わかる,わかる,wakaru,Lesson 4,u-verb
+to wait (~o),待つ,まつ,matsu,Lesson 4,u-verb
+to write (person ni thing o),書く,かく,kaku,Lesson 4,u-verb
+to ask (person ni),聞く,きく,kiku,Lesson 5,u-verb
+to do; to perform (~o),やる,やる,yaru,Lesson 5,u-verb
+to go out,出かける,でかける,dekakeru,Lesson 5,ru-verb
+to ride; to board (~ni),乗る,のる,noru,Lesson 5,u-verb
+to swim,泳ぐ,およぐ,oyogu,Lesson 5,u-verb
