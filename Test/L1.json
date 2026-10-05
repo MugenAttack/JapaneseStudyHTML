@@ -1,0 +1,426 @@
+{
+  "people": [
+    {
+      "en": "college student",
+      "kanji": "大学生",
+      "kana": "だいがくせい",
+      "romaji": "daigakusei"
+    },
+    {
+      "en": "doctor",
+      "kanji": "医者",
+      "kana": "いしゃ",
+      "romaji": "isha"
+    },
+    {
+      "en": "first-year student",
+      "kanji": "一年生",
+      "kana": "いちねんせい",
+      "romaji": "ichinensei"
+    },
+    {
+      "en": "friend",
+      "kanji": "友達",
+      "kana": "ともだち",
+      "romaji": "tomodachi"
+    },
+    {
+      "en": "graduate student",
+      "kanji": "大学院生",
+      "kana": "だいがくいんせい",
+      "romaji": "daigakuinsei"
+    },
+    {
+      "en": "high school student",
+      "kanji": "高校生",
+      "kana": "こうこうせい",
+      "romaji": "koukousei"
+    },
+    {
+      "en": "housewife",
+      "kanji": "主婦",
+      "kana": "しゅふ",
+      "romaji": "shufu"
+    },
+    {
+      "en": "I",
+      "kanji": "私",
+      "kana": "わたし",
+      "romaji": "watashi"
+    },
+    {
+      "en": "international student",
+      "kanji": "留学生",
+      "kana": "りゅうがくせい",
+      "romaji": "ryuugakusei"
+    },
+    {
+      "en": "Japanese people",
+      "kanji": "日本人",
+      "kana": "にほんじん",
+      "romaji": "nihonjin"
+    },
+    {
+      "en": "lawyer",
+      "kanji": "弁護士",
+      "kana": "べんごし",
+      "romaji": "bengoshi"
+    },
+    {
+      "en": "Mr./Ms. ...",
+      "kanji": "〜さん",
+      "kana": "〜さん",
+      "romaji": "...san"
+    },
+    {
+      "en": "father",
+      "kanji": "お父さん",
+      "kana": "おとうさん",
+      "romaji": "otousan"
+    },
+    {
+      "en": "mother",
+      "kanji": "お母さん",
+      "kana": "おかあさん",
+      "romaji": "okaasan"
+    },
+    {
+      "en": "nurse",
+      "kanji": "看護師",
+      "kana": "かんごし",
+      "romaji": "kangoshi"
+    },
+    {
+      "en": "office worker",
+      "kanji": "会社員",
+      "kana": "かいしゃいん",
+      "romaji": "kaishain"
+    },
+    {
+      "en": "older sister",
+      "kanji": "お姉さん",
+      "kana": "おねえさん",
+      "romaji": "oneesan"
+    },
+    {
+      "en": "older brother",
+      "kanji": "お兄さん",
+      "kana": "おにいさん",
+      "romaji": "oniisan"
+    },
+    {
+      "en": "... people",
+      "kanji": "〜人",
+      "kana": "〜じん",
+      "romaji": "...jin"
+    },
+    {
+      "en": "student",
+      "kanji": "学生",
+      "kana": "がくせい",
+      "romaji": "gakusei"
+    },
+    {
+      "en": "teacher; Professor ...",
+      "kanji": "先生",
+      "kana": "せんせい",
+      "romaji": "sensei"
+    },
+    {
+      "en": "... year student",
+      "kanji": "〜年生",
+      "kana": "〜ねんせい",
+      "romaji": "...nensei"
+    },
+    {
+      "en": "younger brother",
+      "kanji": "弟",
+      "kana": "おとうと",
+      "romaji": "otouto"
+    },
+    {
+      "en": "younger sister",
+      "kanji": "妹",
+      "kana": "いもうと",
+      "romaji": "imouto"
+    }
+  ],
+  "time": [
+    {
+      "en": "A.M.",
+      "kanji": "午前",
+      "kana": "ごぜん",
+      "romaji": "gozen"
+    },
+    {
+      "en": "half",
+      "kanji": "半",
+      "kana": "はん",
+      "romaji": "han"
+    },
+    {
+      "en": "half past two",
+      "kanji": "二時半",
+      "kana": "にじはん",
+      "romaji": "niji han"
+    },
+    {
+      "en": "now",
+      "kanji": "今",
+      "kana": "いま",
+      "romaji": "ima"
+    },
+    {
+      "en": "o'clock",
+      "kanji": "〜時",
+      "kana": "〜じ",
+      "romaji": "...ji"
+    },
+    {
+      "en": "one o'clock",
+      "kanji": "一時",
+      "kana": "いちじ",
+      "romaji": "ichiji"
+    },
+    {
+      "en": "P.M.",
+      "kanji": "午後",
+      "kana": "ごご",
+      "romaji": "gogo"
+    }
+  ],
+  "objects": [
+    {
+      "en": "telephone",
+      "kanji": "電話",
+      "kana": "でんわ",
+      "romaji": "denwa"
+    }
+  ],
+  "places": [
+    {
+      "en": "Australia",
+      "kanji": "オーストラリア",
+      "kana": "おーすとらりあ",
+      "romaji": "Oosutoraria"
+    },
+    {
+      "en": "Britain",
+      "kanji": "イギリス",
+      "kana": "いぎりす",
+      "romaji": "Igirisu"
+    },
+    {
+      "en": "Canada",
+      "kanji": "カナダ",
+      "kana": "かなだ",
+      "romaji": "Kanada"
+    },
+    {
+      "en": "China",
+      "kanji": "中国",
+      "kana": "ちゅうごく",
+      "romaji": "Chuugoku"
+    },
+    {
+      "en": "college; university",
+      "kanji": "大学",
+      "kana": "だいがく",
+      "romaji": "daigaku"
+    },
+    {
+      "en": "country",
+      "kanji": "国",
+      "kana": "くに",
+      "romaji": "kuni"
+    },
+    {
+      "en": "Egypt",
+      "kanji": "エジプト",
+      "kana": "えじぷと",
+      "romaji": "Ejiputo"
+    },
+    {
+      "en": "high school",
+      "kanji": "高校",
+      "kana": "こうこう",
+      "romaji": "koukou"
+    },
+    {
+      "en": "India",
+      "kanji": "インド",
+      "kana": "いんど",
+      "romaji": "Indo"
+    },
+    {
+      "en": "Japan",
+      "kanji": "日本",
+      "kana": "にほん",
+      "romaji": "Nihon"
+    },
+    {
+      "en": "Korea",
+      "kanji": "韓国",
+      "kana": "かんこく",
+      "romaji": "Kankoku"
+    },
+    {
+      "en": "Philippines",
+      "kanji": "フィリピン",
+      "kana": "ふぃりぴん",
+      "romaji": "Firipin"
+    },
+    {
+      "en": "U.S.A.",
+      "kanji": "アメリカ",
+      "kana": "あめりか",
+      "romaji": "Amerika"
+    }
+  ],
+  "other": [
+    {
+      "en": "Asian studies",
+      "kanji": "アジア研究",
+      "kana": "あじあけんきゅう",
+      "romaji": "ajia kenkyuu"
+    },
+    {
+      "en": "biology",
+      "kanji": "生物学",
+      "kana": "せいぶつがく",
+      "romaji": "seibutsu gaku"
+    },
+    {
+      "en": "business",
+      "kanji": "ビジネス",
+      "kana": "びじねす",
+      "romaji": "bijinesu"
+    },
+    {
+      "en": "computer",
+      "kanji": "コンピューター",
+      "kana": "こんぴゅーたー",
+      "romaji": "konpyuutaa"
+    },
+    {
+      "en": "economics",
+      "kanji": "経済",
+      "kana": "けいざい",
+      "romaji": "keizai"
+    },
+    {
+      "en": "engineering",
+      "kanji": "工学",
+      "kana": "こうがく",
+      "romaji": "kougaku"
+    },
+    {
+      "en": "family",
+      "kanji": "家族",
+      "kana": "かぞく",
+      "romaji": "kazoku"
+    },
+    {
+      "en": "history",
+      "kanji": "歴史",
+      "kana": "れきし",
+      "romaji": "rekishi"
+    },
+    {
+      "en": "I see.; Is that so?",
+      "kanji": "そうですか",
+      "kana": "そうですか",
+      "romaji": "sou desu ka"
+    },
+    {
+      "en": "international relations",
+      "kanji": "国際関係",
+      "kana": "こくさいかんけい",
+      "romaji": "kokusai kankei"
+    },
+    {
+      "en": "Japanese language",
+      "kanji": "日本語",
+      "kana": "にほんご",
+      "romaji": "nihongo"
+    },
+    {
+      "en": "job; work",
+      "kanji": "仕事",
+      "kana": "しごと",
+      "romaji": "shigoto"
+    },
+    {
+      "en": "literature",
+      "kanji": "文学",
+      "kana": "ぶんがく",
+      "romaji": "bungaku"
+    },
+    {
+      "en": "major",
+      "kanji": "専攻",
+      "kana": "せんこう",
+      "romaji": "senkou"
+    },
+    {
+      "en": "name",
+      "kanji": "名前",
+      "kana": "なまえ",
+      "romaji": "namae"
+    },
+    {
+      "en": "number",
+      "kanji": "番号",
+      "kana": "ばんごう",
+      "romaji": "bangou"
+    },
+    {
+      "en": "number ...",
+      "kanji": "〜番",
+      "kana": "〜ばん",
+      "romaji": "...ban"
+    },
+    {
+      "en": "politics",
+      "kanji": "政治",
+      "kana": "せいじ",
+      "romaji": "seiji"
+    },
+    {
+      "en": "That's right.",
+      "kanji": "そうです",
+      "kana": "そうです",
+      "romaji": "sou desu"
+    },
+    {
+      "en": "um ...",
+      "kanji": "あのお",
+      "kana": "あのお",
+      "romaji": "anoo"
+    },
+    {
+      "en": "what",
+      "kanji": "何",
+      "kana": "なん/なに",
+      "romaji": "nan/nani"
+    },
+    {
+      "en": "yes",
+      "kanji": "はい",
+      "kana": "はい",
+      "romaji": "hai"
+    },
+    {
+      "en": "... language",
+      "kanji": "〜語",
+      "kana": "〜ご",
+      "romaji": "...go"
+    },
+    {
+      "en": "... years old",
+      "kanji": "〜歳",
+      "kana": "〜さい",
+      "romaji": "...sai"
+    }
+  ]
+}
