@@ -1,30 +1,30 @@
-A.M.,午前,ごぜん,gozen,Lesson 1
-half,半,はん,han,Lesson 1
-half past two,二時半,にじはん,niji han,Lesson 1
-now,今,いま,ima,Lesson 1
-o'clock,〜時,〜じ,...ji,Lesson 1
-one o'clock,一時,いちじ,ichiji,Lesson 1
-P.M.,午後,ごご,gogo,Lesson 1
-at about ...,〜ごろ,〜ごろ,... goro,Lesson 3
-every day,毎日,まいにち,mainichi,Lesson 3
-every night,毎晩,まいばん,maiban,Lesson 3
-morning,朝,あさ,asa,Lesson 3
-Saturday,土曜日,どようび,doyoubi,Lesson 3
-Sunday,日曜日,にちようび,nichiyoubi,Lesson 3
-today,今日,きょう,kyou,Lesson 3
-tomorrow,明日,あした,ashita,Lesson 3
-tonight,今晩,こんばん,konban,Lesson 3
-weekend,週末,しゅうまつ,shuumatsu,Lesson 3
-when,いつ,いつ,itsu,Lesson 3
-Friday,金曜日,きんようび,kin'youbi,Lesson 4
-last week,先週,せんしゅう,senshuu,Lesson 4
-Monday,月曜日,げつようび,getsuyoubi,Lesson 4
-one hour,一時間,いちじかん,ichijikan,Lesson 4
-Thursday,木曜日,もくようび,mokuyoubi,Lesson 4
-Tuesday,火曜日,かようび,kayoubi,Lesson 4
-Wednesday,水曜日,すいようび,suiyoubi,Lesson 4
-when ...; at the time of ...,時,とき,toki,Lesson 4
-yesterday,昨日,きのう,kinou,Lesson 4
-... hours,〜時間,〜じかん,... jikan,Lesson 4
-birthday,誕生日,たんじょうび,tanjoubi,Lesson 5
-holiday; day off; absence,休み,やすみ,yasumi,Lesson 5
+A.M.,午前,ごぜん,gozen,Lesson 1,time
+half,半,はん,han,Lesson 1,time
+half past two,二時半,にじはん,niji han,Lesson 1,time
+now,今,いま,ima,Lesson 1,time
+o'clock,〜時,〜じ,...ji,Lesson 1,time
+one o'clock,一時,いちじ,ichiji,Lesson 1,time
+P.M.,午後,ごご,gogo,Lesson 1,time
+at about ...,〜ごろ,〜ごろ,... goro,Lesson 3,time
+every day,毎日,まいにち,mainichi,Lesson 3,time
+every night,毎晩,まいばん,maiban,Lesson 3,time
+morning,朝,あさ,asa,Lesson 3,time
+Saturday,土曜日,どようび,doyoubi,Lesson 3,time
+Sunday,日曜日,にちようび,nichiyoubi,Lesson 3,time
+today,今日,きょう,kyou,Lesson 3,time
+tomorrow,明日,あした,ashita,Lesson 3,time
+tonight,今晩,こんばん,konban,Lesson 3,time
+weekend,週末,しゅうまつ,shuumatsu,Lesson 3,time
+when,いつ,いつ,itsu,Lesson 3,time
+Friday,金曜日,きんようび,kin'youbi,Lesson 4,time
+last week,先週,せんしゅう,senshuu,Lesson 4,time
+Monday,月曜日,げつようび,getsuyoubi,Lesson 4,time
+one hour,一時間,いちじかん,ichijikan,Lesson 4,time
+Thursday,木曜日,もくようび,mokuyoubi,Lesson 4,time
+Tuesday,火曜日,かようび,kayoubi,Lesson 4,time
+Wednesday,水曜日,すいようび,suiyoubi,Lesson 4,time
+when ...; at the time of ...,時,とき,toki,Lesson 4,time
+yesterday,昨日,きのう,kinou,Lesson 4,time
+... hours,〜時間,〜じかん,... jikan,Lesson 4,time
+birthday,誕生日,たんじょうび,tanjoubi,Lesson 5,time
+holiday; day off; absence,休み,やすみ,yasumi,Lesson 5,time

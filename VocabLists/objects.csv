@@ -1,57 +1,57 @@
-telephone,電話,でんわ,denwa,Lesson 1
-bag,鞄,かばん,kaban,Lesson 2
-bicycle,自転車,じてんしゃ,jitensha,Lesson 2
-jeans,ジーンズ,じーんず,jiinzu,Lesson 2
-meat,肉,にく,niku,Lesson 2
-menu,メニュー,めにかゅう,menyuu,Lesson 2
-newspaper,新聞,しんぶん,shinbun,Lesson 2
-notebook,ノート,のーと,nooto,Lesson 2
-pork cutlet,とんかつ,とんかつ,tonkatsu,Lesson 2
-fish,魚,さかな,sakana,Lesson 2
-shoes,靴,くつ,kutsu,Lesson 2
-smartphone; mobile,スマホ,すまほ,sumaho,Lesson 2
-T-shirt,Tシャツ,てぃーしゃつ,tiishatsu,Lesson 2
-umbrella,傘,かさ,kasa,Lesson 2
-vegetable,野菜,やさい,yasai,Lesson 2
-wallet,財布,さいふ,saifu,Lesson 2
-watch; clock,時計,とけい,tokei,Lesson 2
-book,本,ほん,hon,Lesson 2
-hat; cap,帽子,ぼうし,boushi,Lesson 2
-pen,ペン,ぺん,pen,Lesson 2
-breakfast,朝ご飯,あさごはん,asagohan,Lesson 3
-coffee,コーヒー,こーひー,koohee,Lesson 3
-date (romantic; not calendar),デート,でーと,deeto,Lesson 3
-dinner,晩ご飯,ばんごはん,bangohan,Lesson 3
-green tea,お茶,おちゃ,ocha,Lesson 3
-hamburger,ハンバーガー,はんばーがー,hanbaagaa,Lesson 3
-ice cream,アイスクリーム,あいすくりーむ,aisukuriimu,Lesson 3
-lunch,昼ご飯,ひるごはん,hirugohan,Lesson 3
-magazine,雑誌,ざっし,zasshi,Lesson 3
-movie,映画,えいが,eiga,Lesson 3
-music,音楽,おんがく,ongaku,Lesson 3
-sake; alcoholic drink,お酒,おさけ,osake,Lesson 3
-sports,スポーツ,すぽーつ,supootsu,Lesson 3
-tennis,テニス,てにす,tenisu,Lesson 3
-TV,テレビ,てれび,terebi,Lesson 3
-water,水,みず,mizu,Lesson 3
-bread,パン,ぱん,pan,Lesson 4
-cat,猫,ねこ,neko,Lesson 4
-chair,椅子,いす,isu,Lesson 4
-desk,机,つくえ,tsukue,Lesson 4
-dog,犬,いぬ,inu,Lesson 4
-flower,花,はな,hana,Lesson 4
-game,ゲーム,げーむ,geemu,Lesson 4
-part-time job,アルバイト,あるばいと,arubaito,Lesson 4
-picture; photograph,写真,しゃしん,shashin,Lesson 4
-rice; meal,ご飯,ごはん,gohan,Lesson 4
-shopping,買い物,かいもの,kaimono,Lesson 4
-(term) paper,レポート,れぽーと,repooto,Lesson 4
-bus,バス,ばす,basu,Lesson 5
-drink,飲み物,のみもの,nomimono,Lesson 5
-food,食べ物,たべもの,tabemono,Lesson 5
-fruit,果物,くだもの,kudamono,Lesson 5
-homework,宿題,しゅくだい,shukudai,Lesson 5
-size L,Lサイズ,えるさいず,eru saizu,Lesson 5
-souvenir,お土産,おみやげ,omiyage,Lesson 5
-surfing,サーフィン,さーふぃん,saafin,Lesson 5
-test,テスト,てすと,tesuto,Lesson 5
+telephone,電話,でんわ,denwa,Lesson 1,object
+bag,鞄,かばん,kaban,Lesson 2,object
+bicycle,自転車,じてんしゃ,jitensha,Lesson 2,object
+jeans,ジーンズ,じーんず,jiinzu,Lesson 2,object
+meat,肉,にく,niku,Lesson 2,object,food
+menu,メニュー,めにかゅう,menyuu,Lesson 2,object
+newspaper,新聞,しんぶん,shinbun,Lesson 2,object
+notebook,ノート,のーと,nooto,Lesson 2,object
+pork cutlet,とんかつ,とんかつ,tonkatsu,Lesson 2,object,food
+fish,魚,さかな,sakana,Lesson 2,object,food
+shoes,靴,くつ,kutsu,Lesson 2,object
+smartphone; mobile,スマホ,すまほ,sumaho,Lesson 2,object
+T-shirt,Tシャツ,てぃーしゃつ,tiishatsu,Lesson 2,object
+umbrella,傘,かさ,kasa,Lesson 2,object
+vegetable,野菜,やさい,yasai,Lesson 2,object,food
+wallet,財布,さいふ,saifu,Lesson 2,object
+watch; clock,時計,とけい,tokei,Lesson 2,object
+book,本,ほん,hon,Lesson 2,object
+hat; cap,帽子,ぼうし,boushi,Lesson 2,object
+pen,ペン,ぺん,pen,Lesson 2,object
+breakfast,朝ご飯,あさごはん,asagohan,Lesson 3,object,food
+coffee,コーヒー,こーひー,koohee,Lesson 3,object,drink
+date (romantic; not calendar),デート,でーと,deeto,Lesson 3,object
+dinner,晩ご飯,ばんごはん,bangohan,Lesson 3,object,food
+green tea,お茶,おちゃ,ocha,Lesson 3,object,drink
+hamburger,ハンバーガー,はんばーがー,hanbaagaa,Lesson 3,object,food
+ice cream,アイスクリーム,あいすくりーむ,aisukuriimu,Lesson 3,object,food
+lunch,昼ご飯,ひるごはん,hirugohan,Lesson 3,object,food
+magazine,雑誌,ざっし,zasshi,Lesson 3,object
+movie,映画,えいが,eiga,Lesson 3,object
+music,音楽,おんがく,ongaku,Lesson 3,object
+sake; alcoholic drink,お酒,おさけ,osake,Lesson 3,object,drink
+sports,スポーツ,すぽーつ,supootsu,Lesson 3,object
+tennis,テニス,てにす,tenisu,Lesson 3,object
+TV,テレビ,てれび,terebi,Lesson 3,object
+water,水,みず,mizu,Lesson 3,object,drink
+bread,パン,ぱん,pan,Lesson 4,object,food
+cat,猫,ねこ,neko,Lesson 4,object
+chair,椅子,いす,isu,Lesson 4,object
+desk,机,つくえ,tsukue,Lesson 4,object
+dog,犬,いぬ,inu,Lesson 4,object
+flower,花,はな,hana,Lesson 4,object
+game,ゲーム,げーむ,geemu,Lesson 4,object
+part-time job,アルバイト,あるばいと,arubaito,Lesson 4,object
+picture; photograph,写真,しゃしん,shashin,Lesson 4,object
+rice; meal,ご飯,ごはん,gohan,Lesson 4,object,food
+shopping,買い物,かいもの,kaimono,Lesson 4,object
+(term) paper,レポート,れぽーと,repooto,Lesson 4,object
+bus,バス,ばす,basu,Lesson 5,object
+drink,飲み物,のみもの,nomimono,Lesson 5,object,drink
+food,食べ物,たべもの,tabemono,Lesson 5,object,food
+fruit,果物,くだもの,kudamono,Lesson 5,object,food
+homework,宿題,しゅくだい,shukudai,Lesson 5,object
+size L,Lサイズ,えるさいず,eru saizu,Lesson 5,object
+souvenir,お土産,おみやげ,omiyage,Lesson 5,object
+surfing,サーフィン,さーふぃん,saafin,Lesson 5,object
+test,テスト,てすと,tesuto,Lesson 5,object

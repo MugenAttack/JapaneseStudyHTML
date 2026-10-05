@@ -1,37 +1,37 @@
-Australia,オーストラリア,おーすとらりあ,Oosutoraria,Lesson 1
-Britain,イギリス,いぎりす,Igirisu,Lesson 1
-Canada,カナダ,かなだ,Kanada,Lesson 1
-China,中国,ちゅうごく,Chuugoku,Lesson 1
-college; university,大学,だいがく,daigaku,Lesson 1
-country,国,くに,kuni,Lesson 1
-Egypt,エジプト,えじぷと,Ejiputo,Lesson 1
-high school,高校,こうこう,koukou,Lesson 1
-India,インド,いんど,Indo,Lesson 1
-Japan,日本,にほん,Nihon,Lesson 1
-Korea,韓国,かんこく,Kankoku,Lesson 1
-Philippines,フィリピン,ふぃりぴん,Firipin,Lesson 1
-U.S.A.,アメリカ,あめりか,Amerika,Lesson 1
-here,ここ,ここ,koko,Lesson 2
-over there,あそこ,あそこ,asoko,Lesson 2
-there,そこ,そこ,soko,Lesson 2
-where,どこ,どこ,doko,Lesson 2
-bank,銀行,ぎんこう,ginkou,Lesson 2
-convenience store,コンビニ,こんびに,konbini,Lesson 2
-library,図書館,としょかん,toshokan,Lesson 2
-post office,郵便局,ゆうびんきょく,yuubinkyoku,Lesson 2
-toilet; restroom,トイレ,といれ,toire,Lesson 2
-cafe,カフェ,かふぇ,kafe,Lesson 3
-home; house,家,いえ,ie,Lesson 3
-home; house; my place,家,うち,uchi,Lesson 3
-school,学校,がっこう,gakkou,Lesson 3
-bookstore,本屋,ほんや,hon'ya,Lesson 4
-bus stop,バス停,ばすてい,basutei,Lesson 4
-hospital,病院,びょういん,byouin,Lesson 4
-hotel,ホテル,ほてる,hoteru,Lesson 4
-park,公園,こうえん,kouen,Lesson 4
-restaurant,レストラン,れすとらん,resutoran,Lesson 4
-supermarket,スーパー,すーぱー,suupaa,Lesson 4
-temple,お寺,おてら,otera,Lesson 4
-town; city,町,まち,machi,Lesson 4
-room,部屋,へや,heya,Lesson 5
-sea,海,うみ,umi,Lesson 5
+Australia,オーストラリア,おーすとらりあ,Oosutoraria,Lesson 1,place,country
+Britain,イギリス,いぎりす,Igirisu,Lesson 1,place,country
+Canada,カナダ,かなだ,Kanada,Lesson 1,place,country
+China,中国,ちゅうごく,Chuugoku,Lesson 1,place,country
+college; university,大学,だいがく,daigaku,Lesson 1,place
+country,国,くに,kuni,Lesson 1,place
+Egypt,エジプト,えじぷと,Ejiputo,Lesson 1,place,country
+high school,高校,こうこう,koukou,Lesson 1,place
+India,インド,いんど,Indo,Lesson 1,place,country
+Japan,日本,にほん,Nihon,Lesson 1,place,country
+Korea,韓国,かんこく,Kankoku,Lesson 1,place,country
+Philippines,フィリピン,ふぃりぴん,Firipin,Lesson 1,place,country
+U.S.A.,アメリカ,あめりか,Amerika,Lesson 1,place,country
+here,ここ,ここ,koko,Lesson 2,place
+over there,あそこ,あそこ,asoko,Lesson 2,place
+there,そこ,そこ,soko,Lesson 2,place
+where,どこ,どこ,doko,Lesson 2,place
+bank,銀行,ぎんこう,ginkou,Lesson 2,place
+convenience store,コンビニ,こんびに,konbini,Lesson 2,place
+library,図書館,としょかん,toshokan,Lesson 2,place
+post office,郵便局,ゆうびんきょく,yuubinkyoku,Lesson 2,place
+toilet; restroom,トイレ,といれ,toire,Lesson 2,place
+cafe,カフェ,かふぇ,kafe,Lesson 3,place
+home; house,家,いえ,ie,Lesson 3,place
+home; house; my place,家,うち,uchi,Lesson 3,place
+school,学校,がっこう,gakkou,Lesson 3,place
+bookstore,本屋,ほんや,hon'ya,Lesson 4,place
+bus stop,バス停,ばすてい,basutei,Lesson 4,place
+hospital,病院,びょういん,byouin,Lesson 4,place
+hotel,ホテル,ほてる,hoteru,Lesson 4,place
+park,公園,こうえん,kouen,Lesson 4,place
+restaurant,レストラン,れすとらん,resutoran,Lesson 4,place
+supermarket,スーパー,すーぱー,suupaa,Lesson 4,place
+temple,お寺,おてら,otera,Lesson 4,place
+town; city,町,まち,machi,Lesson 4,place
+room,部屋,へや,heya,Lesson 5,place
+sea,海,うみ,umi,Lesson 5,place
