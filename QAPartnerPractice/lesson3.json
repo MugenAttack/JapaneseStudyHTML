@@ -1,0 +1,254 @@
+{
+  "What is your name?": [
+    {
+      "english": "Takeshi",
+      "kanji": "武",
+      "kana": "たけし",
+      "romaji": "Takeshi"
+    },
+    {
+      "english": "Mary",
+      "kanji": "メアリー",
+      "kana": "めありー",
+      "romaji": "Mearii"
+    },
+    {
+      "english": "Ken",
+      "kanji": "健",
+      "kana": "けん",
+      "romaji": "Ken"
+    },
+    {
+      "english": "Yui",
+      "kanji": "結衣",
+      "kana": "ゆい",
+      "romaji": "Yui"
+    },
+    {
+      "english": "Sora",
+      "kanji": "空",
+      "kana": "そら",
+      "romaji": "Sora"
+    }
+  ],
+  "What is your age?": [
+    {
+      "english": "20 years old",
+      "kanji": "二十歳",
+      "kana": "はたち",
+      "romaji": "hatachi"
+    },
+    {
+      "english": "21 years old",
+      "kanji": "二十一歳",
+      "kana": "にじゅういっさい",
+      "romaji": "nijyuuissai"
+    },
+    {
+      "english": "22 years old",
+      "kanji": "二十二歳",
+      "kana": "にじゅうにさい",
+      "romaji": "nijyuunisai"
+    },
+    {
+      "english": "23 years old",
+      "kanji": "二十三歳",
+      "kana": "にじゅうさんさい",
+      "romaji": "nijyuusansai"
+    },
+    {
+      "english": "24 years old",
+      "kanji": "二十四歳",
+      "kana": "にじゅうよんさい",
+      "romaji": "nijyuuyonsai"
+    },
+    {
+      "english": "25 years old",
+      "kanji": "二十五歳",
+      "kana": "にじゅうごさい",
+      "romaji": "nijyuugosai"
+    },
+    {
+      "english": "26 years old",
+      "kanji": "二十六歳",
+      "kana": "にじゅうろくさい",
+      "romaji": "nijyuurokusai"
+    },
+    {
+      "english": "27 years old",
+      "kanji": "二十七歳",
+      "kana": "にじゅうななさい",
+      "romaji": "nijyuunanasai"
+    },
+    {
+      "english": "28 years old",
+      "kanji": "二十八歳",
+      "kana": "にじゅうはっさい",
+      "romaji": "nijyuuhassai"
+    },
+    {
+      "english": "29 years old",
+      "kanji": "二十九歳",
+      "kana": "にじゅうきゅうさい",
+      "romaji": "nijyuukyuusai"
+    },
+    {
+      "english": "30 years old",
+      "kanji": "三十歳",
+      "kana": "さんじゅっさい",
+      "romaji": "sanjussai"
+    }
+  ],
+  "What is your Occupation?": [
+    {
+      "english": "doctor",
+      "kanji": "医者",
+      "kana": "いしゃ",
+      "romaji": "isha"
+    },
+    {
+      "english": "college student",
+      "kanji": "大学生",
+      "kana": "だいがくせい",
+      "romaji": "daigakusei"
+    },
+    {
+      "english": "lawyer",
+      "kanji": "弁護士",
+      "kana": "べんごし",
+      "romaji": "bengoshi"
+    },
+    {
+      "english": "nurse",
+      "kanji": "看護師",
+      "kana": "かんごし",
+      "romaji": "kangoshi"
+    },
+    {
+      "english": "office worker",
+      "kanji": "会社員",
+      "kana": "かいしゃいん",
+      "romaji": "kaishain"
+    },
+    {
+      "english": "teacher; Professor ...",
+      "kanji": "先生",
+      "kana": "せんせい",
+      "romaji": "sensei"
+    }
+  ],
+  "What are you eating?": [
+    {
+      "english": "meat",
+      "kanji": "肉",
+      "kana": "にく",
+      "romaji": "niku"
+    },
+    {
+      "english": "pork cutlet",
+      "kanji": "とんかつ",
+      "kana": "とんかつ",
+      "romaji": "tonkatsu"
+    },
+    {
+      "english": "hamburger",
+      "kanji": "ハンバーガー",
+      "kana": "はんばーがー",
+      "romaji": "hanbaagaa"
+    },
+    {
+      "english": "fish",
+      "kanji": "魚",
+      "kana": "さかな",
+      "romaji": "sakana"
+    },
+    {
+      "english": "breakfast",
+      "kanji": "朝ご飯",
+      "kana": "あさごはん",
+      "romaji": "asagohan"
+    },
+    {
+      "english": "dinner",
+      "kanji": "晩ご飯",
+      "kana": "ばんごはん",
+      "romaji": "bangohan"
+    },
+    {
+      "english": "lunch",
+      "kanji": "昼ご飯",
+      "kana": "ひるごはん",
+      "romaji": "hirugohan"
+    }
+  ],
+  "What are you drinking?": [
+    {
+      "english": "coffee",
+      "kanji": "コーヒー",
+      "kana": "こーひー",
+      "romaji": "koohee"
+    },
+    {
+      "english": "green tea",
+      "kanji": "お茶",
+      "kana": "おちゃ",
+      "romaji": "ocha"
+    },
+    {
+      "english": "sake; alcoholic drink",
+      "kanji": "お酒",
+      "kana": "おさけ",
+      "romaji": "osake"
+    },
+    {
+      "english": "water",
+      "kanji": "水",
+      "kana": "みず",
+      "romaji": "mizu"
+    }
+  ],
+  "What else are you doing?": [
+    {
+      "english": "movie",
+      "kanji": "映画",
+      "kana": "えいが",
+      "romaji": "eiga"
+    },
+    {
+      "english": "music",
+      "kanji": "音楽",
+      "kana": "おんがく",
+      "romaji": "ongaku"
+    },
+    {
+      "english": "magazine",
+      "kanji": "雑誌",
+      "kana": "ざっし",
+      "romaji": "zasshi"
+    },
+    {
+      "english": "newspaper",
+      "kanji": "新聞",
+      "kana": "しんぶん",
+      "romaji": "shinbun"
+    },
+    {
+      "english": "smartphone; mobile",
+      "kanji": "スマホ",
+      "kana": "すまほ",
+      "romaji": "sumaho"
+    },
+    {
+      "english": "sports",
+      "kanji": "スポーツ",
+      "kana": "すぽーつ",
+      "romaji": "supootsu"
+    },
+    {
+      "english": "TV",
+      "kanji": "テレビ",
+      "kana": "てれび",
+      "romaji": "terebi"
+    }
+  ]
+}

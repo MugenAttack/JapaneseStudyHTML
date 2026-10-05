@@ -1,12 +1,7 @@
 [
 {
-"id": "lesson_1",
-"title": "Lesson 1 - Greetings & Self-Introduction",
-"file": "QAPartnerPractice/lesson_1.json"
-},
-{
-"id": "lesson_1",
-"title": "Lesson test",
-"file": "QAPartnerPractice/test.json"
+"id": "lesson_3",
+"title": "Lesson 3 - Ask Questions",
+"file": "QAPartnerPractice/lesson3.json"
 }
 ]
