@@ -1,0 +1,8 @@
+adjectives.csv
+adverbs.csv
+objects.csv
+other.csv
+people.csv
+places.csv
+time.csv
+verbs.csv

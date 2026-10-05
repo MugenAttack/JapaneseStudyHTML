@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Category Viewer</title>
+  <title>Unified Category & Tag Viewer</title>
   <style>
     :root {
       --bg: #f8fafc;
@@ -30,7 +30,7 @@
 
     .container {
       width: 100%;
-      max-width: 950px;
+      max-width: 1000px;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -44,38 +44,127 @@
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 
-    .control-box {
+    .filter-box {
       background: #f1f5f9;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 12px;
     }
 
-    .control-box label {
+    .filter-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-title {
       font-weight: 700;
       font-size: 0.95rem;
       color: var(--text);
     }
 
-    select {
+    .filter-controls-inline {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-input {
       width: 100%;
-      max-width: 400px;
       padding: 10px 14px;
-      font-size: 1rem;
+      font-size: 0.95rem;
       border-radius: 6px;
       border: 1px solid var(--border);
-      background-color: #fff;
-      color: var(--text);
       outline: none;
+      box-sizing: border-box;
+    }
+
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+
+    .mode-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .btn-link {
+      background: none;
+      border: none;
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .btn-link:hover {
+      text-decoration: underline;
+    }
+
+    .tag-search-wrapper {
+      margin-top: 4px;
+    }
+
+    .tag-search-input {
+      width: 100%;
+      max-width: 280px;
+      padding: 6px 10px;
+      font-size: 0.85rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      max-height: 180px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      user-select: none;
+      background: #ffffff;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .checkbox-label:hover {
+      background-color: #e2e8f0;
+    }
+
+    .checkbox-label.active {
+      border-color: var(--accent);
+      background-color: #eff6ff;
+    }
+
+    .checkbox-label input {
       cursor: pointer;
     }
 
-    select:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    .tag-count {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
     }
 
     .category-header {
@@ -148,7 +237,6 @@
       font-style: italic;
     }
 
-    /* Tags Container & Badges */
     .tags-container {
       display: flex;
       flex-wrap: wrap;
@@ -186,21 +274,57 @@
 
 <div class="container">
 
-  <div class="control-box">
-    <label for="category-select">CSV Category Selection</label>
-    <select id="category-select" onchange="handleCategoryChange()">
-      <option value="">Loading categories from manifest...</option>
-    </select>
+  <div class="filter-box">
+    <!-- Live Text Search -->
+    <input
+      type="text"
+      id="search-query"
+      class="search-input"
+      placeholder="Search words (English, Kanji, Kana, Romaji)..."
+      oninput="applyFilters()"
+    />
+
+    <div class="filter-header">
+      <div class="filter-title">Filter by Tags</div>
+      <div class="filter-controls-inline">
+        <label class="mode-toggle">
+          <span>Match:</span>
+          <select id="match-mode" onchange="applyFilters()">
+            <option value="OR">Any selected tag (OR)</option>
+            <option value="AND">All selected tags (AND)</option>
+          </select>
+        </label>
+        <button class="btn-link" onclick="selectAllTags()">Select All</button>
+        <span>|</span>
+        <button class="btn-link" onclick="clearTagFilters()">Clear</button>
+      </div>
+    </div>
+
+    <!-- Tag Filter Sub-Search -->
+    <div class="tag-search-wrapper">
+      <input
+        type="text"
+        id="tag-search"
+        class="tag-search-input"
+        placeholder="Filter tag list..."
+        oninput="filterTagDisplay()"
+      />
+    </div>
+
+    <!-- Dynamic Tag Checkboxes -->
+    <div class="checkbox-group" id="tag-filters">
+      <span class="status-msg">Loading tags...</span>
+    </div>
   </div>
 
   <div class="panel">
     <div class="category-header">
-      <h2 id="category-title">Category Viewer</h2>
+      <h2>Unified Vocabulary List</h2>
       <span class="item-count" id="item-count">0 items</span>
     </div>
 
     <div id="content-area">
-      <div class="status-msg">Select a category from the drop down box above.</div>
+      <div class="status-msg">Loading CSV files...</div>
     </div>
   </div>
 
@@ -208,13 +332,14 @@
 
 <script>
   const AppState = {
-    manifest: {},
-    cache: {}
+    allData: [],
+    tagCounts: {},
+    selectedTags: new Set()
   };
 
   const VOCAB_FOLDER = 'VocabLists';
+  const LIST_FILE = 'files.txt';
 
-  // CSV parser: Columns 1-4 are fixed fields; columns 5+ are collected into 'tags'
   function parseCSV(text) {
     const lines = text.trim().split(/\r?\n/);
     if (lines.length === 0) return [];
@@ -223,46 +348,67 @@
       .filter(line => line.trim().length > 0)
       .map(line => {
         const parts = line.split(',').map(item => item.trim());
+        const tags = parts.slice(4).filter(tag => tag.length > 0);
+
+        tags.forEach(tag => {
+          AppState.tagCounts[tag] = (AppState.tagCounts[tag] || 0) + 1;
+        });
+
         return {
           english: parts[0] || '',
           kanji: parts[1] || '',
           kana: parts[2] || '',
           romaji: parts[3] || '',
-          // Slice everything from index 4 onwards into an array of tags
-          tags: parts.slice(4).filter(tag => tag.length > 0)
+          tags: tags
         };
       });
   }
 
+  function sortAlphabeticallyByEnglish(items) {
+    return items.sort((a, b) =>
+      a.english.localeCompare(b.english, undefined, { sensitivity: 'base' })
+    );
+  }
+
   async function init() {
     const contentArea = document.getElementById('content-area');
-    const select = document.getElementById('category-select');
 
     try {
-      const res = await fetch(`./${VOCAB_FOLDER}/manifest.json`);
-
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}: Could not load ./${VOCAB_FOLDER}/manifest.json`);
+      const listRes = await fetch(`./${VOCAB_FOLDER}/${LIST_FILE}`);
+      if (!listRes.ok) {
+        throw new Error(`HTTP ${listRes.status}: Could not load ./${VOCAB_FOLDER}/${LIST_FILE}`);
       }
 
-      AppState.manifest = await res.json();
-      const categories = Object.keys(AppState.manifest);
+      const listText = await listRes.text();
+      const csvFiles = listText
+        .split(/\r?\n/)
+        .map(file => file.trim())
+        .filter(file => file.length > 0);
 
-      if (categories.length === 0) {
-        contentArea.innerHTML = '<div class="status-msg">No categories found in manifest.json.</div>';
-        select.innerHTML = '<option value="">No Categories Available</option>';
+      if (csvFiles.length === 0) {
+        contentArea.innerHTML = `<div class="status-msg">No CSV files listed in ${LIST_FILE}.</div>`;
         return;
       }
 
-      select.innerHTML = '';
-      categories.forEach(cat => {
-        const option = document.createElement('option');
-        option.value = cat;
-        option.textContent = cat;
-        select.appendChild(option);
+      const fetchPromises = csvFiles.map(async file => {
+        let cleanPath = file.startsWith('VocabLists/') || file.startsWith('./VocabLists/')
+          ? file.replace(/^(\.\/)?VocabLists\//, '')
+          : file;
+
+        const res = await fetch(`./${VOCAB_FOLDER}/${cleanPath}`);
+        if (!res.ok) {
+          console.warn(`Failed to fetch ${cleanPath}`);
+          return [];
+        }
+        const text = await res.text();
+        return parseCSV(text);
       });
 
-      loadCategory(categories[0]);
+      const parsedResults = await Promise.all(fetchPromises);
+      AppState.allData = sortAlphabeticallyByEnglish(parsedResults.flat());
+
+      renderTagFilters();
+      applyFilters();
 
     } catch (err) {
       console.error(err);
@@ -270,50 +416,103 @@
     }
   }
 
-  function handleCategoryChange() {
-    const select = document.getElementById('category-select');
-    if (select.value) {
-      loadCategory(select.value);
-    }
-  }
+  function renderTagFilters() {
+    const filterContainer = document.getElementById('tag-filters');
+    const sortedTags = Object.keys(AppState.tagCounts).sort((a, b) => a.localeCompare(b));
 
-  async function loadCategory(categoryName) {
-    const contentArea = document.getElementById('content-area');
-    const titleEl = document.getElementById('category-title');
-
-    titleEl.textContent = categoryName;
-
-    if (AppState.cache[categoryName]) {
-      renderTable(AppState.cache[categoryName]);
+    if (sortedTags.length === 0) {
+      filterContainer.innerHTML = '<span class="status-msg">No tags found.</span>';
       return;
     }
 
-    contentArea.innerHTML = `<div class="status-msg">Loading CSV...</div>`;
+    filterContainer.innerHTML = sortedTags.map(tag => `
+      <label class="checkbox-label" data-tag="${tag}">
+        <input type="checkbox" value="${tag}" onchange="handleTagChange(this)">
+        <span>${tag}</span>
+        <span class="tag-count">(${AppState.tagCounts[tag]})</span>
+      </label>
+    `).join('');
+  }
 
-    try {
-      let fileName = AppState.manifest[categoryName];
+  function filterTagDisplay() {
+    const q = document.getElementById('tag-search').value.toLowerCase().trim();
+    const labels = document.querySelectorAll('#tag-filters .checkbox-label');
 
-      if (fileName.startsWith('VocabLists/') || fileName.startsWith('./VocabLists/')) {
-        fileName = fileName.replace(/^(\.\/)?VocabLists\//, '');
-      }
+    labels.forEach(label => {
+      const tag = label.getAttribute('data-tag').toLowerCase();
+      label.style.display = tag.includes(q) ? 'flex' : 'none';
+    });
+  }
 
-      const targetPath = `./${VOCAB_FOLDER}/${fileName}`;
+  function handleTagChange(checkbox) {
+    const parentLabel = checkbox.closest('.checkbox-label');
 
-      const res = await fetch(targetPath);
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}: Failed to load '${targetPath}'`);
-      }
-
-      const csvText = await res.text();
-      const items = parseCSV(csvText);
-
-      AppState.cache[categoryName] = items;
-      renderTable(items);
-
-    } catch (err) {
-      console.error(err);
-      contentArea.innerHTML = `<div class="error-msg"><strong>CSV Load Error:</strong><br>${err.message}</div>`;
+    if (checkbox.checked) {
+      AppState.selectedTags.add(checkbox.value);
+      parentLabel.classList.add('active');
+    } else {
+      AppState.selectedTags.delete(checkbox.value);
+      parentLabel.classList.remove('active');
     }
+    applyFilters();
+  }
+
+  function selectAllTags() {
+    const checkboxes = document.querySelectorAll('#tag-filters input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      if (cb.closest('.checkbox-label').style.display !== 'none') {
+        cb.checked = true;
+        AppState.selectedTags.add(cb.value);
+        cb.closest('.checkbox-label').classList.add('active');
+      }
+    });
+    applyFilters();
+  }
+
+  function clearTagFilters() {
+    AppState.selectedTags.clear();
+    const checkboxes = document.querySelectorAll('#tag-filters input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+      cb.checked = false;
+      cb.closest('.checkbox-label').classList.remove('active');
+    });
+    applyFilters();
+  }
+
+  function applyFilters() {
+    const searchQuery = document.getElementById('search-query').value.toLowerCase().trim();
+    const matchMode = document.getElementById('match-mode').value;
+
+    let filtered = AppState.allData;
+
+    // 1. Text Search Filter (across English, Kanji, Kana, Romaji)
+    if (searchQuery.length > 0) {
+      filtered = filtered.filter(item =>
+        item.english.toLowerCase().includes(searchQuery) ||
+        item.kanji.toLowerCase().includes(searchQuery) ||
+        item.kana.toLowerCase().includes(searchQuery) ||
+        item.romaji.toLowerCase().includes(searchQuery)
+      );
+    }
+
+    // 2. Tag Filter (Match ANY vs. Match ALL)
+    if (AppState.selectedTags.size > 0) {
+      const selected = Array.from(AppState.selectedTags);
+
+      if (matchMode === 'AND') {
+        // Must contain EVERY selected tag
+        filtered = filtered.filter(item =>
+          selected.every(tag => item.tags.includes(tag))
+        );
+      } else {
+        // Must contain AT LEAST ONE selected tag
+        filtered = filtered.filter(item =>
+          selected.some(tag => item.tags.includes(tag))
+        );
+      }
+    }
+
+    renderTable(sortAlphabeticallyByEnglish(filtered));
   }
 
   function renderTable(items) {
@@ -323,7 +522,7 @@
     countEl.textContent = `${items.length} item${items.length === 1 ? '' : 's'}`;
 
     if (!items || items.length === 0) {
-      contentArea.innerHTML = '<div class="status-msg">No items found in this CSV.</div>';
+      contentArea.innerHTML = '<div class="status-msg">No matching items found.</div>';
       return;
     }
 
