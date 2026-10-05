@@ -1,0 +1,330 @@
+{
+  "people": [
+    {
+      "en": "I (used by men)",
+      "kanji": "僕",
+      "kana": "ぼく",
+      "romaji": "boku"
+    }
+  ],
+  "time": [
+    {
+      "en": "birthday",
+      "kanji": "誕生日",
+      "kana": "たんじょうび",
+      "romaji": "tanjoubi"
+    },
+    {
+      "en": "holiday; day off; absence",
+      "kanji": "休み",
+      "kana": "やすみ",
+      "romaji": "yasumi"
+    }
+  ],
+  "objects": [
+    {
+      "en": "bus",
+      "kanji": "バス",
+      "kana": "ばす",
+      "romaji": "basu"
+    },
+    {
+      "en": "drink",
+      "kanji": "飲み物",
+      "kana": "のみもの",
+      "romaji": "nomimono"
+    },
+    {
+      "en": "food",
+      "kanji": "食べ物",
+      "kana": "たべもの",
+      "romaji": "tabemono"
+    },
+    {
+      "en": "fruit",
+      "kanji": "果物",
+      "kana": "くだもの",
+      "romaji": "kudamono"
+    },
+    {
+      "en": "homework",
+      "kanji": "宿題",
+      "kana": "しゅくだい",
+      "romaji": "shukudai"
+    },
+    {
+      "en": "size L",
+      "kanji": "Lサイズ",
+      "kana": "えるさいず",
+      "romaji": "eru saizu"
+    },
+    {
+      "en": "souvenir",
+      "kanji": "お土産",
+      "kana": "おみやげ",
+      "romaji": "omiyage"
+    },
+    {
+      "en": "surfing",
+      "kanji": "サーフィン",
+      "kana": "さーふぃん",
+      "romaji": "saafin"
+    },
+    {
+      "en": "test",
+      "kanji": "テスト",
+      "kana": "てすと",
+      "romaji": "tesuto"
+    }
+  ],
+  "places": [
+    {
+      "en": "room",
+      "kanji": "部屋",
+      "kana": "へや",
+      "romaji": "heya"
+    },
+    {
+      "en": "sea",
+      "kanji": "海",
+      "kana": "うみ",
+      "romaji": "umi"
+    }
+  ],
+  "adjectives": [
+    {
+      "en": "beautiful; clean",
+      "kanji": "きれい",
+      "kana": "きれい",
+      "romaji": "kirei"
+    },
+    {
+      "en": "boring",
+      "kanji": "つまらない",
+      "kana": "つまらない",
+      "romaji": "tsumaranai"
+    },
+    {
+      "en": "busy (people/days)",
+      "kanji": "忙しい",
+      "kana": "いそがしい",
+      "romaji": "isogashii"
+    },
+    {
+      "en": "cold (weather—not used for things)",
+      "kanji": "寒い",
+      "kana": "さむい",
+      "romaji": "samui"
+    },
+    {
+      "en": "difficult",
+      "kanji": "難しい",
+      "kana": "むずかしい",
+      "romaji": "muzukashii"
+    },
+    {
+      "en": "disgusted with; to dislike (~ga)",
+      "kanji": "嫌い",
+      "kana": "きらい",
+      "romaji": "kirai"
+    },
+    {
+      "en": "easy (problem); kind (person)",
+      "kanji": "優しい",
+      "kana": "やさしい",
+      "romaji": "yasashii"
+    },
+    {
+      "en": "fond of; to like (~ga)",
+      "kanji": "好き",
+      "kana": "すき",
+      "romaji": "suki"
+    },
+    {
+      "en": "frightening",
+      "kanji": "怖い",
+      "kana": "こわい",
+      "romaji": "kowai"
+    },
+    {
+      "en": "fun",
+      "kanji": "楽しい",
+      "kana": "たのしい",
+      "romaji": "tanoshii"
+    },
+    {
+      "en": "good-looking (conjugates like ii)",
+      "kanji": "かっこいい",
+      "kana": "かっこいい",
+      "romaji": "kakkoii"
+    },
+    {
+      "en": "healthy; energetic",
+      "kanji": "元気",
+      "kana": "げんき",
+      "romaji": "genki"
+    },
+    {
+      "en": "hot (thing)",
+      "kanji": "熱い",
+      "kana": "あつい",
+      "romaji": "atsui"
+    },
+    {
+      "en": "hot (weather)",
+      "kanji": "暑い",
+      "kana": "あつい",
+      "romaji": "atsui"
+    },
+    {
+      "en": "inexpensive; cheap (thing)",
+      "kanji": "安い",
+      "kana": "やすい",
+      "romaji": "yasui"
+    },
+    {
+      "en": "interesting; funny",
+      "kanji": "面白い",
+      "kana": "おもしろい",
+      "romaji": "omoshiroi"
+    },
+    {
+      "en": "large",
+      "kanji": "大きい",
+      "kana": "おおきい",
+      "romaji": "ookii"
+    },
+    {
+      "en": "lively",
+      "kanji": "賑やか",
+      "kana": "にぎやか",
+      "romaji": "nigiyaka"
+    },
+    {
+      "en": "new",
+      "kanji": "新しい",
+      "kana": "あたらしい",
+      "romaji": "atarashii"
+    },
+    {
+      "en": "not busy; free (time)",
+      "kanji": "暇",
+      "kana": "ひま",
+      "romaji": "hima"
+    },
+    {
+      "en": "old (thing—not used for people)",
+      "kanji": "古い",
+      "kana": "ふるい",
+      "romaji": "furui"
+    },
+    {
+      "en": "quiet",
+      "kanji": "静か",
+      "kana": "しずか",
+      "romaji": "shizuka"
+    },
+    {
+      "en": "small",
+      "kanji": "小さい",
+      "kana": "ちいさい",
+      "romaji": "chiisai"
+    },
+    {
+      "en": "to hate (~ga)",
+      "kanji": "大嫌い",
+      "kana": "だいきらい",
+      "romaji": "daikirai"
+    },
+    {
+      "en": "very fond of; to love (~ga)",
+      "kanji": "大好き",
+      "kana": "だいすき",
+      "romaji": "daisuki"
+    }
+  ],
+  "verbs": [
+    {
+      "en": "to ask (person ni)",
+      "kanji": "聞く",
+      "kana": "きく",
+      "romaji": "kiku"
+    },
+    {
+      "en": "to do; to perform (~o)",
+      "kanji": "やる",
+      "kana": "やる",
+      "romaji": "yaru"
+    },
+    {
+      "en": "to go out",
+      "kanji": "出かける",
+      "kana": "でかける",
+      "romaji": "dekakeru"
+    },
+    {
+      "en": "to ride; to board (~ni)",
+      "kanji": "乗る",
+      "kana": "のる",
+      "romaji": "noru"
+    },
+    {
+      "en": "to swim",
+      "kanji": "泳ぐ",
+      "kana": "およぐ",
+      "romaji": "oyogu"
+    }
+  ],
+  "adverbs": [
+    {
+      "en": "extremely",
+      "kanji": "すごく",
+      "kana": "すごく",
+      "romaji": "sugoku"
+    },
+    {
+      "en": "very",
+      "kanji": "とても",
+      "kana": "とても",
+      "romaji": "totemo"
+    }
+  ],
+  "other": [
+    {
+      "en": "counter for flat objects",
+      "kanji": "〜枚",
+      "kana": "〜まい",
+      "romaji": "... mai"
+    },
+    {
+      "en": "It's okay.; Not to worry.; Everything is under control.",
+      "kanji": "大丈夫",
+      "kana": "だいじょうぶ",
+      "romaji": "daijoubu"
+    },
+    {
+      "en": "together",
+      "kanji": "一緒に",
+      "kana": "いっしょに",
+      "romaji": "issho ni"
+    },
+    {
+      "en": "travel",
+      "kanji": "旅行",
+      "kana": "りょこう",
+      "romaji": "ryokou"
+    },
+    {
+      "en": "weather",
+      "kanji": "天気",
+      "kana": "てんき",
+      "romaji": "tenki"
+    },
+    {
+      "en": "what kind of ...",
+      "kanji": "どんな",
+      "kana": "どんな",
+      "romaji": "donna"
+    }
+  ]
+}

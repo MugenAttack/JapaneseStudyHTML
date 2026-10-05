@@ -1,0 +1,322 @@
+{
+  "people": [
+    {
+      "en": "child",
+      "kanji": "子供",
+      "kana": "こども",
+      "romaji": "kodomo"
+    },
+    {
+      "en": "person",
+      "kanji": "人",
+      "kana": "ひと",
+      "romaji": "hito"
+    },
+    {
+      "en": "you",
+      "kanji": "あなた",
+      "kana": "あなた",
+      "romaji": "anata"
+    }
+  ],
+  "time": [
+    {
+      "en": "Friday",
+      "kanji": "金曜日",
+      "kana": "きんようび",
+      "romaji": "kin'youbi"
+    },
+    {
+      "en": "last week",
+      "kanji": "先週",
+      "kana": "せんしゅう",
+      "romaji": "senshuu"
+    },
+    {
+      "en": "one hour",
+      "kanji": "一時間",
+      "kana": "いちじかん",
+      "romaji": "ichijikan"
+    },
+    {
+      "en": "Monday",
+      "kanji": "月曜日",
+      "kana": "げつようび",
+      "romaji": "getsuyoubi"
+    },
+    {
+      "en": "Thursday",
+      "kanji": "木曜日",
+      "kana": "もくようび",
+      "romaji": "mokuyoubi"
+    },
+    {
+      "en": "Tuesday",
+      "kanji": "火曜日",
+      "kana": "かようび",
+      "romaji": "kayoubi"
+    },
+    {
+      "en": "Wednesday",
+      "kanji": "水曜日",
+      "kana": "すいようび",
+      "romaji": "suiyoubi"
+    },
+    {
+      "en": "when ...; at the time of ...",
+      "kanji": "時",
+      "kana": "とき",
+      "romaji": "toki"
+    },
+    {
+      "en": "yesterday",
+      "kanji": "昨日",
+      "kana": "きのう",
+      "romaji": "kinou"
+    },
+    {
+      "en": "... hours",
+      "kanji": "〜時間",
+      "kana": "〜じかん",
+      "romaji": "... jikan"
+    }
+  ],
+  "objects": [
+    {
+      "en": "cat",
+      "kanji": "猫",
+      "kana": "ねこ",
+      "romaji": "neko"
+    },
+    {
+      "en": "chair",
+      "kanji": "椅子",
+      "kana": "いす",
+      "romaji": "isu"
+    },
+    {
+      "en": "desk",
+      "kanji": "机",
+      "kana": "つくえ",
+      "romaji": "tsukue"
+    },
+    {
+      "en": "dog",
+      "kanji": "犬",
+      "kana": "いぬ",
+      "romaji": "inu"
+    },
+    {
+      "en": "flower",
+      "kanji": "花",
+      "kana": "はな",
+      "romaji": "hana"
+    },
+    {
+      "en": "game",
+      "kanji": "ゲーム",
+      "kana": "げーむ",
+      "romaji": "geemu"
+    },
+    {
+      "en": "part-time job",
+      "kanji": "アルバイト",
+      "kana": "あるばいと",
+      "romaji": "arubaito"
+    },
+    {
+      "en": "picture; photograph",
+      "kanji": "写真",
+      "kana": "しゃしん",
+      "romaji": "shashin"
+    },
+    {
+      "en": "rice; meal",
+      "kanji": "ご飯",
+      "kana": "ごはん",
+      "romaji": "gohan"
+    },
+    {
+      "en": "shopping",
+      "kanji": "買い物",
+      "kana": "かいもの",
+      "romaji": "kaimono"
+    },
+    {
+      "en": "(term) paper",
+      "kanji": "レポート",
+      "kana": "れぽーと",
+      "romaji": "repooto"
+    }
+  ],
+  "places": [
+    {
+      "en": "bookstore",
+      "kanji": "本屋",
+      "kana": "ほんや",
+      "romaji": "hon'ya"
+    },
+    {
+      "en": "bus stop",
+      "kanji": "バス停",
+      "kana": "ばすてい",
+      "romaji": "basutei"
+    },
+    {
+      "en": "hospital",
+      "kanji": "病院",
+      "kana": "びょういん",
+      "romaji": "byouin"
+    },
+    {
+      "en": "hotel",
+      "kanji": "ホテル",
+      "kana": "ほてる",
+      "romaji": "hoteru"
+    },
+    {
+      "en": "park",
+      "kanji": "公園",
+      "kana": "こうえん",
+      "romaji": "kouen"
+    },
+    {
+      "en": "restaurant",
+      "kanji": "レストラン",
+      "kana": "れすとらん",
+      "romaji": "resutoran"
+    },
+    {
+      "en": "supermarket",
+      "kanji": "スーパー",
+      "kana": "すーぱー",
+      "romaji": "suupaa"
+    },
+    {
+      "en": "temple",
+      "kanji": "お寺",
+      "kana": "おてら",
+      "romaji": "otera"
+    },
+    {
+      "en": "town; city",
+      "kanji": "町",
+      "kana": "まち",
+      "romaji": "machi"
+    }
+  ],
+  "verbs": [
+    {
+      "en": "(a person) is in ...; stays at ...",
+      "kanji": "いる",
+      "kana": "いる",
+      "romaji": "iru"
+    },
+    {
+      "en": "there is ...",
+      "kanji": "ある",
+      "kana": "ある",
+      "romaji": "aru"
+    },
+    {
+      "en": "to buy (~o)",
+      "kanji": "買う",
+      "kana": "かう",
+      "romaji": "kau"
+    },
+    {
+      "en": "to meet; to see (a person)",
+      "kanji": "会う",
+      "kana": "あう",
+      "romaji": "au"
+    },
+    {
+      "en": "to take (a picture) (~o)",
+      "kanji": "撮る",
+      "kana": "とる",
+      "romaji": "toru"
+    },
+    {
+      "en": "to understand (~ga)",
+      "kanji": "わかる",
+      "kana": "わかる",
+      "romaji": "wakaru"
+    },
+    {
+      "en": "to wait (~o)",
+      "kanji": "待つ",
+      "kana": "まつ",
+      "romaji": "matsu"
+    },
+    {
+      "en": "to write (person ni thing o)",
+      "kanji": "書く",
+      "kana": "かく",
+      "romaji": "kaku"
+    }
+  ],
+  "adverbs": [
+    {
+      "en": "alone",
+      "kanji": "一人で",
+      "kana": "ひとりで",
+      "romaji": "hitoride"
+    },
+    {
+      "en": "many; a lot",
+      "kanji": "たくさん",
+      "kana": "たくさん",
+      "romaji": "takusan"
+    }
+  ],
+  "other": [
+    {
+      "en": "about (approximate measurement)",
+      "kanji": "〜ぐらい",
+      "kana": "〜ぐらい",
+      "romaji": "... gurai"
+    },
+    {
+      "en": "and then",
+      "kanji": "それから",
+      "kana": "それから",
+      "romaji": "sorekara"
+    },
+    {
+      "en": "class",
+      "kanji": "クラス",
+      "kana": "くらす",
+      "romaji": "kurasu"
+    },
+    {
+      "en": "Hello? (used on the phone)",
+      "kanji": "もしもし",
+      "kana": "もしもし",
+      "romaji": "moshimoshi"
+    },
+    {
+      "en": "I'm sorry.",
+      "kanji": "ごめんなさい",
+      "kana": "ごめんなさい",
+      "romaji": "gomen nasai"
+    },
+    {
+      "en": "so; therefore",
+      "kanji": "だから",
+      "kana": "だから",
+      "romaji": "dakara"
+    },
+    {
+      "en": "together with (a person); and",
+      "kanji": "〜と",
+      "kana": "〜と",
+      "romaji": "... to"
+    },
+    {
+      "en": "why",
+      "kanji": "どうして",
+      "kana": "どうして",
+      "romaji": "doushite"
+    }
+  ]
+}

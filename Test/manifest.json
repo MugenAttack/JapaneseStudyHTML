@@ -1,5 +1,7 @@
 [
   { "name": "Lesson 1", "file": "Test/L1.json" },
   { "name": "Lesson 2", "file": "Test/L2.json" },
-  { "name": "Lesson 3", "file": "Test/L3.json" }
+  { "name": "Lesson 3", "file": "Test/L3.json" },
+  { "name": "Lesson 4", "file": "Test/L4.json" },
+  { "name": "Lesson 5", "file": "Test/L5.json" }
 ]
